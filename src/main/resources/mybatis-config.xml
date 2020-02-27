@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+  
+  <configuration>
+
+     <settings>
+        <setting name="jdbcTypeForNull" value="NULL"/>
+     </settings>
+     <typeAliases>
+     </typeAliases>
+     <mappers>
+        <!-- <mapper resource="mappers/excel-mapper.xml"/>
+        <mapper resource="mappers/data-mapper.xml"/>
+        <mapper resource="mappers/log-mapper.xml"/>
+        <mapper resource="mappers/util-mapper.xml"/> -->
+     </mappers>
+
+  </configuration>

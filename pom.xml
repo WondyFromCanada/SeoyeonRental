@@ -117,15 +117,6 @@
 			<scope>test</scope>
 		</dependency>   
 		
-		<!-- Lombok -->
-		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
-		<dependency>
-		    <groupId>org.projectlombok</groupId>
-		    <artifactId>lombok</artifactId>
-		    <version>1.18.2</version>
-		    <scope>provided</scope>
-		</dependency>
-		
 		<!-- 마이바티스 라이브러리 -->
 		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
 		<dependency>
@@ -236,6 +227,20 @@
 		    <groupId>net.sf.json-lib</groupId>
 		    <artifactId>json-lib-ext-spring</artifactId>
 		    <version>1.0.2</version>
+		</dependency>
+		
+		<!-- mysql  -->
+		<dependency>
+	   		<groupId>mysql</groupId>
+	    	<artifactId>mysql-connector-java</artifactId>
+	    	<version>8.0.16</version>
+		</dependency>
+		
+		<!-- 쿼리 로그용 라이브러리 -->
+		<dependency>
+			<groupId>org.bgee.log4jdbc-log4j2</groupId>
+			<artifactId>log4jdbc-log4j2-jdbc4</artifactId>
+			<version>1.16</version>
 		</dependency>
 		
 	</dependencies>
