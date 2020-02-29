@@ -2,7 +2,7 @@
 <%@ page session="false" pageEncoding="UTF-8" %>
 <html>
 <head>
-	<title>Home</title>
+	<title>Main</title>
 </head>
 <body>
 <jsp:include page="../common/topNav.jsp" />
