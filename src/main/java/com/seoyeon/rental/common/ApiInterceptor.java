@@ -22,13 +22,13 @@ public class ApiInterceptor extends HandlerInterceptorAdapter{
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		HttpSession session = request.getSession(false);
+		//HttpSession session = request.getSession(false);
 //		System.out.println("session : " + session);
 		System.out.println("요청 주소 ㅣ " + request.getRequestURI().toString());
 		
-		if( session.getAttribute("loginUser") != null ) {
-			throw new UserAuthException("권한이 없습니다", HttpStatus.UNAUTHORIZED);
-		}
+//		if( session.getAttribute("loginUser") != null ) {
+//			throw new UserAuthException("권한이 없습니다", HttpStatus.UNAUTHORIZED);
+//		}
 		return true;
 	}
 
@@ -38,7 +38,7 @@ public class ApiInterceptor extends HandlerInterceptorAdapter{
 			ModelAndView modelAndView) throws Exception {
 		logger.info("");
 		
-		modelAndView.setViewName("jsonView");
+		//modelAndView.setViewName("jsonView");
 		super.postHandle(request, response, handler, modelAndView);
 	}
 

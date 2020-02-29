@@ -1,0 +1,42 @@
+li {
+	list-style: none;
+	display: inline-block;
+}
+
+#gnb li a {
+    padding: 10px 40px;    
+    line-height: 40px;
+    font-size: 16px;
+    padding: 0;
+    display: block;
+    font-weight: 400;
+    transition: all 0.2s;
+    letter-spacing: 1px;
+    vertical-align: top;
+    font-family: 'NanumBarunGothic';
+    font-weight: 600;
+    position: relative;
+	
+}
+
+body, ul, li, ol, dt, dd, dl {
+	list-style: none;
+    margin: 0;
+}
+
+header ul, nav ul, footer ul {
+	margin: 0;
+    list-style: none;
+}
+
+a:link, a:visited {
+	color: #000;
+    text-decoration: none;
+}
+
+#gnb {
+    border-bottom: 1px solid #d8d8d8;
+    border-top: 1px solid #eee;
+}
+
+
