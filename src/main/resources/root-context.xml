@@ -18,11 +18,11 @@
 		</bean>
 		
 		<!-- mysql 연동 -->
-		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-			<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"/>
-			<property name="url" value="jdbc:log4jdbc:mysql://127.0.0.1:3306/seoyeon?useSSL=false&amp;serverTimezone=UTC"/>
-			<property name="username" value="root"/>
-			<property name="password" value="root"/>
+		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
+			<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"/> 
+			<property name="url" value="jdbc:log4jdbc:mysql://dhkim931101.cafe24.com/dhkim931101?serverTimezone=UTC&amp;allowMultiQueries=true"/> 
+			<property name="username" value="dhkim931101"/> 
+			<property name="password" value="rlaehdghks3!"/> 
 		</bean>        
 		<!-- 트랜젝션 매니져 bean등록 -->
 		<bean id="transactionManager" 

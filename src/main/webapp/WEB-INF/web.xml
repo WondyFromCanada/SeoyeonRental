@@ -6,7 +6,10 @@
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:root-context.xml</param-value>
+		<param-value>
+			classpath:root-context.xml
+			/WEB-INF/config/spring-security.xml
+		</param-value>
 	</context-param>
 	
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
@@ -37,12 +40,27 @@
 		</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>/WEB-INF/config/*.xml</param-value>
+			<param-value>/WEB-INF/config/util-servlet.xml</param-value>
 		</init-param>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>util</servlet-name>
 		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	
+	<!-- member request handle -->
+	<servlet>
+		<servlet-name>member</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet
+		</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/config/*.xml</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>member</servlet-name>
+		<url-pattern>/member*</url-pattern>
 	</servlet-mapping>
 	
 	
@@ -74,5 +92,4 @@
 		<exception-type>java.lang.Throwable</exception-type>
 		<location>/WEB-INF/views/common/errorPage.jsp</location>
 	</error-page>
-
 </web-app>

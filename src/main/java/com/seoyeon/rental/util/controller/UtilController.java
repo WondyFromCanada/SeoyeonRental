@@ -11,4 +11,10 @@ public class UtilController {
 		
 		return null;
 	}
+	
+	
+	@GetMapping(value = "joinPage.do")
+	public String joinPage() { 
+		return "member/memberJoin";
+	}
 }
