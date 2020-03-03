@@ -39,7 +39,7 @@
 					<li><a href="#section2">복합기판매</a></li>
 					<li><a href="#section3">소모품판매</a></li>
 					<li><a href="#section4">설치소식</a></li>
-					<li><a href="#section5">고객센터</a></li>
+					<li><a href="customerQuestionBoardPage.do">고객센터</a></li>
 				</ul>
 			</div>
 		</div>
