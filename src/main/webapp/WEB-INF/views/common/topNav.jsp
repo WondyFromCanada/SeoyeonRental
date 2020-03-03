@@ -41,7 +41,7 @@
 					<li><a href="mfpSellPage.do">복합기판매</a></li>
 					<li><a href="expdSellPage.do">소모품판매</a></li>
 					<li><a href="installBoardPage.do">설치소식</a></li>
-					<li><a href="customerPage.do">고객센터</a></li>
+					<li><a href="customerQuestionBoardPage.do">고객센터</a></li>
 				</ul>
 			</div>
 		</div>

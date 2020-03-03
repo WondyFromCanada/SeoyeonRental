@@ -2,13 +2,14 @@
 <%@ page session="false" pageEncoding="UTF-8" %>
 <html>
 <head>
-	<title>Home</title>
+	<title>고객센터 | 1:1문의</title>
 </head>
 <body>
 <h1>
 	Hello world!  
 </h1>
 
-<P>  The time on the server is ${serverTime}. </P>
+<button onclick="window.location.href='customerQuestionEnrollPage.do'">게시글등록페이지</button>
+
 </body>
 </html>
