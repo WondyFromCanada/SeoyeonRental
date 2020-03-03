@@ -11,4 +11,5 @@
 		VALUES
 			(#{userId}, #{userPwd}, #{userNm}, #{email}, NOW(), #{addr}, #{phone})
 	</insert>
+	
 </mapper>

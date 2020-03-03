@@ -24,14 +24,20 @@ public class MemberController {
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
+	/**
+	 *	Author : dhkim
+	 *	Date : 2020. 3. 3.
+	 *  Discription : 회원가입 메소드 
+	**/
+	
 	@PostMapping(value = "/member")
 	public Map<String, Object> insertMember(@RequestBody Map<String, Object> map) {
 		String encPassword = passwordEncoder.encode(map.get("userPwd") + "");
 		map.put("userPwd", encPassword);
 		
-		Map<String, Object> resultMap = new HashMap<String, Object> ();
 		int result = ms.insertMember(map);
 		
+		Map<String, Object> resultMap = new HashMap<String, Object> ();
 		if( result > 0 ) resultMap.put("result", "success");
 		else resultMap.put("result", "fail");
 

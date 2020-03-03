@@ -12,10 +12,6 @@
      <typeAliases>
      </typeAliases>
      <mappers>
-        <!-- <mapper resource="mappers/excel-mapper.xml"/>
-        <mapper resource="mappers/data-mapper.xml"/>
-        <mapper resource="mappers/log-mapper.xml"/>
-        <mapper resource="mappers/util-mapper.xml"/> -->
         <mapper resource="mapper/member-mapper.xml" />
      </mappers>
 

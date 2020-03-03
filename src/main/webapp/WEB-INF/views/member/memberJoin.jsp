@@ -52,8 +52,8 @@
       </div>
 <script type="text/javascript">
 	
+	// 2020-03-03 김동환 - 회원가입
 	function memberJoin() {
-		
 		var sendData = {
 				userId: $('#userId').val(),
 				userPwd: $('#userPwd').val(),
@@ -63,9 +63,9 @@
 				addr: $('#addr').val(),
 				phone: $('#phone').val()
 		};
-		
+
 		$.ajax({
-			url: '/rental/member',
+			url: '/rental/member/',
 			type: 'POST',
 			data: JSON.stringify(sendData),
 			contentType: 'application/json',
@@ -78,24 +78,6 @@
 		});
 		
 	}
-	
-
-	/* function duplicationCheck(){
-		var userId = $("#userId").val();
-		
-		$.ajax({
-			url:"duplicationCheck.me",
-			type:"post",
-			data:{userId:userId},
-			success:function(data){
-				console.log(data.member.userId);
-			},
-			error:function(status){
-				alert(status);
-			}
-		});
-		return false;
-	} */
 </script>
 </body>
 </html>
