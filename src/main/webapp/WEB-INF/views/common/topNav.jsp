@@ -12,17 +12,38 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<div id="gnb">
-		<ul>
-			<li class="gnb_1dli" style="z-index: 999"><a href="#"
-				class="gnb_1da gnb_1dam"> 복합기렌탈 </a></li>
-			<li class="gnb_1dli" style="z-index: 998"><a href="#"
-				class="gnb_1da gnb_1dam"> 복합기판매 </a></li>
-			<li class="gnb_1dli" style="z-index: 997"><a href="#"
-				class="gnb_1da gnb_1dam"> 소모품판매 </a></li>
-			<li class="gnb_1dli" style="z-index: 996"><a href="# class="
-				gnb_1da gnb_1damgnb_1dam"> 고객센터 </a></li>
-		</ul>
-	</div>
+
+<diV class="container-fluid topNav">
+	asdasd
+</diV>
+	<nav class="navbar bg-danger navbar-expand-sm navbar-dark">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Brand</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Link</a></li>
+      </ul>
+      <form class="navbar-form navbar-left" role="search">
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Link</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
 </body>
 </html>
