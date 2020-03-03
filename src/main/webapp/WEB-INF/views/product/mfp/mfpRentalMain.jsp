@@ -6,9 +6,7 @@
 </head>
 <body>
 <h1>
-	Hello world!  
+	복합기렌탈
 </h1>
-
-<P>  The time on the server is ${serverTime}. </P>
 </body>
 </html>

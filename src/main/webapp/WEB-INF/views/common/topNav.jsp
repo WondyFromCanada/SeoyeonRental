@@ -3,6 +3,8 @@
 <html>
 <head>
 <title>SeoyoeonRental</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -22,12 +24,12 @@
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<img src="https://via.placeholder.com/50" alt="Chania">
-				<a class="navbar-brand" href="#myPage">WebSiteName</a>
+				<img src="https://via.placeholder.com/50" alt="Chania"> <a
+					class="navbar-brand" href="mainPage.do">WebSiteName</a>
 			</div>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="joinPage.do"><span class="glyphicon glyphicon-user"></span>
-						Sign Up</a></li>
+				<li><a href="joinPage.do"><span
+						class="glyphicon glyphicon-user"></span> Sign Up</a></li>
 				<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
 						Login</a></li>
 			</ul>
@@ -35,11 +37,11 @@
 		<div class="container">
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#section1">복합기렌탈</a></li>
-					<li><a href="#section2">복합기판매</a></li>
-					<li><a href="#section3">소모품판매</a></li>
-					<li><a href="#section4">설치소식</a></li>
-					<li><a href="#section5">고객센터</a></li>
+					<li><a href="mfpRentalPage.do">복합기렌탈</a></li>
+					<li><a href="mfpSellPage.do">복합기판매</a></li>
+					<li><a href="expdSellPage.do">소모품판매</a></li>
+					<li><a href="installBoardPage.do">설치소식</a></li>
+					<li><a href="customerPage.do">고객센터</a></li>
 				</ul>
 			</div>
 		</div>
