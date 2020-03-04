@@ -14,6 +14,8 @@
 <!-- Latest compiled JavaScript -->
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!-- bootpag paging plugin -->
+<script type="text/javascript" src="resources/js/plugin/jquery.bootpag.min.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-fixed-top">
@@ -30,7 +32,7 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="joinPage.do"><span
 						class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
+				<li><a href="loginPage.do"><span class="glyphicon glyphicon-log-in"></span>
 						Login</a></li>
 			</ul>
 		</div>
@@ -47,4 +49,5 @@
 		</div>
 	</nav>
 </body>
+<script type="text/javascript" src="resources/ckeditor/ckeditor.js"></script>
 </html>

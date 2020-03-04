@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Member">
+
+	<insert id="insertCustomerQuestionBoard" parameterType="map">
+		INSERT INTO SY_CUSTOMER_QUESTION
+		      (MEMBER_ID, TITLE, CONTENT)
+		VALUES
+		      (#{memberId}, #{title}, #{content})
+	</insert>
+	
+	<select id="selectCustomerQuestionBoardList" resultType="map">
+		SELECT POST_ID,
+		       MEMBER_ID,
+		       TITLE,
+		       CONTENT,
+		       ANSWER,
+		       DATE_FORMAT(CREATE_DATE, '%Y-%m-%d %T') AS CREATE_DATE,
+		       PUBLIC_YN
+	      FROM SY_CUSTOMER_QUESTION
+	   	 WHERE STATUS = 'Y'
+	</select>
+	
+	<select id="selectCustomerQuestionBoard" parameterType="String" resultType="map">
+		SELECT Q.POST_ID,
+		       M.USER_NM,
+		       Q.TITLE,
+		       Q.CONTENT,
+		       Q.ANSWER,
+		       DATE_FORMAT(Q.CREATE_DATE, '%Y-%m-%d %T') AS CREATE_DATE,
+		       Q.PUBLIC_YN
+	      FROM SY_CUSTOMER_QUESTION Q
+	      LEFT OUTER JOIN SY_MEMBER M ON(M.MEMBER_ID = Q.MEMBER_ID) 
+	   	 WHERE Q.STATUS = 'Y'
+	   	   AND Q.POST_ID = #{postId}
+	</select>
+	
+</mapper>

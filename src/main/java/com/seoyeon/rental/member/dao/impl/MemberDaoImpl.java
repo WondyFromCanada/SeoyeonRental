@@ -15,6 +15,16 @@ public class MemberDaoImpl implements MemberDao{
 		return sqlSession.insert("insertMember", map);
 	}
 
+	@Override
+	public String selectEncPassword(SqlSessionTemplate sqlSession, String userId) {
+		return sqlSession.selectOne("selectPwd", userId);
+	}
+
+	@Override
+	public Map<String, Object> selectLoginUser(SqlSessionTemplate sqlSession, String userId) {
+		return sqlSession.selectOne("selectLoginUser", userId);
+	}
+
 	
 	
 }

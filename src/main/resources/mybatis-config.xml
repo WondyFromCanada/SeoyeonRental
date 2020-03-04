@@ -13,6 +13,7 @@
      </typeAliases>
      <mappers>
         <mapper resource="mapper/member-mapper.xml" />
+        <mapper resource="mapper/customerQuestion-mapper.xml" />
      </mappers>
 
   </configuration>

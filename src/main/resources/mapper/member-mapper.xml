@@ -11,5 +11,24 @@
 		VALUES
 			(#{userId}, #{userPwd}, #{userNm}, #{email}, NOW(), #{addr}, #{phone})
 	</insert>
+
+	<select id="selectPwd" parameterType="String" resultType="String">
+		SELECT USER_PWD
+		  FROM SY_MEMBER
+		 WHERE USER_ID = #{userId}
+	</select>	
 	
+	<select id='selectLoginUser' parameterType="String" resultType="map">
+		SELECT MEMBER_ID,
+		       USER_ID,
+		       USER_NM,
+		       EMAIL,
+		       BIRTH,
+		       ADDR,
+		       PHONE,
+		       JOIN_DATE,
+		       DIVSN
+		  FROM SY_MEMBER
+		 WHERE STATUS = 'Y'
+	</select>
 </mapper>
