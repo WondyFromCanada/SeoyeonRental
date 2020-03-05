@@ -6,10 +6,7 @@
 	<title>Home</title>
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
-
-<P>  The time on the server is ${serverTime}. </P>
+<jsp:include page="../../common/adminTopNav.jsp" />
+<button type="button" class="btn btn-default" onclick="window.location.href='sellProductEnrollPage.do'">제품등록</button>
 </body>
 </html>

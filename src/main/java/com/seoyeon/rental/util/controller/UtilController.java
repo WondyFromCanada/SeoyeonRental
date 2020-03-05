@@ -151,15 +151,55 @@ public class UtilController {
 	 =========================================================	
 	 */
 	
+	/**
+	 * Author : 김정언
+	 * Date : 2020. 3. 5.
+	 * Discription : 관리자 메인페이지로 이동
+	**/
+	@GetMapping(value = "adminMainPage.do")
+	public String adminMainPage() {
+		return "admin/main/adminMain";
+	}
+	
+	/**
+	 * Author : 김정언
+	 * Date : 2020. 3. 5.
+	 * Discription : 관리자 렌탈제품관리 페이지로 이동
+	**/
+	@GetMapping(value = "rentalProdMgmtPage.do")
+	public String rentalProdMgmtPage() {
+		return "admin/product/rental/adminRentalProdMgmtMain";
+	}
+	
+	/**
+	 * Author : 김정언
+	 * Date : 2020. 3. 5.
+	 * Discription : 관리자 판매제품관리 페이지로 이동
+	**/
+	@GetMapping(value = "sellProdMgmtPage.do")
+	public String sellProdMgmtPage() {
+		return "admin/product/sell/adminSellProdMgmtMain";
+	}
 	
 	/**
 	 *	Author : 김동환
 	 *	Date : 2020. 3. 5.
 	 *  Discription : 관리자 자료실 등록 페이지
 	**/
-	@GetMapping(value = "customerMaterialEnroll.do")
+	@GetMapping(value = "customerMaterialEnrollPage.do")
 	public String adminCustomerMaterialEnrollPage() {
 		return "admin/customer/materialBoard/adminMaterialEnroll";
 	}
+	
+	/**
+	 * Author : 김정언
+	 * Date : 2020. 3. 5.
+	 * Discription : 관리자 판매 제품 등록 페이지로 이동
+	**/
+	@GetMapping(value = "sellProductEnrollPage.do")
+	public String adminSellProductEnrollPage() {
+		return "admin/product/sell/adminSellProdEnroll";
+	}
+
 
 }

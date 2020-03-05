@@ -6,6 +6,6 @@
 	<title>Home</title>
 </head>
 <body>
-<jsp:include page="../common/adminTopNav.jsp" />
+<jsp:include page="../../common/adminTopNav.jsp" />
 </body>
 </html>

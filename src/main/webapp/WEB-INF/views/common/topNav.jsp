@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <html>
 <head>
 <title>SeoyoeonRental</title>
@@ -16,7 +16,8 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <!-- bootpag paging plugin -->
-<script type="text/javascript" src="resources/js/plugin/jquery.bootpag.min.js"></script>
+<script type="text/javascript"
+	src="resources/js/plugin/jquery.bootpag.min.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-fixed-top">
@@ -31,15 +32,19 @@
 					class="navbar-brand" href="mainPage.do">WebSiteName</a>
 			</div>
 			<ul class="nav navbar-nav navbar-right">
-				<c:if test="${sessionScope.loginUser eq null}">
+				<c:if test="${empty sessionScope.loginUser}">
 					<li><a href="joinPage.do"><span
 							class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-					<li><a href="loginPage.do"><span class="glyphicon glyphicon-log-in"></span>
-						Login</a></li>
+					<li><a href="loginPage.do"><span
+							class="glyphicon glyphicon-log-in"></span> Login</a></li>
 				</c:if>
-				<c:if test="${sessionScope.loginUser ne null}">
-					<li><a href="logout.do"><span class="glyphicon glyphicon-log-in"></span>
-						logout</a></li>
+				<c:if test="${!empty sessionScope.loginUser}">
+					<!-- <c:if test="${sessionScope.divsn eq 'ADMIN' }">
+					</c:if> -->
+						<li><a href="adminMainPage.do"><span
+								class="glyphicon glyphicon-user"></span> Admin</a></li>
+					<li><a href="logout.do"><span
+							class="glyphicon glyphicon-log-in"></span> Logout</a></li>
 				</c:if>
 			</ul>
 		</div>

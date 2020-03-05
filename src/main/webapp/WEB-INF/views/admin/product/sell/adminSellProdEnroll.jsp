@@ -6,10 +6,7 @@
 	<title>Home</title>
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
-
-<P>  The time on the server is ${serverTime}. </P>
+<jsp:include page="../../common/adminTopNav.jsp" />
+<label for="usr">Name:</label> <input type="text" class="form-control" id="usr">
 </body>
 </html>
