@@ -6,7 +6,9 @@
 </head>
 <body>
 <jsp:include page="../common/topNav.jsp" />
-<h1 align="center">회원가입</h1>
+      
+      <br><br><br><br>
+      <br><br><br><br>
       <table align="center">
          <tr>
             <td> * 아이디 </td>
@@ -71,6 +73,9 @@
 			contentType: 'application/json',
 			success: function(data) {
 				console.log(data);
+				if(data.result == 'success') {
+					window.location.href = 'mainPage.do';
+				}
 			},
 			error: function(data) {
 				console.log(data);

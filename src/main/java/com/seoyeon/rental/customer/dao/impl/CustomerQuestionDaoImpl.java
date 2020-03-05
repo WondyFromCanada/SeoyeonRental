@@ -34,5 +34,15 @@ public class CustomerQuestionDaoImpl implements CustomerQuestionDao{
 		return sqlSession.selectOne("selectCustomerQuestionBoard", postId);
 	}
 
+	@Override
+	public int updateCustomerQuestionBoard(SqlSessionTemplate sqlSession, Map<String, Object> param) {
+		return sqlSession.update("updateCustomerQuestionBoard", param);
+	}
+
+	@Override
+	public int deleteCustomerQuestionBoard(SqlSessionTemplate sqlSession, String postId) {
+		return sqlSession.delete("deleteCustomerQuestionBoard", postId);
+	}
+
 
 }

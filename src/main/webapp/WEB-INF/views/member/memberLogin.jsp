@@ -28,6 +28,11 @@
 				data: JSON.stringify(sendData),
 				contentType: 'application/json',
 				success: function(data) {
+					if(data.result == 'success') {
+						window.location.href = 'mainPage.do';
+					} else {
+						alert('아이디 혹은 비밀번호 오류입니다');
+					}
 					console.log(data);
 				},
 				error: function(data) {

@@ -1,10 +1,13 @@
 package com.seoyeon.rental.util.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.seoyeon.rental.HomeController;
 
@@ -13,6 +16,18 @@ public class UtilController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
+	/**
+	 *	Author : 김동환
+	 *	Date : 2020. 3. 5.
+	 *  Discription : 로그아웃
+	**/
+	@GetMapping(value= "logout.do")
+	public String logout(SessionStatus status, HttpSession session) {
+		session.invalidate();
+		status.setComplete();
+		return "main/main";
+	}
+	
 	/**
 	 * Author : 김정언 Date : 2020. 3. 3. Discription : 메인 페이지로 이동
 	 **/
@@ -77,6 +92,12 @@ public class UtilController {
 		return "installBoard/installBoardMain";
 	}
 
+	/*
+	 =========================================================
+	 					<> 고객센터 영역 <>
+	 =========================================================	
+	 */
+	
 	/**
 	 * Author : 김동환 Date : 2020. 3. 3. Discription : 고객센터 1:1문의 페이지 이동
 	 **/
@@ -96,11 +117,49 @@ public class UtilController {
 	/**
 	 *	Author : 김동환
 	 *	Date : 2020. 3. 4.
-	 *  Discription : 고객센터 1:1문의 상세보기
+	 *  Discription : 고객센터 1:1문의 상세보기 페이지 이동
 	**/
 	@GetMapping(value = "customerQuestionDetailPage.do")
 	public String customerQuestionDetailPage() {
 		return "customer/questionBoard/questionBoardDetail";
+	}
+	
+	/**
+	 *	Author : 김동환
+	 *	Date : 2020. 3. 5.
+	 *  Discription : 고객센터 자료실 페이지 이동
+	**/
+	@GetMapping(value = "customerMaterialBoardPage.do")
+	public String customerMaterialBoardPage() {
+		return "customer/materialBoard/materialBoardMain";
+	}
+	
+	/**
+	 *	Author : 김동환
+	 *	Date : 2020. 3. 5.
+	 *  Discription : 고객센터 자료실 상세보기 페이지 이동
+	**/
+	@GetMapping(value = "customerMaterialDetailPage.do")
+	public String customerMaterialDetailPage() {
+		return "customer/materialBoard/materialBoardDetail";
+	}
+	
+	
+	/*
+	 =========================================================
+	 					<> 관리자 영역 <>
+	 =========================================================	
+	 */
+	
+	
+	/**
+	 *	Author : 김동환
+	 *	Date : 2020. 3. 5.
+	 *  Discription : 관리자 자료실 등록 페이지
+	**/
+	@GetMapping(value = "customerMaterialEnroll.do")
+	public String adminCustomerMaterialEnrollPage() {
+		return "admin/customer/materialBoard/adminMaterialEnroll";
 	}
 
 }

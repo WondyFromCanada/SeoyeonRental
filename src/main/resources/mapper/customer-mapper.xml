@@ -7,9 +7,9 @@
 
 	<insert id="insertCustomerQuestionBoard" parameterType="map">
 		INSERT INTO SY_CUSTOMER_QUESTION
-		      (MEMBER_ID, TITLE, CONTENT)
+		      (MEMBER_ID, TITLE, CONTENT, PUBLIC_YN)
 		VALUES
-		      (#{memberId}, #{title}, #{content})
+		      (#{memberId}, #{title}, #{content}, #{publicYn})
 	</insert>
 	
 	<select id="selectCustomerQuestionBoardList" resultType="map">
@@ -27,6 +27,7 @@
 	<select id="selectCustomerQuestionBoard" parameterType="String" resultType="map">
 		SELECT Q.POST_ID,
 		       M.USER_NM,
+		       M.MEMBER_ID,
 		       Q.TITLE,
 		       Q.CONTENT,
 		       Q.ANSWER,
@@ -38,4 +39,35 @@
 	   	   AND Q.POST_ID = #{postId}
 	</select>
 	
+	<update id="updateCustomerQuestionBoard" parameterType="map">
+		UPDATE SY_CUSTOMER_QUESTION
+		   SET TITLE = #{title},
+		       CONTENT = #{content}
+		 WHERE POST_ID = #{postId}
+	</update>
+	
+	<delete id="deleteCustomerQuestionBoard" parameterType="String">
+		DELETE 
+		  FROM SY_CUSTOMER_QUESTION
+		 WHERE POST_ID = #{postId}
+	</delete>
+	
+	<insert id="insertCustomerMaterial" parameterType="map">
+		INSERT INTO SY_CUSTOMER_MATERIAL
+		      (TITLE, CONTENT)
+		VALUES 
+		      (#{title}, #{content})
+	</insert>
+	
+	<insert id="insertAttachment" parameterType="map">
+		INSERT INTO SY_ATTACHMENT
+		      (FILE_PATH, ORIGIN_NM, CHANGE_NM, EXT, DIVSN, POST_ID)
+		SELECT #{filePath} AS FILE_PATH,
+		       #{originNm} AS ORIGIN_NM,
+		       #{changeNm} AS CHANGE_NM,
+		       #{ext} AS EXT,
+		       '자료실',
+		       MAX(POST_ID) AS POST_ID
+		  FROM SY_CUSTOMER_MATERIAL
+	</insert>
 </mapper>

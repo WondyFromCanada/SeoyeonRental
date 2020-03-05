@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <html>
 <head>
 <title>SeoyoeonRental</title>
@@ -30,10 +31,16 @@
 					class="navbar-brand" href="mainPage.do">WebSiteName</a>
 			</div>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="joinPage.do"><span
-						class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-				<li><a href="loginPage.do"><span class="glyphicon glyphicon-log-in"></span>
+				<c:if test="${sessionScope.loginUser eq null}">
+					<li><a href="joinPage.do"><span
+							class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+					<li><a href="loginPage.do"><span class="glyphicon glyphicon-log-in"></span>
 						Login</a></li>
+				</c:if>
+				<c:if test="${sessionScope.loginUser ne null}">
+					<li><a href="logout.do"><span class="glyphicon glyphicon-log-in"></span>
+						logout</a></li>
+				</c:if>
 			</ul>
 		</div>
 		<div class="container">

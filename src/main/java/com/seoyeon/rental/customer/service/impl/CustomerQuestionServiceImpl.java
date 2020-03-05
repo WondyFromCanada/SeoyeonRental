@@ -128,5 +128,15 @@ public class CustomerQuestionServiceImpl implements CustomerQuestionService{
 		return cqd.selectCustomerQuestionBoard(sqlSession, postId);
 	}
 
+	@Override
+	public int updateCustomerQuestionBoard(Map<String, Object> param) {
+		return cqd.updateCustomerQuestionBoard(sqlSession, param);
+	}
+
+	@Override
+	public int deleteCustomerQuestionBoard(String postId) {
+		return cqd.deleteCustomerQuestionBoard(sqlSession, postId);
+	}
+
 
 }

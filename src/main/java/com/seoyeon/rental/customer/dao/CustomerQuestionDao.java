@@ -38,4 +38,18 @@ public interface CustomerQuestionDao {
 	**/
 	Map<String, Object> selectCustomerQuestionBoard(SqlSessionTemplate sqlSession, String postId);
 
+	/**
+	 *	Author : 김동환
+	 *	Date : 2020. 3. 5.
+	 *  Discription : 
+	**/
+	int updateCustomerQuestionBoard(SqlSessionTemplate sqlSession, Map<String, Object> param);
+
+	/**
+	 *	Author : 김동환
+	 *	Date : 2020. 3. 5.
+	 *  Discription : 
+	**/
+	int deleteCustomerQuestionBoard(SqlSessionTemplate sqlSession, String postId);
+
 }

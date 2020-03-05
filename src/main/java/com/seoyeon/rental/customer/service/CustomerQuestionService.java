@@ -51,4 +51,18 @@ public interface CustomerQuestionService {
 	**/
 	Map<String, Object> selectCustomerQuestionBoard(String postId);
 
+	/**
+	 *	Author : 김동환
+	 *	Date : 2020. 3. 5.
+	 *  Discription : 
+	**/
+	int updateCustomerQuestionBoard(Map<String, Object> param);
+
+	/**
+	 *	Author : 김동환
+	 *	Date : 2020. 3. 5.
+	 *  Discription : 
+	**/
+	int deleteCustomerQuestionBoard(String postId);
+
 }

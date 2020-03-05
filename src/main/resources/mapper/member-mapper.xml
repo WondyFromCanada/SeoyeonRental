@@ -30,5 +30,6 @@
 		       DIVSN
 		  FROM SY_MEMBER
 		 WHERE STATUS = 'Y'
+		   AND USER_ID = #{userId}
 	</select>
 </mapper>
