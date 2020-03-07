@@ -3,7 +3,7 @@
 	pageEncoding="UTF-8"%>
 <html>
 <head>
-<title>Home</title>
+<title>Admin</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Latest compiled and minified CSS -->
@@ -27,13 +27,14 @@
 			</div>
 			<ul class="nav navbar-nav navbar-right">
 				<li class="active"><a href="#">Home</a></li>
+				<li><a href="#">회원관리</a></li>
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">제품관리 <span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="rentalProdMgmtPage.do">렌탈</a></li>
-						<li><a href="sellProdMgmtPage.do">판매</a></li>
+						<li><a href="rentalProdMgmtPage.do">복합기</a></li>
+						<li><a href="sellProdMgmtPage.do">소모품</a></li>
 					</ul></li>
-				<li><a href="#">설치소식등록</a></li>
+				<li><a href="#">설치소식</a></li>
 				<li><a href="#">고객센터</a></li>
 			</ul>
 		</div>
