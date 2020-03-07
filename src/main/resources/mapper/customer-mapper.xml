@@ -6,7 +6,7 @@
 <mapper namespace="Member">
 
 	<insert id="insertCustomerQuestionBoard" parameterType="map">
-		INSERT INTO SY_CUSTOMER_QUESTION
+		INSERT INTO SY_CUSTOMER_QUESTION_BOARD
 		      (MEMBER_ID, TITLE, CONTENT, PUBLIC_YN)
 		VALUES
 		      (#{memberId}, #{title}, #{content}, #{publicYn})
@@ -18,7 +18,7 @@
 		       TITLE,
 		       DATE_FORMAT(CREATE_DATE, '%Y-%m-%d %T') AS CREATE_DATE,
 		       PUBLIC_YN
-	      FROM SY_CUSTOMER_QUESTION
+	      FROM SY_CUSTOMER_QUESTION_BOARD
 	   	 WHERE STATUS = 'Y'
 	</select>
 	
@@ -31,14 +31,14 @@
 		       Q.ANSWER,
 		       DATE_FORMAT(Q.CREATE_DATE, '%Y-%m-%d %T') AS CREATE_DATE,
 		       Q.PUBLIC_YN
-	      FROM SY_CUSTOMER_QUESTION Q
+	      FROM SY_CUSTOMER_QUESTION_BOARD Q
 	      LEFT OUTER JOIN SY_MEMBER M ON(M.MEMBER_ID = Q.MEMBER_ID) 
 	   	 WHERE Q.STATUS = 'Y'
 	   	   AND Q.POST_ID = #{postId}
 	</select>
 	
 	<update id="updateCustomerQuestionBoard" parameterType="map">
-		UPDATE SY_CUSTOMER_QUESTION
+		UPDATE SY_CUSTOMER_QUESTION_BOARD
 		   SET TITLE = #{title},
 		       CONTENT = #{content}
 		 WHERE POST_ID = #{postId}
@@ -46,19 +46,19 @@
 	
 	<delete id="deleteCustomerQuestionBoard" parameterType="String">
 		DELETE 
-		  FROM SY_CUSTOMER_QUESTION
+		  FROM SY_CUSTOMER_QUESTION_BOARD
 		 WHERE POST_ID = #{postId}
 	</delete>
 	
 	<insert id="insertCustomerMaterial" parameterType="map">
-		INSERT INTO SY_CUSTOMER_MATERIAL
+		INSERT INTO SY_CUSTOMER_MATERIAL_BOARD
 		      (TITLE, CONTENT)
 		VALUES 
 		      (#{title}, #{content})
 	</insert>
 	
 	<insert id="insertAttachment" parameterType="map">
-		INSERT INTO SY_ATTACHMENT
+		INSERT INTO SY_ATTACHMENT_BOARD
 		      (FILE_PATH, ORIGIN_NM, CHANGE_NM, EXT, DIVSN, POST_ID)
 		SELECT #{filePath} AS FILE_PATH,
 		       #{originNm} AS ORIGIN_NM,
@@ -66,6 +66,6 @@
 		       #{ext} AS EXT,
 		       '자료실',
 		       MAX(POST_ID) AS POST_ID
-		  FROM SY_CUSTOMER_MATERIAL
+		  FROM SY_CUSTOMER_MATERIAL_BOARD
 	</insert>
 </mapper>
