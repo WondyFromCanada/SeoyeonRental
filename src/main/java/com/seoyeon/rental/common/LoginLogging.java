@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 public class LoginLogging {
 	private static final Logger logger = LoggerFactory.getLogger(LoginLogging.class);
 	
-	@Pointcut("execution(* com.kh.tsp2..*ServiceImpl.*(..))")
+	@Pointcut("execution(* com.seoyeon.rental..*ServiceImpl.*(..))")
 	public void loginPointcut() {
 		
 	}

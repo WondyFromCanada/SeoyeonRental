@@ -16,8 +16,6 @@
 		SELECT POST_ID,
 		       MEMBER_ID,
 		       TITLE,
-		       CONTENT,
-		       ANSWER,
 		       DATE_FORMAT(CREATE_DATE, '%Y-%m-%d %T') AS CREATE_DATE,
 		       PUBLIC_YN
 	      FROM SY_CUSTOMER_QUESTION
