@@ -200,6 +200,16 @@ public class UtilController {
 	public String adminSellProductEnrollPage() {
 		return "admin/product/sell/adminSellProdEnroll";
 	}
+	
+	/**
+	 *	Author : 김동환
+	 *	Date : 2020. 3. 7.
+	 *  Discription : 고객센터 faq 등록 페이지 이동
+	**/
+	@GetMapping(value = "customerFaqEnrollPage.do")
+	public String adminCustomerFaqEnrollPage() {
+		return "admin/customer/faqBoard/adminFaqEnroll";
+	}
 
 
 }

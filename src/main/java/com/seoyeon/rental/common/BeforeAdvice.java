@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class BeforeAdvice {
 	//포인트컷 표현식을 이용해 포인트컷 설정을 한다.
 	//메소드 이름이 포인트컷이 된다.
-	@Pointcut("execution(* com.kh.tsp2..*ServiceImpl.*(..))")
+	@Pointcut("execution(* com.seoyeon.rental..*ServiceImpl.*(..))")
 	public void allPointcut() {
 		
 	}

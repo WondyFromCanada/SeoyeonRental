@@ -10,7 +10,7 @@ import org.springframework.util.StopWatch;
 @Component
 @Aspect
 public class AroundAdvice {
-	@Pointcut("execution(* com.kh.tsp2..*ServiceImpl.*(..))")
+	@Pointcut("execution(* com.seoyeon.rental..*ServiceImpl.*(..))")
 	public void allPointcut() {
 		
 	}
