@@ -6,7 +6,7 @@
 	<title>관리자 자료실 등록</title>
 </head>
 <body>
-<jsp:include page="../../../common/topNav.jsp" />
+<jsp:include page="../../common/adminTopNav.jsp" />
 <br><br><br>
 <br><br><br>
 
@@ -18,7 +18,7 @@
 	<button type="submit">등록</button>
 </form>
 <textarea class="form-control" id="p_content"></textarea>
-<button id="goBack" onclick="location.href='customerQuestionBoardPage.do'">목록으로</button>
+<button id="goBack" onclick="location.href='adminCustomerMaterialBoardMgmtPage.do'">목록으로</button>
 
 </body>
 </html>

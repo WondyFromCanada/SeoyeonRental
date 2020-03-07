@@ -7,6 +7,6 @@
 </head>
 <body>
 <jsp:include page="../../common/adminTopNav.jsp" />
-<button type="button" class="btn btn-default" onclick="window.location.href='rentalProductEnrollPage.do'">제품등록</button>
+<jsp:include page="../../common/adminCustomerSubNav.jsp" />
 </body>
 </html>

@@ -3,9 +3,10 @@
     pageEncoding="UTF-8"%>
 <html>
 <head>
-	<title>Admin</title>
+	<title>Home</title>
 </head>
 <body>
-<jsp:include page="../common/adminTopNav.jsp" />
+<jsp:include page="../../common/adminTopNav.jsp" />
+<jsp:include page="../../common/adminProdBoardSubNav.jsp" />
 </body>
 </html>

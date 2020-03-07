@@ -40,9 +40,11 @@
 				</c:if>
 				<c:if test="${!empty sessionScope.loginUser}">
 					<c:if test="${sessionScope.loginUser.DIVSN eq 'ADMIN' }">
-						<li><a href="adminMainPage.do" target="_blank"><span
+						<li><a href="adminEstimateMgmtPage.do" target="_blank"><span
 								class="glyphicon glyphicon-user"></span> Admin</a></li>
 					</c:if>
+					<li><a href="myPage.do"><span
+							class="glyphicon glyphicon-log-in"></span> MyPage</a></li>
 					<li><a href="logout.do"><span
 							class="glyphicon glyphicon-log-in"></span> Logout</a></li>
 				</c:if>

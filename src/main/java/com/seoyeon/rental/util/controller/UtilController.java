@@ -16,6 +16,14 @@ public class UtilController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
+	/*
+	 =========================================================
+	 					<> 사용자 영역 <>
+	 =========================================================	
+	 */
+	
+	/* TopNav Start */
+	
 	/**
 	 *	Author : 김동환
 	 *	Date : 2020. 3. 5.
@@ -91,20 +99,18 @@ public class UtilController {
 	public String installBoardPage() {
 		return "installBoard/installBoardMain";
 	}
-
-	/*
-	 =========================================================
-	 					<> 고객센터 영역 <>
-	 =========================================================	
-	 */
 	
 	/**
-	 * Author : 김동환 Date : 2020. 3. 3. Discription : 고객센터 1:1문의 페이지 이동
+	 * Author : 김동환 Date : 2020. 3. 3. Discription : 고객센터 페이지 (1:1 문의) 이동
 	 **/
 	@GetMapping(value = "customerQuestionBoardPage.do")
 	public String customerQuestionBoardPage() {
 		return "customer/questionBoard/questionBoardMain";
 	}
+
+	/* TopNav End */
+	
+	/* 고객센터 Start */	
 
 	/**
 	 * Author : 김동환 Date : 2020. 3. 3. Discription : 고객센터 1:1문의 등록 페이지 이동
@@ -144,6 +150,8 @@ public class UtilController {
 		return "customer/materialBoard/materialBoardDetail";
 	}
 	
+	/* 고객센터 End */
+	
 	
 	/*
 	 =========================================================
@@ -151,54 +159,103 @@ public class UtilController {
 	 =========================================================	
 	 */
 	
+	/* TopNav Start */
 	/**
 	 * Author : 김정언
 	 * Date : 2020. 3. 5.
-	 * Discription : 관리자 메인페이지로 이동
+	 * Discription : 관리자 메인페이지 (견적문의)로 이동
 	**/
-	@GetMapping(value = "adminMainPage.do")
+	@GetMapping(value = "adminEstimateMgmtPage.do")
 	public String adminMainPage() {
-		return "admin/main/adminMain";
+		return "admin/estimate/adminEstimateMgmt";
 	}
 	
 	/**
 	 * Author : 김정언
 	 * Date : 2020. 3. 5.
-	 * Discription : 관리자 렌탈제품관리 페이지로 이동
+	 * Discription : 관리자 회원관리 페이지로 이동
 	**/
-	@GetMapping(value = "rentalProdMgmtPage.do")
-	public String rentalProdMgmtPage() {
-		return "admin/product/rental/adminRentalProdMgmtMain";
+	@GetMapping(value = "adminMemberMgmtPage.do")
+	public String adminMemberMgmtPage() {
+		return "admin/member/adminMemberMgmt";
 	}
 	
 	/**
 	 * Author : 김정언
 	 * Date : 2020. 3. 5.
-	 * Discription : 관리자 판매제품관리 페이지로 이동
+	 * Discription : 관리자 제품관리 페이지로 이동
 	**/
-	@GetMapping(value = "sellProdMgmtPage.do")
-	public String sellProdMgmtPage() {
-		return "admin/product/sell/adminSellProdMgmtMain";
+	@GetMapping(value = "adminProdMfpMgmtPage.do")
+	public String adminProdMfpMgmtPage() {
+		return "admin/productMgmt/mfp/adminProdMfpMgmt";
 	}
+	
+	/**
+	 * Author : 김정언
+	 * Date : 2020. 3. 7.
+	 * Discription : 관리자 제품게시판 페이지로 이동
+	**/
+	@GetMapping(value = "adminProdMfpRentalBoardMgmtPage.do")
+	public String adminProdMfpRentalBoardMgmtPage() {
+		return "admin/productBoardMgmt/mfpRental/adminProdMfpRentalBoardMgmt";
+	}
+	
+	/**
+	 * Author : 김정언
+	 * Date : 2020. 3. 7.
+	 * Discription : 관리자 설치소식 페이지로 이동
+	**/
+	@GetMapping(value = "adminInstallBoardMgmtPage.do")
+	public String adminInstallBoardMgmtPage() {
+		return "admin/installBoard/adminInstallBoardMgmt";
+	}
+	
+	/**
+	 * Author : 김정언
+	 * Date : 2020. 3. 7.
+	 * Discription : 관리자 고객센터 페이지 (1:1 문의)로 이동
+	**/
+	@GetMapping(value = "adminCustomerQuestionBoardMgmtPage.do")
+	public String adminCustomerQuestionBoardMgmtPage() {
+		return "admin/customer/questionBoard/adminCustomerQuestionBoardMgmt";
+	}
+	
+	/* TopNav End */
+	
+	/* 제품관리 Start */
+	
+	/**
+	 * Author : 김정언
+	 * Date : 2020. 3. 5.
+	 * Discription : 관리자 복합기 제품등록 페이지로 이동
+	**/
+	@GetMapping(value = "adminProdMfpMgmtEnrollPage.do")
+	public String adminProdMfpMgmtEnrollPage() {
+		return "admin/productMgmt/mfp/adminProdMfpMgmtEnroll";
+	}
+	
+	/**
+	 * Author : 김정언
+	 * Date : 2020. 3. 7.
+	 * Discription : 관리자 소모품 제품등록 페이지로 이동
+	**/
+	@GetMapping(value = "adminProdExpdMgmtEnrollPage.do")
+	public String adminProdExpdMgmtEnrollPage() {
+		return "admin/productMgmt/expd/adminProdExpdMgmtEnroll";
+	}
+	
+	/* 제품관리 End */
+	
+	/* 고객센터 Start */
 	
 	/**
 	 *	Author : 김동환
 	 *	Date : 2020. 3. 5.
 	 *  Discription : 관리자 자료실 등록 페이지
-	**/
+	 **/
 	@GetMapping(value = "customerMaterialEnrollPage.do")
 	public String adminCustomerMaterialEnrollPage() {
 		return "admin/customer/materialBoard/adminMaterialEnroll";
-	}
-	
-	/**
-	 * Author : 김정언
-	 * Date : 2020. 3. 5.
-	 * Discription : 관리자 판매 제품 등록 페이지로 이동
-	**/
-	@GetMapping(value = "sellProductEnrollPage.do")
-	public String adminSellProductEnrollPage() {
-		return "admin/product/sell/adminSellProdEnroll";
 	}
 	
 	/**
@@ -211,5 +268,5 @@ public class UtilController {
 		return "admin/customer/faqBoard/adminFaqEnroll";
 	}
 
-
+	/* 고객센터 End */
 }

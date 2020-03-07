@@ -3,17 +3,10 @@
     pageEncoding="UTF-8"%>
 <html>
 <head>
-	<title>관리자 FAQ 등록 페이지</title>
+	<title>Home</title>
 </head>
 <body>
-<jsp:include page="../../common/topNav.jsp" />
-
-<br><br><br><br>
-
+<jsp:include page="../../common/adminTopNav.jsp" />
+<jsp:include page="../../common/adminCustomerSubNav.jsp" />
 </body>
-<script>
-	$(function() {
-		
-	});
-</script>
 </html>

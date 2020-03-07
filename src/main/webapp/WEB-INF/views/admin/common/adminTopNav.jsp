@@ -26,16 +26,12 @@
 				<a class="navbar-brand" href="#">WebSiteName</a>
 			</div>
 			<ul class="nav navbar-nav navbar-right">
-				<li class="active"><a href="#">Home</a></li>
-				<li><a href="#">회원관리</a></li>
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#">제품관리 <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="rentalProdMgmtPage.do">복합기</a></li>
-						<li><a href="sellProdMgmtPage.do">소모품</a></li>
-					</ul></li>
-				<li><a href="#">설치소식</a></li>
-				<li><a href="#">고객센터</a></li>
+				<li><a href="adminMemberMgmtPage.do">회원관리</a></li>
+				<li><a href="adminEstimateMgmtPage.do">견적문의</a></li>
+				<li><a href="adminProdMfpMgmtPage.do">제품관리</a></li>
+				<li><a href="adminProdMfpRentalBoardMgmtPage.do">제품게시판</a></li>
+				<li><a href="adminInstallBoardMgmtPage.do">설치소식</a></li>
+				<li><a href="adminCustomerQuestionBoardMgmtPage.do">고객센터</a></li>
 			</ul>
 		</div>
 	</nav>
