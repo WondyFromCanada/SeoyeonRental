@@ -26,8 +26,8 @@ public class ApiInterceptor extends HandlerInterceptorAdapter{
 //		System.out.println("session : " + session);
 		//logger.info("요청 주소 : [" + request.getMethod() + "] " + request.getLocalAddr() + ":" + request.getLocalPort() + request.getRequestURI().toString());
 		String requestURI = request.getLocalAddr() + ":" + request.getLocalPort() + request.getRequestURI().toString();
-		System.out.println("============================================================ [" + requestURI + "] ============================================================\r\n");
-		System.out.println("HTTP 메소드 : " + request.getMethod());
+		System.out.println("============================================================ " + requestURI + " ============================================================\r\n");
+		System.out.println("◆ HTTP 메소드 : " + request.getMethod());
 //		if( session.getAttribute("loginUser") != null ) {
 //			throw new UserAuthException("권한이 없습니다", HttpStatus.UNAUTHORIZED);
 //		}

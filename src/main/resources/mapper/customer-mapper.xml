@@ -6,6 +6,7 @@
 <mapper namespace="Member">
 
 	<insert id="insertCustomerQuestionBoard" parameterType="map">
+		<!-- 고객센터 1:1문의 게시글 등록  -->
 		INSERT INTO SY_CUSTOMER_QUESTION_BOARD
 		      (MEMBER_ID, TITLE, CONTENT, PUBLIC_YN)
 		VALUES
@@ -13,6 +14,7 @@
 	</insert>
 	
 	<select id="selectCustomerQuestionBoardList" resultType="map">
+	<!-- 고객센터 1:1문의 게시글 전체 조회  -->
 		SELECT POST_ID,
 		       MEMBER_ID,
 		       TITLE,
@@ -23,6 +25,7 @@
 	</select>
 	
 	<select id="selectCustomerQuestionBoard" parameterType="String" resultType="map">
+	<!-- 고객센터 1:1문의 게시글 상세 조회  -->
 		SELECT Q.POST_ID,
 		       M.USER_NM,
 		       M.MEMBER_ID,
@@ -38,6 +41,7 @@
 	</select>
 	
 	<update id="updateCustomerQuestionBoard" parameterType="map">
+		<!-- 고객센터 1:1문의 게시글 수정  -->
 		UPDATE SY_CUSTOMER_QUESTION_BOARD
 		   SET TITLE = #{title},
 		       CONTENT = #{content}
@@ -45,12 +49,14 @@
 	</update>
 	
 	<delete id="deleteCustomerQuestionBoard" parameterType="String">
+		<!-- 고객센터 1:1문의 게시글 삭제  -->
 		DELETE 
 		  FROM SY_CUSTOMER_QUESTION_BOARD
 		 WHERE POST_ID = #{postId}
 	</delete>
 	
 	<insert id="insertCustomerMaterial" parameterType="map">
+		<!-- 고객센터 자료실 게시글 등록  -->
 		INSERT INTO SY_CUSTOMER_MATERIAL_BOARD
 		      (TITLE, CONTENT)
 		VALUES 
@@ -58,6 +64,7 @@
 	</insert>
 	
 	<insert id="insertAttachment" parameterType="map">
+		<!-- 고객센터 자료실 게시글 파일 정보 등록  -->
 		INSERT INTO SY_ATTACHMENT_BOARD
 		      (FILE_PATH, ORIGIN_NM, CHANGE_NM, EXT, DIVSN, POST_ID)
 		SELECT #{filePath} AS FILE_PATH,

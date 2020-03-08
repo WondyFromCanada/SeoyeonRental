@@ -7,8 +7,6 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -34,11 +32,11 @@ public class BeforeAdvice {
 		String methodName = jp.getSignature().getName();
 		Object[] args = jp.getArgs();
 		
-		System.out.println("요청 메소드 : [" + methodName + "]");
+		System.out.println("◆ 요청 메소드 : " + methodName + "()..");
 		if( args.length >= 1 ) {
 			
 			for (int i = 0; i < args.length; i++) {
-				System.out.println("파라미터 : " + args[i].toString());
+				System.out.println("◆ 파라미터    : " + args[i].toString());
 			}
 			
 		}
