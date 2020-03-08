@@ -62,12 +62,9 @@ public class CustomerQuestionController {
 		} else {
 			@SuppressWarnings("unchecked")
 			Map<String, Object> loginUserInf = (Map<String, Object>) session.getAttribute("loginUser");
-			logger.info("loginUser : " + loginUserInf);
-			
 			param.put("memberId", loginUserInf.get("MEMBER_ID") + "");
 			
 			int result = cqs.insertCustomerQuestionBoard(param);
-			
 			if( result > 0 ) {
 				resultMap.put("result", "success");
 			} else {
@@ -85,9 +82,14 @@ public class CustomerQuestionController {
 	 *  Discription : 고객센터 1:1문의 전체 게시글 조회
 	**/
 	@GetMapping(value = "/customer/question")
-	public List<Map<String, Object>> selectCustomerQuestionBoardList() {
+	public List<Map<String, Object>> selectCustomerQuestionBoardList(HttpServletRequest request) {
+		String userNm = "";
+		if(request.getParameter("userNm") != null) {
+			userNm = request.getParameter("userNm");
+		}
+		Map<String, Object> searchCondition = new HashMap<String, Object> ();
+		searchCondition.put("userNm", userNm);		
 		List<Map<String, Object>> list = cqs.selectCustomerQuestionBoardList();
-		logger.info("list : " + list);
 		return list;
 	}
 	
@@ -102,7 +104,7 @@ public class CustomerQuestionController {
 		
 		Map<String, Object> map = cqs.selectCustomerQuestionBoard(postId);
 		String postMid = map.get("MEMBER_ID") + "";
-		String sessionId = ((Map<String, Object>)session.getAttribute("loginUser")).get("MEMBER_ID") + "";
+		String sessionId = ((Map<String, Object>)session.getAttribute("loginUser")).get("MEMBER_ID") + "";	
 		
 		Map<String, Object> falseMap = new HashMap<String, Object> ();
 		falseMap.put("result", "unAuthorized");

@@ -23,7 +23,7 @@ public class LoginLogging {
 	
 	@AfterReturning(pointcut="loginPointcut()", returning="returnObj")
 	public void loginLog(JoinPoint jp, Object returnObj) {
-		System.out.println("login ReturnObject : " + returnObj);
+		//System.out.println("login ReturnObject : " + returnObj);
 		
 //		if(returnObj instanceof Member) {
 //			Member m = (Member) returnObj;

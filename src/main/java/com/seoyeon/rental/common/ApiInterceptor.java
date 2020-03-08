@@ -24,8 +24,10 @@ public class ApiInterceptor extends HandlerInterceptorAdapter{
 			throws Exception {
 		//HttpSession session = request.getSession(false);
 //		System.out.println("session : " + session);
-		System.out.println("요청 주소 ㅣ " + request.getRequestURI().toString());
-		
+		//logger.info("요청 주소 : [" + request.getMethod() + "] " + request.getLocalAddr() + ":" + request.getLocalPort() + request.getRequestURI().toString());
+		String requestURI = request.getLocalAddr() + ":" + request.getLocalPort() + request.getRequestURI().toString();
+		System.out.println("============================================================ [" + requestURI + "] ============================================================\r\n");
+		System.out.println("HTTP 메소드 : " + request.getMethod());
 //		if( session.getAttribute("loginUser") != null ) {
 //			throw new UserAuthException("권한이 없습니다", HttpStatus.UNAUTHORIZED);
 //		}
@@ -36,9 +38,6 @@ public class ApiInterceptor extends HandlerInterceptorAdapter{
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-		logger.info("");
-		
-		//modelAndView.setViewName("jsonView");
 		super.postHandle(request, response, handler, modelAndView);
 	}
 

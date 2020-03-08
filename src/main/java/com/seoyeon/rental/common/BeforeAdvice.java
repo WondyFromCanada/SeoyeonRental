@@ -1,14 +1,23 @@
 package com.seoyeon.rental.common;
 
+import java.util.Map;
+import java.util.Map.Entry;
+
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 @Component
 @Aspect		//AOP 적용 advice 객체의 경우 필요한 어노테이션
 public class BeforeAdvice {
+	private static final Logger logger = LoggerFactory.getLogger(BeforeAdvice.class);
+	
 	//포인트컷 표현식을 이용해 포인트컷 설정을 한다.
 	//메소드 이름이 포인트컷이 된다.
 	@Pointcut("execution(* com.seoyeon.rental..*ServiceImpl.*(..))")
@@ -25,10 +34,15 @@ public class BeforeAdvice {
 		String methodName = jp.getSignature().getName();
 		Object[] args = jp.getArgs();
 		
-		System.out.println("[메소드 호출 전 확인] : " + methodName + "() 메소드 매개변수 갯수 : " + args.length);
-		
-		for (int i = 0; i < args.length; i++) {
-			System.out.println(i + "번째 매개변수 정보 : " + args[i].toString());
+		System.out.println("요청 메소드 : [" + methodName + "]");
+		if( args.length >= 1 ) {
+			
+			for (int i = 0; i < args.length; i++) {
+				System.out.println("파라미터 : " + args[i].toString());
+			}
+			
 		}
+		
+		System.out.println();
 	}
 }

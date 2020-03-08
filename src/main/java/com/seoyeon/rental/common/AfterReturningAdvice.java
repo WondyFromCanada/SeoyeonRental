@@ -6,7 +6,6 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
-
 @Component
 @Aspect
 public class AfterReturningAdvice {
@@ -28,6 +27,6 @@ public class AfterReturningAdvice {
 //			}
 //		}
 		
-		System.out.println("[메소드 리턴] : " + methodName + "() 메소드 리턴값 : " + returnObj.toString());
+		//System.out.println("[메소드 리턴] : " + methodName + "() 메소드 리턴값 : " + returnObj.toString());
 	}
 }

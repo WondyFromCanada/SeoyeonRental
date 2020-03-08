@@ -33,7 +33,7 @@ import com.seoyeon.rental.customer.service.CustomerQuestionService;
 @Service
 public class CustomerQuestionServiceImpl implements CustomerQuestionService{
 
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(CustomerQuestionServiceImpl.class);
 	
 	@Autowired
 	private CustomerQuestionDao cqd;
@@ -108,9 +108,6 @@ public class CustomerQuestionServiceImpl implements CustomerQuestionService{
 				}
 			}
 		}
-		
-		
-		
 	}
 
 	@Override

@@ -16,6 +16,6 @@ public class AfterAdvice {
 	@After("allPointcut()")
 	public void finallyLog() {
 		//예외 발생 여부에 상관 없이 무조건 수행되는 어드바이스
-		System.out.println("[후 실행] 비즈니스 로직 수행 후 무조건 작동");
+		//System.out.println("[후 실행] 비즈니스 로직 수행 후 무조건 작동");
 	}
 }

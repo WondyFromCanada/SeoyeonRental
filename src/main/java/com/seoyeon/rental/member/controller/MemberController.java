@@ -20,7 +20,7 @@ import com.seoyeon.rental.member.service.MemberService;
 @RestController
 public class MemberController {
 
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
 	@Autowired
 	private MemberService ms;

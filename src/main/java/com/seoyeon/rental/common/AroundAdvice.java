@@ -32,7 +32,7 @@ public class AroundAdvice {
 		//사후에 처리할 내용
 		stopWatch.stop();
 		
-		System.out.println(methodName + "메소드 수행 시간 : " + stopWatch.getTotalTimeMillis() + "(ms)초");
+		//System.out.println(methodName + "메소드 수행 시간 : " + stopWatch.getTotalTimeMillis() + "(ms)초");
 		
 		//원래 흐름대로 리턴함
 		return obj;

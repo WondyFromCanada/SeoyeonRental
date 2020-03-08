@@ -52,7 +52,7 @@
 		<!-- pointcut을 등록해야 한다. -->
 		<aop:config proxy-target-class="true">
 			<aop:pointcut id="serviceMethod"
-					expression="execution(* com.kh.test..*ServiceImpl.*(..))"/>
+					expression="execution(* com.seoyeon.rental..*ServiceImpl.*(..))"/>
 			<aop:advisor id="transactionAdvice" pointcut-ref="serviceMethod"
 					advice-ref="txAdvice"/>
 		</aop:config>
