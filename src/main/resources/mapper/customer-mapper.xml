@@ -15,13 +15,15 @@
 	
 	<select id="selectCustomerQuestionBoardList" resultType="map">
 	<!-- 고객센터 1:1문의 게시글 전체 조회  -->
-		SELECT POST_ID,
-		       MEMBER_ID,
-		       TITLE,
-		       DATE_FORMAT(CREATE_DATE, '%Y-%m-%d %T') AS CREATE_DATE,
-		       PUBLIC_YN
-	      FROM SY_CUSTOMER_QUESTION_BOARD
-	   	 WHERE STATUS = 'Y'
+		SELECT Q.POST_ID,
+		       Q.TITLE,
+		       M.USER_NM,
+		       DATE_FORMAT(Q.CREATE_DATE, '%Y-%m-%d %T') AS CREATE_DATE,
+		       Q.PUBLIC_YN
+	      FROM SY_CUSTOMER_QUESTION_BOARD Q
+	      LEFT OUTER JOIN SY_MEMBER M ON( Q.MEMBER_ID = M.MEMBER_ID )
+	   	 WHERE Q.STATUS = 'Y'
+	   	   AND M.STATUS = 'Y'
 	</select>
 	
 	<select id="selectCustomerQuestionBoard" parameterType="String" resultType="map">
@@ -75,4 +77,40 @@
 		       MAX(POST_ID) AS POST_ID
 		  FROM SY_CUSTOMER_MATERIAL_BOARD
 	</insert>
+	
+	<insert id="insertCustomerFaqBoard">
+		<!-- 고객센터 faq 게시글 등록 -->
+		INSERT INTO SY_CUSTOMER_FAQ_BOARD	
+		      (TITLE, CONTENT)
+		VALUES 
+		      (#{title}, #{content})
+	</insert>
+	
+	<select id="selectCustomerFaqBoardList" resultType="map">
+		<!-- 고객센터 faq 전체 게시글 조회 -->
+		SELECT POST_ID,
+		       TITLE,
+		       CONTENT,
+		       DATE_FORMAT(CREATE_DATE, '%Y-%m-%d %T') AS CREATE_DATE,
+		  FROM SY_CUSTOMER_FAQ_BOARD
+		 WHERE STATUS = 'Y'
+	</select>
+	
+	<select id="selectCustomerFaqBoard" resultType="map" parameterType="String">
+		<!-- 고객센터 faq 상세 게시글 조회 -->
+		SELECT POST_ID,
+		       TITLE,
+		       CONTENT,
+		       ANSWER,
+		       DATE_FORMAT(CREATE_DATE, '%Y-%m-%d %T') AS CREATE_DATE,
+		  FROM SY_CUSTOMER_FAQ_BOARD
+		 WHERE POST_ID = #{postId}
+	</select>
+	
+	<update id="updateCustomerFaqBoard" parameterType="map">
+		UPDATE SY_CUSTOMER_FAQ_BOARD
+		   SET TITLE = #{title},
+		       CONTENT = #{content}
+		 WHERE POST_ID = #{postId}
+	</update>
 </mapper>

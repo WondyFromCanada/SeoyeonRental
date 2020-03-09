@@ -250,23 +250,54 @@ public class UtilController {
 	
 	/**
 	 *	Author : 김동환
-	 *	Date : 2020. 3. 5.
-	 *  Discription : 관리자 자료실 등록 페이지
-	 **/
-	@GetMapping(value = "customerMaterialEnrollPage.do")
-	public String adminCustomerMaterialEnrollPage() {
-		return "admin/customer/materialBoard/adminMaterialEnroll";
+	 *	Date : 2020. 3. 9.
+	 *  Discription : 관리자 고객센터 자료실 메인 페이지로 이동
+	**/
+	@GetMapping(value = "adminCustomerMaterialBoardMgmtPage.do")
+	public String adminCustomerMaterialBoardMgmtPage() {
+		return "admin/customer/materialBoard/adminCustomerMaterialBoardMgmt";
+	}
+	
+	/**
+	 *	Author : 김동환
+	 *	Date : 2020. 3. 9.
+	 *  Discription : 관리자 고객센터 faq 메인 페이지로 이동
+	**/
+	@GetMapping(value = "adminCustomerFaqBoardMgmtPage.do")
+	public String adminCustomerFaqBoardMgmtPage() {
+		return "admin/customer/faqBoard/adminCustomerFaqBoardMgmt";
 	}
 	
 	/**
 	 *	Author : 김동환
 	 *	Date : 2020. 3. 7.
-	 *  Discription : 고객센터 faq 등록 페이지 이동
-	**/
-	@GetMapping(value = "customerFaqEnrollPage.do")
+	 *  Discription : 고객센터 faq 등록 페이지로 이동
+	 **/
+	@GetMapping(value = "adminCustomerFaqBoardEnrollPage.do")
 	public String adminCustomerFaqEnrollPage() {
-		return "admin/customer/faqBoard/adminFaqEnroll";
+		return "admin/customer/faqBoard/adminCustomerFaqBoardMgmtEnroll";
 	}
+	
+	/**
+	 *	Author : 김동환
+	 *	Date : 2020. 3. 9.
+	 *  Discription : 고객센터 faq 상세 페이지로 이동
+	**/
+	@GetMapping(value = "adminCustomerFaqBoardMgmtDetailPage.do")
+	public String adminCustomerFaqBoardMgmtDetailPage() {
+		return "admin/customer/faqBoard/adminCustomerFaqBoardMgmtDetail";
+	}
+	
+	/**
+	 *	Author : 김동환
+	 *	Date : 2020. 3. 5.
+	 *  Discription : 관리자 자료실 등록 페이지로 이동
+	 **/
+	@GetMapping(value = "adminCustomerMaterialEnrollPage.do")
+	public String adminCustomerMaterialEnrollPage() {
+		return "admin/customer/materialBoard/adminCustomerMaterialMgmtEnroll";
+	}
+	
 
 	/* 고객센터 End */
 }
