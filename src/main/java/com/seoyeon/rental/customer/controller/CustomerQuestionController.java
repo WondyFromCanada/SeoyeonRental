@@ -28,7 +28,7 @@ import com.seoyeon.rental.customer.service.CustomerQuestionService;
 @RestController
 public class CustomerQuestionController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(CustomerQuestionController.class);
 	
 	@Autowired
 	private CustomerQuestionService cqs;
@@ -39,8 +39,10 @@ public class CustomerQuestionController {
 	 *  Discription : 고객센터 1:1 문의 ck Editor 파일 업로드
 	**/
 	@PostMapping(value="/customer/question/imgUpload")
-	public String imageUpload(HttpServletRequest request, HttpServletResponse response, 
-			 @RequestParam("upload") MultipartFile upload) throws Exception {
+	public String imageUpload(
+			HttpServletRequest request, 
+			HttpServletResponse response, 
+			@RequestParam("upload") MultipartFile upload) throws Exception {
 		cqs.imageUpload(request, response, upload);
 		return null;
 	}	
@@ -104,19 +106,29 @@ public class CustomerQuestionController {
 		
 		Map<String, Object> map = cqs.selectCustomerQuestionBoard(postId);
 		String postMid = map.get("MEMBER_ID") + "";
-		String sessionId = ((Map<String, Object>)session.getAttribute("loginUser")).get("MEMBER_ID") + "";	
+		String sessionId = "";
 		
 		Map<String, Object> falseMap = new HashMap<String, Object> ();
 		falseMap.put("result", "unAuthorized");
-		//로그인사용자와 작성자가 다른경우
-		if( !postMid.equals(sessionId) ) {
-			//관리자인 경우 
-			if( (((Map<String, Object>)session.getAttribute("loginUser")).get("DIVSN") + "").equals("ADMIN") ) {
-				return map;
+		
+		//비 로그인 상태가 아닐때
+		if(((Map<String, Object>)session.getAttribute("loginUser")) != null) {
+			sessionId = ((Map<String, Object>)session.getAttribute("loginUser")).get("MEMBER_ID") + "";	
+			
+			//로그인사용자와 작성자가 다른경우
+			if( !postMid.equals(sessionId) ) {
+				//관리자인 경우 
+				if( (((Map<String, Object>)session.getAttribute("loginUser")).get("DIVSN") + "").equals("ADMIN") ) {
+					return map;
+				}
+				return falseMap;
 			}
+			return map;
+			
+		} else {
 			return falseMap;
 		}
-		return map;
+		
 	
 	}
 	

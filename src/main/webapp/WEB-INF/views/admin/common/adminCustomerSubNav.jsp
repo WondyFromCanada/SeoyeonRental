@@ -7,9 +7,9 @@
 </head>
 <body>
 	<div class="btn-group btn-group-justified">
-		<a href="#" class="btn btn-primary">1:1 문의</a>
-		<a href="#"	class="btn btn-primary">자료실</a>
-		<a href="#" class="btn btn-primary">FAQ</a>
+		<a href="adminCustomerQuestionBoardMgmtPage.do" class="btn btn-primary">1:1 문의</a>
+		<a href="adminCustomerMaterialBoardMgmtPage.do"	class="btn btn-primary">자료실</a>
+		<a href="adminCustomerFaqBoardMgmtPage.do" class="btn btn-primary">FAQ</a>
 	</div>
 </body>
 </html>

@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.seoyeon.rental.member.dao.MemberDao;
 import com.seoyeon.rental.member.service.MemberService;
@@ -27,6 +28,7 @@ public class MemberServiceImpl implements MemberService{
 		return md.insertMember(sqlSession, map);
 	}
 
+	@Transactional
 	@Override
 	public Map<String, Object> login(Map<String, Object> map) throws Exception {
 		String userId = map.get("userId") + "";
@@ -38,7 +40,12 @@ public class MemberServiceImpl implements MemberService{
 			throw new Exception();
 		} else {
 			//암호가 일치하면 해당 유저정보 가져옴
-			return md.selectLoginUser(sqlSession, userId);
+			
+			Map<String, Object> loginUserInf = md.selectLoginUser(sqlSession, userId);
+			
+			//AfterAdvice에서 로그인 정보를 확인하기 위한 loginFlag
+			loginUserInf.put("loginFlag", "true");
+			return loginUserInf;
 		}
 	}
 

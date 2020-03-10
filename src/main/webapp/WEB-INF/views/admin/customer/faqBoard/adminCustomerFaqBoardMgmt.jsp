@@ -3,10 +3,19 @@
     pageEncoding="UTF-8"%>
 <html>
 <head>
-	<title>Home</title>
+	<title>관리자 faq 메인페이지</title>
 </head>
-<body>
 	<jsp:include page="../../common/adminTopNav.jsp" />
 	<jsp:include page="../../common/adminCustomerSubNav.jsp" />
+<body>
+	<div class="container-fluid" id="content">
+		<table id="boardTable" class="display table"></table>
+		<div class="row">
+			<button class="btn btn-warning" onclick="location.href='adminCustomerFaqBoardEnrollPage.do'">등록페이지</button>
+		</div>
+	</div>
 </body>
+<script 
+	type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.js"></script>
+<script src="resources/js/admin/customer/faqBoard/adminCustomerFaqBoardMgmt.js"></script>
 </html>

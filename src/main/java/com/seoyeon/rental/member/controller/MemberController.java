@@ -33,7 +33,6 @@ public class MemberController {
 	 *  Discription : 회원가입 메소드 
 	**/
 	
-	@Transactional
 	@PostMapping(value = "/member")
 	public Map<String, Object> insertMember(@RequestBody Map<String, Object> map) {
 		String encPassword = passwordEncoder.encode(map.get("userPwd") + "");
