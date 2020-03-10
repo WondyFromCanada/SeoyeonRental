@@ -236,6 +236,16 @@ public class UtilController {
 	
 	/**
 	 * Author : 김정언
+	 * Date : 2020. 3. 9.
+	 * Discription : 관리자 소모품 페이지로 이동
+	**/
+	@GetMapping(value = "adminProdExpdMgmtPage.do")
+	public String adminProdExpdMgmtPage() {
+		return "admin/productMgmt/expd/adminProdExpdMgmt";
+	}
+	
+	/**
+	 * Author : 김정언
 	 * Date : 2020. 3. 7.
 	 * Discription : 관리자 소모품 제품등록 페이지로 이동
 	**/
