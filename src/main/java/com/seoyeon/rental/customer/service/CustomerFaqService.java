@@ -53,4 +53,11 @@ public interface CustomerFaqService {
 	**/
 	int updateCustomerFaqBoard(Map<String, Object> param);
 
+	/**
+	 *	Author : 김동환
+	 *	Date : 2020. 3. 10.
+	 *  Discription : 
+	**/
+	int deleteCustomerFaqBoard(String postId);
+
 }

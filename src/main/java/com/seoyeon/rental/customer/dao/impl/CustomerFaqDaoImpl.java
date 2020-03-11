@@ -37,6 +37,11 @@ public class CustomerFaqDaoImpl implements CustomerFaqDao{
 	public int updateCustomerFaqBoard(SqlSessionTemplate sqlSession, Map<String, Object> param) {
 		return sqlSession.update("updateCustomerFaqBoard", param);
 	}
+
+	@Override
+	public int deleteCustomerFaqBoard(SqlSessionTemplate sqlSession, String postId) {
+		return sqlSession.delete("deleteCustomerFaqBoard", postId);
+	}
 	
 
 }

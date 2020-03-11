@@ -12,9 +12,20 @@
 <label for="userId">아이디: </label><input type="text" name="userId" id="userId">
 <label for="userPwd">비밀번호: </label><input type="password" name="userPwd" id="userPwd">
 
-<button onclick="login();">로그인</button>
+<button id="login" onclick="login();">로그인</button>
 </body>
 <script>
+
+$(function() {
+	$('#userId').focus();
+	$(window).on('keyup', function(e) {
+		if(e.keyCode == '13') {
+			if($("#login")) {
+				$('#login').click();
+			}
+		}
+	})
+});
 	function login() {
 		
 		if($('#userId').val() != null && $('#userPwd').val() != null) {

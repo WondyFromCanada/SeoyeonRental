@@ -16,10 +16,10 @@
 	</div>
 	<div id="p_content"></div>
 	<textarea id="updateContent" style="display: none;"></textarea>
-	<button id="updateMode">수정하기</button>
-	<button id="save">저장</button>
-	<button id="delete">삭제</button>
-	<button id="goBack" onclick="location.href='adminCustomerFaqBoardMgmtPage.do'">목록으로</button>
+	<button class="btn btn-default" id="updateMode">수정하기</button>
+	<button class="btn btn-default" id="save">저장</button>
+	<button class="btn btn-default" id="delete">삭제</button>
+	<button class="btn btn-default" id="goBack" onclick="location.href='adminCustomerFaqBoardMgmtPage.do'">목록으로</button>
 </div>
 </body>
 <script type="text/javascript" src="resources/ckeditor/ckeditor.js"></script>

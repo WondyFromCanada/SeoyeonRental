@@ -3,6 +3,7 @@
  */
 package com.seoyeon.rental.customer.service;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,5 +24,19 @@ public interface CustomerMaterialService {
 	 * @param request 
 	**/
 	int insertCustomerMaterialBoard(Map<String, Object> param, MultipartFile file, HttpServletRequest request) throws Exception;
+
+	/**
+	 *	Author : 김동환
+	 *	Date : 2020. 3. 10.
+	 *  Discription : 
+	**/
+	List<Map<String, Object>> selectCustomerMaterialBoardList();
+
+	/**
+	 *	Author : 김동환
+	 *	Date : 2020. 3. 10.
+	 *  Discription : 
+	**/
+	Map<String, Object> selectCustomerMaterialBoard(String postId);
 
 }

@@ -260,6 +260,26 @@ public class UtilController {
 	
 	/**
 	 *	Author : 김동환
+	 *	Date : 2020. 3. 5.
+	 *  Discription : 관리자 자료실 등록 페이지로 이동
+	 **/
+	@GetMapping(value = "adminCustomerMaterialBoardMgmtEnrollPage.do")
+	public String adminCustomerMaterialBoardEnrollPage() {
+		return "admin/customer/materialBoard/adminCustomerMaterialBoardMgmtEnroll";
+	}
+	
+	/**
+	 *	Author : 김동환
+	 *	Date : 2020. 3. 11.
+	 *  Discription : 관리자 자료실 상세 페이지로 이동 
+	**/
+	@GetMapping(value= "adminCustomerMaterialBoardMgmtDetailPage.do")
+	public String adminCustomerMaterialBoardMgmtDetailPage() {
+		return "admin/customer/materialBoard/adminCustomerMaterialBoardMgmtDetail";
+	}
+	
+	/**
+	 *	Author : 김동환
 	 *	Date : 2020. 3. 9.
 	 *  Discription : 관리자 고객센터 faq 메인 페이지로 이동
 	**/
@@ -288,15 +308,6 @@ public class UtilController {
 		return "admin/customer/faqBoard/adminCustomerFaqBoardMgmtDetail";
 	}
 	
-	/**
-	 *	Author : 김동환
-	 *	Date : 2020. 3. 5.
-	 *  Discription : 관리자 자료실 등록 페이지로 이동
-	 **/
-	@GetMapping(value = "adminCustomerMaterialEnrollPage.do")
-	public String adminCustomerMaterialEnrollPage() {
-		return "admin/customer/materialBoard/adminCustomerMaterialMgmtEnroll";
-	}
 	
 
 	/* 고객센터 End */

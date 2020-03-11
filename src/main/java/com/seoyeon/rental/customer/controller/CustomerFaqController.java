@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -51,7 +52,7 @@ public class CustomerFaqController {
 	 *  Discription : 고객센터 faq 문의 등록
 	**/
 	@PostMapping(value = "/customer/faq")
-	public Map<String, Object> insertCustomerQuestionBoard(
+	public Map<String, Object> insertCustomerFaqBoard(
 			@RequestBody Map<String, Object> param, 
 			HttpSession session) throws IOException {
 		Map<String, Object> resultMap = new HashMap<String, Object> ();
@@ -99,7 +100,7 @@ public class CustomerFaqController {
 	 *  Discription : 고객센터 faq 상세 게시글 조회
 	**/
 	@GetMapping(value = "/customer/faq/{postId}")
-	public Map<String, Object> selectCustomerQuestionBoard(@PathVariable String postId, HttpSession session) {
+	public Map<String, Object> selectCustomerFaqBoard(@PathVariable String postId, HttpSession session) {
 		Map<String, Object> map = cfs.selectCustomerFaqBoard(postId);
 		return map;
 	}
@@ -110,9 +111,25 @@ public class CustomerFaqController {
 	 *  Discription : 고객센터 faq 게시글 수정
 	**/
 	@PutMapping(value = "/customer/faq/{postId}")
-	public Map<String, Object> updateCustomerQuestionBoard(@PathVariable String postId, @RequestBody Map<String, Object> param) {
+	public Map<String, Object> updateCustomerFaqBoard(@PathVariable String postId, @RequestBody Map<String, Object> param) {
 		int result = cfs.updateCustomerFaqBoard(param);
 		Map<String, Object> resultMap = new HashMap<String, Object> ();
+		if(result > 0) resultMap.put("result", "success");
+		else resultMap.put("result", "fail");
+		return resultMap;
+	}
+	
+	/**
+	 *	Author : 김동환
+	 *	Date : 2020. 3. 10.
+	 *  Discription : 고객센터 faq 게시글 삭제
+	**/
+	@DeleteMapping(value = "/customer/faq/{postId}")
+	public Map<String, Object> deleteCustomerFaqBoard(@PathVariable String postId) {
+		Map<String, Object> resultMap = new HashMap<String, Object> ();
+		
+		int result = cfs.deleteCustomerFaqBoard(postId);
+		
 		if(result > 0) resultMap.put("result", "success");
 		else resultMap.put("result", "fail");
 		return resultMap;

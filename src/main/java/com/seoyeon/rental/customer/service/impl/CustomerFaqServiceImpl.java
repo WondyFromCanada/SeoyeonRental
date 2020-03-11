@@ -131,4 +131,9 @@ public class CustomerFaqServiceImpl implements CustomerFaqService{
 	public int updateCustomerFaqBoard(Map<String, Object> param) {
 		return cfd.updateCustomerFaqBoard(sqlSession, param);
 	}
+
+	@Override
+	public int deleteCustomerFaqBoard(String postId) {
+		return cfd.deleteCustomerFaqBoard(sqlSession, postId);
+	}
 }

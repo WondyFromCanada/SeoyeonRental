@@ -42,4 +42,11 @@ public interface CustomerFaqDao {
 	**/
 	int updateCustomerFaqBoard(SqlSessionTemplate sqlSession, Map<String, Object> param);
 
+	/**
+	 *	Author : 김동환
+	 *	Date : 2020. 3. 10.
+	 *  Discription : 
+	**/
+	int deleteCustomerFaqBoard(SqlSessionTemplate sqlSession, String postId);
+
 }

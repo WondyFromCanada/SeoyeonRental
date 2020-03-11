@@ -5,9 +5,9 @@
 <head>
 	<title>관리자 faq 메인페이지</title>
 </head>
+<body>
 	<jsp:include page="../../common/adminTopNav.jsp" />
 	<jsp:include page="../../common/adminCustomerSubNav.jsp" />
-<body>
 	<div class="container-fluid" id="content">
 		<table id="boardTable" class="display table"></table>
 		<div class="row">

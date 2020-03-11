@@ -2,6 +2,7 @@ package com.seoyeon.rental.customer.service.impl;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -79,6 +80,16 @@ public class CustomerMaterialServiceImpl implements CustomerMaterialService{
 		}
 		
 		return 0;
+	}
+
+	@Override
+	public List<Map<String, Object>> selectCustomerMaterialBoardList() {
+		return cmd.selectCustomerMaterialBoardList(sqlSession);
+	}
+
+	@Override
+	public Map<String, Object> selectCustomerMaterialBoard(String postId) {
+		return cmd.selectCustomerMaterialBoard(sqlSession, postId);
 	}
 	
 }

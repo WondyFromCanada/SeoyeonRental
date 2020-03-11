@@ -7,8 +7,6 @@
 </head>
 <body>
 <jsp:include page="../../common/adminTopNav.jsp" />
-<br><br><br>
-<br><br><br>
 
 <!-- 파일 전송은 post 방식으로 해야 컨트롤러에서 파일을 받을 수 있음 -->
 <form id="formData" method="post" name="formData" action="/rental/customer/material" enctype="multipart/form-data">
