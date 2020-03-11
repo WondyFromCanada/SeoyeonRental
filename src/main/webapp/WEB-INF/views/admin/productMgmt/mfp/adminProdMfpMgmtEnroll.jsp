@@ -7,14 +7,14 @@
 </head>
 <body>
 	<jsp:include page="../../common/adminTopNav.jsp" />
-	<form  id="formData" name="formData" method="post" action="/rental/product/mfp" enctype="multipart/form-data">
+	<form  id="formData" name="formData" method="post" action="adminProdMfpMgmtEnroll.do" enctype="multipart/form-data">
 		<div>
 			<div class="col-md-4">
 				<div class="thumbnail caption">
 					<img class="prodImg" src="/rental/resources/images/common/noImg.png"
 						style="width: 100%; height: 600px;">
 				</div>
-				<input type="file" id="prodMfpImg" name="prodMfpImg" accept="image/*" onchange="handleImgFileSelect(this)"/>
+				<input type="file" id="prodMfpImg" name="prodMfpImg" accept="image/*" onchange="handleImgFileSelect(this)" required/>
 			</div>
 			<div class="col-md-8">
 				<div class="">
@@ -22,21 +22,21 @@
 						<label class="control-label col-sm-2" for="mfpBrandInf">브랜드</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="mfpBrandInf"
-								placeholder="" name="mfpBrandInf" style="margin-bottom: 20px;">
+								placeholder="" name="mfpBrandInf" style="margin-bottom: 20px;" required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="mfpProdNm">모델명</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="mfpProdNm"
-								placeholder="" name="mfpProdNm" style="margin-bottom: 20px;">
+								placeholder="" name="mfpProdNm" style="margin-bottom: 20px;" required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="mfpProdInf">핵심 기능</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="mfpProdInf"
-								placeholder="" name="mfpProdInf" style="margin-bottom: 20px;">
+								placeholder="" name="mfpProdInf" style="margin-bottom: 20px;" required>
 						</div>
 					</div>
 					<div class="form-group">
@@ -45,7 +45,7 @@
 						<div class="col-sm-10">
 							<input type="number" class="form-control" id="outputSpd"
 								placeholder="" name="outputSpd"
-								style="margin-bottom: 20px; width: 90%; float: left; margin-right: 20px;">
+								style="margin-bottom: 20px; width: 90%; float: left; margin-right: 20px;" required>
 							<span style="float: left; padding-top: 10px;">매</span>
 						</div>
 					</div>
@@ -55,7 +55,7 @@
 						<div class="col-sm-10">
 							<input type="number" class="form-control" id="scanSpd"
 								placeholder="" name="scanSpd"
-								style="margin-bottom: 20px; width: 90%; float: left; margin-right: 20px;">
+								style="margin-bottom: 20px; width: 90%; float: left; margin-right: 20px;" required>
 							<span style="float: left; padding-top: 10px;">매</span>
 						</div>
 					</div>

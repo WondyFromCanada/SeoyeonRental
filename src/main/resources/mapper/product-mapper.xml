@@ -7,39 +7,43 @@
 
 	<insert id="insertProductMfp" parameterType="map">
 		<!-- 관리자 > 제품관리 > 제품등록 (복합기) -->
-		INSERT INTO SY_CUSTOMER_QUESTION_BOARD
+		INSERT INTO SY_PROD_MFP
 		      (PROD_NM, PROD_INF, BRAND_INF, OUTPUT_SPD, SCAN_SPD, NETWORK_DIVSN, PAPER_DIVSN, COLOR_YN)
 		VALUES
 		      (#{mfpProdNm}, #{mfpProdInf}, #{mfpBrandInf}, #{output}, #{scan}, #{networkDivsn}, #{paperDivsn}, #{color})
-		<selectKey keyProperty="PROD_ID" resultType="Integer" order="AFTER">
-			SELECT LAST_INSERT_ID()
-		</selectKey>
 	</insert>
 
 	<insert id="insertProductMfpAttachment" parameterType="map">
 		<!-- 관리자 > 제품관리 > 제품등록 (복합기) > 제품사진 등록  -->
 		INSERT INTO SY_ATTACHMENT
 		      (FILE_PATH, ORIGIN_NM, CHANGE_NM, EXT, DIVSN, POST_ID)
-		VALUES
-		      (#{filePath}, #{originNm}, #{changeNm}, #{ext}, '제품관리', #{prodId})
+		SELECT #{filePath} AS FILE_PATH,
+		       #{originNm} AS ORIGIN_NM,
+		       #{changeNm} AS CHANGE_NM,
+		       #{ext} AS EXT,
+		       '제품관리',
+		       LAST_INSERT_ID() AS POST_ID
+		  FROM SY_PROD_MFP
 	</insert>
 	
 	<insert id="insertProductExpd" parameterType="map">
 		<!-- 관리자 > 제품관리 > 제품등록 (소모품) -->
-		INSERT INTO SY_CUSTOMER_QUESTION_BOARD
+		INSERT INTO SY_PROD_EXPD
 		      (PROD_NM, PROD_INF, BRAND_INF, MODEL_AVAIL, SELL_YN)
 		VALUES
 		      (#{expdProdNm}, #{expdProdInf}, #{expdBrandInf}, #{expdModelAvail}, #{sell})
-		<selectKey keyProperty="PROD_ID" resultType="Integer" order="AFTER">
-			SELECT LAST_INSERT_ID()
-		</selectKey>
 	</insert>
 	
 	<insert id="insertProductExpdAttachment" parameterType="map">
 		<!-- 관리자 > 제품관리 > 제품등록 (소모품) > 제품사진 등록  -->
 		INSERT INTO SY_ATTACHMENT
 		      (FILE_PATH, ORIGIN_NM, CHANGE_NM, EXT, DIVSN, POST_ID)
-		VALUES
-		      (#{filePath}, #{originNm}, #{changeNm}, #{ext}, '제품관리', #{prodId})
+		SELECT #{filePath} AS FILE_PATH,
+		       #{originNm} AS ORIGIN_NM,
+		       #{changeNm} AS CHANGE_NM,
+		       #{ext} AS EXT,
+		       '제품관리',
+		       LAST_INSERT_ID() AS POST_ID
+		  FROM SY_PROD_EXPD
 	</insert>
 </mapper>

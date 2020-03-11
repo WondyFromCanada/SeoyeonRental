@@ -7,14 +7,14 @@
 </head>
 <body>
 <jsp:include page="../../common/adminTopNav.jsp" />
-<form method="post" action="/rental/product/expd" enctype="multipart/form-data">
+<form method="post" action="adminProdExpdMgmtEnroll.do" enctype="multipart/form-data">
 		<div>
 			<div class="col-md-4">
 				<div class="thumbnail caption">
 					<img class="prodImg" src="/rental/resources/images/common/noImg.png"
 						style="width: 100%; height: 400px;">
 				</div>
-				<input type="file" id="prodExpdImg" name="prodExpdImg" accept="image/*" onchange="handleImgFileSelect(this)"/>
+				<input type="file" id="prodExpdImg" name="prodExpdImg" accept="image/*" onchange="handleImgFileSelect(this)" required/>
 			</div>
 			<div class="col-md-8">
 				<div class="">
@@ -22,28 +22,28 @@
 						<label class="control-label col-sm-2" for="expdBrandInf">브랜드</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="expdBrandInf"
-								placeholder="" name="expdBrandInf" style="margin-bottom: 20px;">
+								placeholder="" name="expdBrandInf" style="margin-bottom: 20px;" required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="expdProdNm">모델명</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="expdProdNm"
-								placeholder="" name="expdProdNm" style="margin-bottom: 20px;">
+								placeholder="" name="expdProdNm" style="margin-bottom: 20px;" required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="expdModelAvail">사용 가능 기종</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="expdModelAvail"
-								placeholder="" name="expdModelAvail" style="margin-bottom: 20px;">
+								placeholder="" name="expdModelAvail" style="margin-bottom: 20px;" required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="expdProdInf">사용 매수</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="expdProdInf"
-								placeholder="" name="expdProdInf" style="margin-bottom: 20px;">
+								placeholder="" name="expdProdInf" style="margin-bottom: 20px;" required>
 						</div>
 					</div>
 					<div class="form-group">

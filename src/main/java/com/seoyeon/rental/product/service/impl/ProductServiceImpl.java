@@ -49,9 +49,6 @@ public class ProductServiceImpl implements ProductService{
 			attMap.put("ext", ext);
 			//PROD_MFP 테이블에 insert
 			int mfpResult = pd.insertProductMfp(sqlSession, param);
-			//PROD_MFP 테이블에 insert된 PROD_ID 가져오기
-			int prodId = (int) param.get("PROD_ID");
-			attMap.put("prodId", prodId);
 			//Attachment 테이블에 insert
 			int attResult = pd.insertProductMfpAttachment(sqlSession, attMap);
 			
@@ -89,9 +86,6 @@ public class ProductServiceImpl implements ProductService{
 			attMap.put("ext", ext);
 			//PROD_EXPD 테이블에 insert
 			int expdResult = pd.insertProductExpd(sqlSession, param);
-			//PROD_EXPD 테이블에 insert된 PROD_ID 가져오기
-			int prodId = (int) param.get("PROD_ID");
-			attMap.put("prodId", prodId);
 			//Attachment 테이블에 insert
 			int attResult = pd.insertProductExpdAttachment(sqlSession, attMap);
 			
