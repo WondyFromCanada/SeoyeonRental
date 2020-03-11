@@ -1,20 +1,32 @@
 package com.seoyeon.rental.util.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.seoyeon.rental.HomeController;
+import com.seoyeon.rental.product.service.ProductService;
 
 @Controller
 public class UtilController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	
+	@Autowired
+	private ProductService ps;
 
 	/*
 	 =========================================================
@@ -37,7 +49,9 @@ public class UtilController {
 	}
 	
 	/**
-	 * Author : 김정언 Date : 2020. 3. 3. Discription : 메인 페이지로 이동
+	 * Author : 김정언 
+	 * Date : 2020. 3. 3. 
+	 * Discription : 메인 페이지로 이동
 	 **/
 	@GetMapping(value = "mainPage.do")
 	public String mainPage() {
@@ -45,7 +59,9 @@ public class UtilController {
 	}
 
 	/**
-	 * Author : 김정언 Date : 2020. 3. 3. Discription : 로그인 페이지로 이동
+	 * Author : 김정언 
+	 * Date : 2020. 3. 3. 
+	 * Discription : 로그인 페이지로 이동
 	 **/
 	@GetMapping(value = "loginPage.do")
 	public String loginPage() {
@@ -53,7 +69,9 @@ public class UtilController {
 	}
 
 	/**
-	 * Author : 김동환 Date : 2020. 3. 3. Discription : 회원가입 페이지로 이동
+	 * Author : 김동환 
+	 * Date : 2020. 3. 3. 
+	 * Discription : 회원가입 페이지로 이동
 	 **/
 	@GetMapping(value = "joinPage.do")
 	public String joinPage() {
@@ -61,7 +79,9 @@ public class UtilController {
 	}
 
 	/**
-	 * Author : 김정언 Date : 2020. 3. 3. Discription : 마이페이지로 이동
+	 * Author : 김정언 
+	 * Date : 2020. 3. 3. 
+	 * Discription : 마이페이지로 이동
 	 **/
 	@GetMapping(value = "myPage.do")
 	public String myPage() {
@@ -69,7 +89,9 @@ public class UtilController {
 	}
 
 	/**
-	 * Author : 김정언 Date : 2020. 3. 3. Discription : 복합기렌탈 페이지로 이동
+	 * Author : 김정언
+	 * Date : 2020. 3. 3. 
+	 * Discription : 복합기렌탈 페이지로 이동
 	 **/
 	@GetMapping(value = "mfpRentalPage.do")
 	public String mfpRentalPage() {
@@ -77,7 +99,9 @@ public class UtilController {
 	}
 
 	/**
-	 * Author : 김정언 Date : 2020. 3. 3. Discription : 복합기판매 페이지로 이동
+	 * Author : 김정언
+	 * Date : 2020. 3. 3. 
+	 * Discription : 복합기판매 페이지로 이동
 	 **/
 	@GetMapping(value = "mfpSellPage.do")
 	public String mfpSellPage() {
@@ -85,7 +109,9 @@ public class UtilController {
 	}
 
 	/**
-	 * Author : 김정언 Date : 2020. 3. 3. Discription : 소모품판매 페이지로 이동
+	 * Author : 김정언
+	 * Date : 2020. 3. 3. 
+	 * Discription : 소모품판매 페이지로 이동
 	 **/
 	@GetMapping(value = "expdSellPage.do")
 	public String expdSellPage() {
@@ -93,7 +119,9 @@ public class UtilController {
 	}
 
 	/**
-	 * Author : 김정언 Date : 2020. 3. 3. Discription : 설치소식 페이지로 이동
+	 * Author : 김정언 
+	 * Date : 2020. 3. 3. 
+	 * Discription : 설치소식 페이지로 이동
 	 **/
 	@GetMapping(value = "installBoardPage.do")
 	public String installBoardPage() {
@@ -101,7 +129,9 @@ public class UtilController {
 	}
 	
 	/**
-	 * Author : 김동환 Date : 2020. 3. 3. Discription : 고객센터 페이지 (1:1 문의) 이동
+	 * Author : 김동환 
+	 * Date : 2020. 3. 3. 
+	 * Discription : 고객센터 페이지 (1:1 문의) 이동
 	 **/
 	@GetMapping(value = "customerQuestionBoardPage.do")
 	public String customerQuestionBoardPage() {
@@ -113,7 +143,9 @@ public class UtilController {
 	/* 고객센터 Start */	
 
 	/**
-	 * Author : 김동환 Date : 2020. 3. 3. Discription : 고객센터 1:1문의 등록 페이지 이동
+	 * Author : 김동환 
+	 * Date : 2020. 3. 3. 
+	 * Discription : 고객센터 1:1문의 등록 페이지 이동
 	 **/
 	@GetMapping(value = "customerQuestionEnrollPage.do")
 	public String customerQuestionEnrollPage() {
@@ -236,6 +268,16 @@ public class UtilController {
 	
 	/**
 	 * Author : 김정언
+	 * Date : 2020. 3. 9.
+	 * Discription : 관리자 소모품 페이지로 이동
+	**/
+	@GetMapping(value = "adminProdExpdMgmtPage.do")
+	public String adminProdExpdMgmtPage() {
+		return "admin/productMgmt/expd/adminProdExpdMgmt";
+	}
+	
+	/**
+	 * Author : 김정언
 	 * Date : 2020. 3. 7.
 	 * Discription : 관리자 소모품 제품등록 페이지로 이동
 	**/
@@ -311,4 +353,105 @@ public class UtilController {
 	
 
 	/* 고객센터 End */
+	
+	/*
+	 =========================================================
+	 					<> 파일 등록 영역 <>
+	 =========================================================	
+	 */
+	/**
+	 * Author : 김정언
+	 * Date : 2020. 3. 10.
+	 * Discription : 제품관리 > 제품등록 (복합기)
+	**/
+	@Transactional
+	@PostMapping(value= "adminProdMfpMgmtEnroll.do")
+	public String insertProductMfp(
+			HttpSession session,
+			HttpServletRequest request,
+			@RequestParam(name = "prodMfpImg", required = false) MultipartFile prodMfpImg, 
+			@RequestParam(name = "mfpBrandInf") String mfpBrandInf, @RequestParam(name = "mfpProdNm") String mfpProdNm,
+			@RequestParam(name = "outputSpd") int outputSpd, @RequestParam(name = "scanSpd") int scanSpd,
+			@RequestParam(name = "mfpProdInf") String mfpProdInf, @RequestParam(name = "networkDivsn") String networkDivsn,
+			@RequestParam(name = "paperDivsn") String paperDivsn, @RequestParam(name = "colorYn") String colorYn) throws Exception {
+		Map<String, Object> resultMap = new HashMap<String, Object> ();
+		if(session.getAttribute("loginUser") == null) {
+			resultMap.put("result", "loginRequired");
+			return "common/errorPage";
+		} else {
+			//form으로 받아온 파라미터 처리
+			String output = outputSpd + "매";
+			String scan = scanSpd + "매";
+			String color = "";
+			if (colorYn.equals("흑백")) color = "N";
+			else color = "Y";
+			
+			//디비로 보낼 파라미터, file데이터, request객체 service로 전송
+			Map<String, Object> param = new HashMap<String, Object> ();
+			param.put("mfpBrandInf", mfpBrandInf);
+			param.put("mfpProdInf", mfpProdInf);
+			param.put("mfpProdNm", mfpProdNm);
+			param.put("output", output);
+			param.put("scan", scan);
+			param.put("networkDivsn", networkDivsn);
+			param.put("paperDivsn", paperDivsn);
+			param.put("color", color);
+			
+			int result = ps.insertProductMfp(param, prodMfpImg, request);
+			
+			if( result > 0 ) {
+				resultMap.put("result", "success");
+			} else {
+				resultMap.put("result", "fail");
+			}
+			
+		}
+		return "redirect:adminProdMfpMgmtPage.do";
+	}
+	
+	/**
+	 * Author : 김정언
+	 * Date : 2020. 3. 10.
+	 * Discription : 제품관리 > 제품등록 (소모품)
+	**/
+	@Transactional
+	@PostMapping(value= "adminProdExpdMgmtEnroll.do")
+	public String insertProductExpd(
+			HttpSession session,
+			HttpServletRequest request,
+			@RequestParam(name = "prodExpdImg", required = false) MultipartFile prodExpdImg, 
+			@RequestParam(name = "expdBrandInf") String expdBrandInf,
+			@RequestParam(name = "expdProdNm") String expdProdNm,
+			@RequestParam(name = "expdProdInf") String expdProdInf,
+			@RequestParam(name = "sellYn") String sellYn,
+			@RequestParam(name = "expdModelAvail") String expdModelAvail) throws Exception {
+		Map<String, Object> resultMap = new HashMap<String, Object> ();
+		if(session.getAttribute("loginUser") == null) {
+			resultMap.put("result", "loginRequired");
+			return "common/errorPage";
+		} else {
+			//form으로 받아온 파라미터 처리
+			String sell = "";
+			if (sellYn.equals("가능")) sell = "Y";
+			else sell = "N";
+			
+			//디비로 보낼 파라미터, file데이터, request객체 service로 전송
+			Map<String, Object> param = new HashMap<String, Object> ();
+			param.put("expdBrandInf", expdBrandInf);
+			param.put("expdProdNm", expdProdNm);
+			param.put("expdProdInf", expdProdInf);
+			param.put("expdModelAvail", expdModelAvail);
+			param.put("sell", sell);
+			
+			int result = ps.insertProductExpd(param, prodExpdImg, request);
+			
+			if( result > 0 ) {
+				resultMap.put("result", "success");
+			} else {
+				resultMap.put("result", "fail");
+			}
+			
+		}
+		return "redirect:adminProdExpdMgmtPage.do";
+	}
 }

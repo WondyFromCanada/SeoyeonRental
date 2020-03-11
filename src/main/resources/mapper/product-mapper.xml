@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Product">
+
+	<insert id="insertProductMfp" parameterType="map">
+		<!-- 관리자 > 제품관리 > 제품등록 (복합기) -->
+		INSERT INTO SY_PROD_MFP
+		      (PROD_NM, PROD_INF, BRAND_INF, OUTPUT_SPD, SCAN_SPD, NETWORK_DIVSN, PAPER_DIVSN, COLOR_YN)
+		VALUES
+		      (#{mfpProdNm}, #{mfpProdInf}, #{mfpBrandInf}, #{output}, #{scan}, #{networkDivsn}, #{paperDivsn}, #{color})
+	</insert>
+
+	<insert id="insertProductMfpAttachment" parameterType="map">
+		<!-- 관리자 > 제품관리 > 제품등록 (복합기) > 제품사진 등록  -->
+		INSERT INTO SY_ATTACHMENT
+		      (FILE_PATH, ORIGIN_NM, CHANGE_NM, EXT, DIVSN, POST_ID)
+		SELECT #{filePath} AS FILE_PATH,
+		       #{originNm} AS ORIGIN_NM,
+		       #{changeNm} AS CHANGE_NM,
+		       #{ext} AS EXT,
+		       '제품관리',
+		       LAST_INSERT_ID() AS POST_ID
+		  FROM SY_PROD_MFP
+	</insert>
+	
+	<insert id="insertProductExpd" parameterType="map">
+		<!-- 관리자 > 제품관리 > 제품등록 (소모품) -->
+		INSERT INTO SY_PROD_EXPD
+		      (PROD_NM, PROD_INF, BRAND_INF, MODEL_AVAIL, SELL_YN)
+		VALUES
+		      (#{expdProdNm}, #{expdProdInf}, #{expdBrandInf}, #{expdModelAvail}, #{sell})
+	</insert>
+	
+	<insert id="insertProductExpdAttachment" parameterType="map">
+		<!-- 관리자 > 제품관리 > 제품등록 (소모품) > 제품사진 등록  -->
+		INSERT INTO SY_ATTACHMENT
+		      (FILE_PATH, ORIGIN_NM, CHANGE_NM, EXT, DIVSN, POST_ID)
+		SELECT #{filePath} AS FILE_PATH,
+		       #{originNm} AS ORIGIN_NM,
+		       #{changeNm} AS CHANGE_NM,
+		       #{ext} AS EXT,
+		       '제품관리',
+		       LAST_INSERT_ID() AS POST_ID
+		  FROM SY_PROD_EXPD
+	</insert>
+</mapper>

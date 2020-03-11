@@ -9,8 +9,8 @@
 </head>
 <body>
 	<div class="btn-group btn-group-justified">
-		<a href="#" class="btn btn-primary">복합기</a>
-		<a href="#"	class="btn btn-primary">소모품</a>
+		<a href="adminProdMfpMgmtPage.do" class="btn btn-primary">복합기</a>
+		<a href="adminProdExpdMgmtPage.do" class="btn btn-primary">소모품</a>
 	</div>
 </body>
 </html>
