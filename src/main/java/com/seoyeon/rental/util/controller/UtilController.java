@@ -426,8 +426,12 @@ public class UtilController {
 	 * Author : 김정언
 	 * Date : 2020. 3. 10.
 	 * Discription : 제품관리 > 제품등록 (복합기)
+<<<<<<< HEAD
 	 **/
 	@Transactional
+=======
+	**/
+>>>>>>> cbbc2d72ab818bf4e87e0170f78726fcb0bad220
 	@PostMapping(value= "adminProdMfpMgmtEnroll.do")
 	public String insertProductMfp(
 			HttpSession session,
@@ -471,8 +475,12 @@ public class UtilController {
 	 * Author : 김정언
 	 * Date : 2020. 3. 10.
 	 * Discription : 제품관리 > 제품등록 (소모품)
+<<<<<<< HEAD
 	 **/
 	@Transactional
+=======
+	**/
+>>>>>>> cbbc2d72ab818bf4e87e0170f78726fcb0bad220
 	@PostMapping(value= "adminProdExpdMgmtEnroll.do")
 	public String insertProductExpd(
 			HttpSession session,

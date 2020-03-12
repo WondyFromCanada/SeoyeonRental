@@ -12,7 +12,7 @@
 			<div class="col-md-4">
 				<div class="thumbnail caption">
 					<img class="prodImg" src="/rental/resources/images/common/noImg.png"
-						style="width: 100%; height: 400px;">
+						style="width: 600px; height: 400px;">
 				</div>
 				<input type="file" id="prodExpdImg" name="prodExpdImg" accept="image/*" onchange="handleImgFileSelect(this)" required/>
 			</div>
