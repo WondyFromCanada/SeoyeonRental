@@ -426,12 +426,8 @@ public class UtilController {
 	 * Author : 김정언
 	 * Date : 2020. 3. 10.
 	 * Discription : 제품관리 > 제품등록 (복합기)
-<<<<<<< HEAD
 	 **/
 	@Transactional
-=======
-	**/
->>>>>>> cbbc2d72ab818bf4e87e0170f78726fcb0bad220
 	@PostMapping(value= "adminProdMfpMgmtEnroll.do")
 	public String insertProductMfp(
 			HttpSession session,
@@ -475,12 +471,8 @@ public class UtilController {
 	 * Author : 김정언
 	 * Date : 2020. 3. 10.
 	 * Discription : 제품관리 > 제품등록 (소모품)
-<<<<<<< HEAD
 	 **/
 	@Transactional
-=======
-	**/
->>>>>>> cbbc2d72ab818bf4e87e0170f78726fcb0bad220
 	@PostMapping(value= "adminProdExpdMgmtEnroll.do")
 	public String insertProductExpd(
 			HttpSession session,
@@ -522,7 +514,7 @@ public class UtilController {
 	 *  Discription : 고객센터 자료실 게시글 업로드
 	**/
 	//mysql은 @transcational이 잘 안먹는거 같음
-	@Transactional(rollbackFor={Exception.class})
+	@Transactional
 	@PostMapping(value= "adminCustomerMaterialMgmtEnroll.do")
 	public String insertCustomerMaterialBoard(
 			HttpSession session,
