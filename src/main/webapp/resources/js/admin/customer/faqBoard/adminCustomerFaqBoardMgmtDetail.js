@@ -12,6 +12,7 @@ $(function() {
 				$('#title').val(data.TITLE);
 				$('#writer').val(data.USER_NM);
 				$('#p_content').html(data.CONTENT);
+				$('#answer').val(data.ANSWER);
 			},
 			error: function(data) {
 				console.log(data);
@@ -23,6 +24,7 @@ $(function() {
 		$('#updateMode').hide();
 		$('#save').show();
 		$('#p_content').html('');
+		document.getElementById('answer').readOnly = false;
 		CKEDITOR.replace('updateContent', {filebrowserImageUploadUrl: '/rental/customer/faq/imgUpload'});
 	 	CKEDITOR.on('dialogDefinition', function( ev ){
 	        var dialogName = ev.data.name;
@@ -63,7 +65,8 @@ $(function() {
 			var sendData = {
 					postId: postId,
 	 				title: $('#title').val(),
-	 				content: CKEDITOR.instances.updateContent.getData()
+	 				content: CKEDITOR.instances.updateContent.getData(),
+	 				answer: $('#answer').val()
 	 		};
 			
 			$.ajax({

@@ -58,22 +58,13 @@ public class CustomerQuestionController {
 			HttpSession session) throws IOException {
 		Map<String, Object> resultMap = new HashMap<String, Object> ();
 		
-		if(session.getAttribute("loginUser") == null) {
-			resultMap.put("result", "loginRequired");
-			return resultMap;
-		} else {
-			@SuppressWarnings("unchecked")
-			Map<String, Object> loginUserInf = (Map<String, Object>) session.getAttribute("loginUser");
-			param.put("memberId", loginUserInf.get("MEMBER_ID") + "");
-			
-			int result = cqs.insertCustomerQuestionBoard(param);
+			int result = cqs.insertCustomerQuestionBoard(param, session);
 			if( result > 0 ) {
 				resultMap.put("result", "success");
 			} else {
 				resultMap.put("result", "fail");
 			}
 			
-		}
 		
 		return resultMap;
 	}

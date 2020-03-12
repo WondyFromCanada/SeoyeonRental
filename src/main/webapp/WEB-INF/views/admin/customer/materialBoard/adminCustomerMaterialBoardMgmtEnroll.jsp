@@ -9,7 +9,7 @@
 <jsp:include page="../../common/adminTopNav.jsp" />
 
 <!-- 파일 전송은 post 방식으로 해야 컨트롤러에서 파일을 받을 수 있음 -->
-<form id="formData" method="post" name="formData" action="/rental/customer/material" enctype="multipart/form-data">
+<form id="formData" method="post" name="formData" action="adminCustomerMaterialMgmtEnroll.do" enctype="multipart/form-data">
 	제목 : <input type="text" id="title" name="title">
 	내용 : <input type="text" id="content" name="content">
 	파일 : <input type="file" id="file" name="file">

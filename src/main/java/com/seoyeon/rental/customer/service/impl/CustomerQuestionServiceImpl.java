@@ -10,6 +10,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.StringUtils;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -20,9 +21,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.JsonObject;
-import com.seoyeon.rental.HomeController;
 import com.seoyeon.rental.common.CommonUtils;
-import com.seoyeon.rental.common.PageInfo;
 import com.seoyeon.rental.customer.dao.CustomerQuestionDao;
 import com.seoyeon.rental.customer.service.CustomerQuestionService;
 
@@ -111,7 +110,9 @@ public class CustomerQuestionServiceImpl implements CustomerQuestionService{
 	}
 
 	@Override
-	public int insertCustomerQuestionBoard(Map<String, Object> param) {
+	public int insertCustomerQuestionBoard(Map<String, Object> param, HttpSession session) {
+		Map<String, Object> loginUserInf = (Map<String, Object>) session.getAttribute("loginUser");
+		param.put("memberId", loginUserInf.get("MEMBER_ID") + "");
 		return cqd.insertCustomerQuestionBoard(sqlSession, param);
 	}
 

@@ -7,17 +7,13 @@
 </head>
 <body>
 <jsp:include page="../../common/topNav.jsp" />
-<div class="btn-group btn-group-justified">
-	<a class="btn btn-primary" href="customerQuestionBoardPage.do">1:1 문의</a>
-	<a class="btn btn-primary" href="customerQuestionBoardPage.do">자주묻는질문</a>
-	<a class="btn btn-primary" href="customerMaterialPage.do">자료실</a>
-</div>
+<jsp:include page="../../common/customer/customerSubNav.jsp" />
 
 <div id="content">
 	<table id="boardTable" class="display table"></table>
 </div>
 <div id="main"></div>
-<button class="btn btn-warning" onclick="window.location.href='customerQuestionEnrollPage.do'">게시글등록페이지</button>
+<button class="btn btn-warning" id="registerPage">게시글등록페이지</button>
 </body>
 <script src="resources/js/customer/questionBoard/questionBoardMain.js"></script>
 </html>

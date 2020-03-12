@@ -46,6 +46,9 @@
 		<!-- 고객센터 1:1문의 게시글 수정  -->
 		UPDATE SY_CUSTOMER_QUESTION_BOARD
 		   SET TITLE = #{title},
+		   <if test="answer != null">
+		   		ANSWER = #{answer},
+		   </if>
 		       CONTENT = #{content}
 		 WHERE POST_ID = #{postId}
 	</update>
@@ -97,7 +100,7 @@
 		       #{changeNm} AS CHANGE_NM,
 		       #{ext} AS EXT,
 		       '자료실',
-		       LAST_INSERT_ID()
+		       MAX(POST_ID)
 		  FROM SY_CUSTOMER_MATERIAL_BOARD
 	</insert>
 	
@@ -134,7 +137,8 @@
 		<!-- 고객센터 faq 게시글 수정 -->
 		UPDATE SY_CUSTOMER_FAQ_BOARD
 		   SET TITLE = #{title},
-		       CONTENT = #{content}
+		       CONTENT = #{content},
+		       ANSWER = #{answer}
 		 WHERE POST_ID = #{postId}
 	</update>
 	

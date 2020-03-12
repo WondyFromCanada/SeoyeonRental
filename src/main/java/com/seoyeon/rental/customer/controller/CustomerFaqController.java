@@ -57,10 +57,6 @@ public class CustomerFaqController {
 			HttpSession session) throws IOException {
 		Map<String, Object> resultMap = new HashMap<String, Object> ();
 		
-		if(session.getAttribute("loginUser") == null) {
-			resultMap.put("result", "loginRequired");
-			return resultMap;
-		} else {
 			@SuppressWarnings("unchecked")
 			Map<String, Object> loginUserInf = (Map<String, Object>) session.getAttribute("loginUser");
 			param.put("memberId", loginUserInf.get("MEMBER_ID") + "");
@@ -72,7 +68,6 @@ public class CustomerFaqController {
 				resultMap.put("result", "fail");
 			}
 			
-		}
 		
 		return resultMap;
 	}

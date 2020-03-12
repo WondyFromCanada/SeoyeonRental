@@ -1,7 +1,7 @@
 $(function() {
 	initTable();
 	$.ajax({
-		url: '/rental/customer/question',
+		url: '/rental/customer/faq',
 		type: 'GET',
 		contenType: 'application/json',
 		success: function(data) {
@@ -21,9 +21,7 @@ function initTable() {
 	thead += 
 		"<th>번호</th>" + 
 		"<th>제목</th>" + 
-		"<th>작성자</th>" + 
-		"<th>작성일자</th>" + 
-		"<th>공개여부</th>"; 
+		"<th>작성일자</th>"; 
 	
 	var innerHTML = "";
 	
@@ -48,7 +46,7 @@ function setEventListener(table) {
 	
 	$('#boardTable tbody').on('click', 'tr', function() {
 		var postId = table.row(this).data()[0];
-		window.location.href = 'customerQuestionDetailPage.do?postId=' + postId;
+		window.location.href = 'customerFaqDetailPage.do?postId=' + postId;
 	});
 }
 
@@ -65,9 +63,7 @@ function tableData(data) {
 			"<tr>" +
 				"<td name='postId'>" + v.POST_ID + "</td>"+ 
 				"<td name='title'>" + v.TITLE + "</td>"+ 
-				"<td name='userNm'>" + v.USER_NM + "</td>"+ 
 				"<td name='createDate'>" + v.CREATE_DATE + "</td>"+ 
-				"<td name='publicYn'>" + v.PUBLIC_YN + "</td>"+ 
 			'</tr>';
 	});
 	
@@ -76,12 +72,4 @@ function tableData(data) {
 	setEventListener(table);
 }
 
-
-	
-	function detail(el) {
-		var postId = $(el).parent().attr('postId');
-		console.log(postId);
-		
-		window.location.href = 'customerQuestionDetailPage.do?postId=' + postId;
-	}
 	

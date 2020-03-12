@@ -11,6 +11,11 @@ $(function() {
 			console.log(data);
 		}
 	});
+	
+	$('#registerPage').on('click', function(e) {
+		var returnPath = window.location.href;
+		location.href='ckEnrollPage.do?type=faq&returnPath=' + returnPath;
+	});
 })
 	
 function initTable() {

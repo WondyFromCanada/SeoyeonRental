@@ -16,6 +16,11 @@
 	</div>
 	<div id="p_content"></div>
 	<textarea id="updateContent" style="display: none;"></textarea>
+	
+	<div class="answer_area">
+		<label for="answer" class="control-label">답변 : </label>
+		<textarea id="answer" class="form-control" readonly></textarea>
+	</div>
 	<button class="btn btn-default" id="updateMode">수정하기</button>
 	<button class="btn btn-default" id="save">저장</button>
 	<button class="btn btn-default" id="delete">삭제</button>

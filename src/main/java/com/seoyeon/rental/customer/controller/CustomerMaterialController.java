@@ -33,45 +33,6 @@ private static final Logger logger = LoggerFactory.getLogger(HomeController.clas
 	
 	/**
 	 *	Author : 김동환
-	 *	Date : 2020. 3. 5.
-	 *  Discription : 고객센터 자료실 게시글 업로드
-	**/
-	//mysql은 @transcational이 잘 안먹는거 같음
-	@Transactional
-	@PostMapping(value= "/customer/material")
-	public void insertCustomerMaterialBoard(
-			HttpSession session,
-			HttpServletRequest request,
-			HttpServletResponse response,
-			@RequestParam(name = "file", required = false) MultipartFile file, 
-			@RequestParam(name = "title") String title, 
-			@RequestParam(name = "content") String content) throws Exception {
-		Map<String, Object> resultMap = new HashMap<String, Object> ();
-		if(session.getAttribute("loginUser") == null) {
-			resultMap.put("result", "loginRequired");
-			response.sendRedirect("common/errorPage");
-		} else {
-			//디비로 보낼 파라미터, file데이터, request객체 service로 전송
-			Map<String, Object> param = new HashMap<String, Object> ();
-			param.put("title", title);
-			param.put("content", content);
-			int result = cms.insertCustomerMaterialBoard(param, file, request);
-			
-			if( result > 0 ) {
-				response.sendRedirect("adminCustomerMaterialBoardMgmtPage.do");
-			} else {
-				response.sendRedirect("common/errorPage");
-			}
-		}
-	}
-	
-	@GetMapping(value="/customer/redirect")
-	public String redirector() {
-		return "admin/customer/materialBoard/adminCustomerMaterialBoardMgmt";
-	}
-	
-	/**
-	 *	Author : 김동환
 	 *	Date : 2020. 3. 10.
 	 *  Discription : 고객센터 자료실 게시글 전체 조회
 	**/

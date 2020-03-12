@@ -18,6 +18,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.seoyeon.rental.HomeController;
+import com.seoyeon.rental.customer.service.CustomerMaterialService;
 import com.seoyeon.rental.product.service.ProductService;
 
 @Controller
@@ -27,7 +28,10 @@ public class UtilController {
 	
 	@Autowired
 	private ProductService ps;
-
+	
+	@Autowired
+	private CustomerMaterialService cms;
+	
 	/*
 	 =========================================================
 	 					<> 사용자 영역 <>
@@ -40,12 +44,12 @@ public class UtilController {
 	 *	Author : 김동환
 	 *	Date : 2020. 3. 5.
 	 *  Discription : 로그아웃
-	**/
+	 **/
 	@GetMapping(value= "logout.do")
 	public String logout(SessionStatus status, HttpSession session) {
 		session.invalidate();
 		status.setComplete();
-		return "main/main";
+		return "redirect:mainPage.do";
 	}
 	
 	/**
@@ -57,7 +61,7 @@ public class UtilController {
 	public String mainPage() {
 		return "main/main";
 	}
-
+	
 	/**
 	 * Author : 김정언 
 	 * Date : 2020. 3. 3. 
@@ -67,7 +71,7 @@ public class UtilController {
 	public String loginPage() {
 		return "member/memberLogin";
 	}
-
+	
 	/**
 	 * Author : 김동환 
 	 * Date : 2020. 3. 3. 
@@ -77,7 +81,7 @@ public class UtilController {
 	public String joinPage() {
 		return "member/memberJoin";
 	}
-
+	
 	/**
 	 * Author : 김정언 
 	 * Date : 2020. 3. 3. 
@@ -87,7 +91,7 @@ public class UtilController {
 	public String myPage() {
 		return "member/myPage";
 	}
-
+	
 	/**
 	 * Author : 김정언
 	 * Date : 2020. 3. 3. 
@@ -97,7 +101,7 @@ public class UtilController {
 	public String mfpRentalPage() {
 		return "product/mfp/mfpRentalMain";
 	}
-
+	
 	/**
 	 * Author : 김정언
 	 * Date : 2020. 3. 3. 
@@ -107,7 +111,7 @@ public class UtilController {
 	public String mfpSellPage() {
 		return "product/mfp/mfpSellMain";
 	}
-
+	
 	/**
 	 * Author : 김정언
 	 * Date : 2020. 3. 3. 
@@ -117,7 +121,7 @@ public class UtilController {
 	public String expdSellPage() {
 		return "product/expd/expdSellMain";
 	}
-
+	
 	/**
 	 * Author : 김정언 
 	 * Date : 2020. 3. 3. 
@@ -137,11 +141,11 @@ public class UtilController {
 	public String customerQuestionBoardPage() {
 		return "customer/questionBoard/questionBoardMain";
 	}
-
+	
 	/* TopNav End */
 	
 	/* 고객센터 Start */	
-
+	
 	/**
 	 * Author : 김동환 
 	 * Date : 2020. 3. 3. 
@@ -156,7 +160,7 @@ public class UtilController {
 	 *	Author : 김동환
 	 *	Date : 2020. 3. 4.
 	 *  Discription : 고객센터 1:1문의 상세보기 페이지 이동
-	**/
+	 **/
 	@GetMapping(value = "customerQuestionDetailPage.do")
 	public String customerQuestionDetailPage() {
 		return "customer/questionBoard/questionBoardDetail";
@@ -166,7 +170,7 @@ public class UtilController {
 	 *	Author : 김동환
 	 *	Date : 2020. 3. 5.
 	 *  Discription : 고객센터 자료실 페이지 이동
-	**/
+	 **/
 	@GetMapping(value = "customerMaterialBoardPage.do")
 	public String customerMaterialBoardPage() {
 		return "customer/materialBoard/materialBoardMain";
@@ -174,9 +178,29 @@ public class UtilController {
 	
 	/**
 	 *	Author : 김동환
+	 *	Date : 2020. 3. 11.
+	 *  Discription : 고객센터 faq 메인 페이지로 이동
+	**/
+	@GetMapping(value = "customerFaqBoardPage.do")
+	public String customerFaqBoardPage() {
+		return "customer/faqBoard/faqBoardMain";
+	}
+	
+	/**
+	 *	Author : 김동환
+	 *	Date : 2020. 3. 11.
+	 *  Discription : 고객센터 faq 상세 페이지로 이동 
+	**/
+	@GetMapping(value="customerFaqDetailPage.do")
+	public String customerFaqDetailPage() {
+		return "customer/faqBoard/faqBoardDetail";
+	}
+	
+	/**
+	 *	Author : 김동환
 	 *	Date : 2020. 3. 5.
 	 *  Discription : 고객센터 자료실 상세보기 페이지 이동
-	**/
+	 **/
 	@GetMapping(value = "customerMaterialDetailPage.do")
 	public String customerMaterialDetailPage() {
 		return "customer/materialBoard/materialBoardDetail";
@@ -196,7 +220,7 @@ public class UtilController {
 	 * Author : 김정언
 	 * Date : 2020. 3. 5.
 	 * Discription : 관리자 메인페이지 (견적문의)로 이동
-	**/
+	 **/
 	@GetMapping(value = "adminEstimateMgmtPage.do")
 	public String adminMainPage() {
 		return "admin/estimate/adminEstimateMgmt";
@@ -206,7 +230,7 @@ public class UtilController {
 	 * Author : 김정언
 	 * Date : 2020. 3. 5.
 	 * Discription : 관리자 회원관리 페이지로 이동
-	**/
+	 **/
 	@GetMapping(value = "adminMemberMgmtPage.do")
 	public String adminMemberMgmtPage() {
 		return "admin/member/adminMemberMgmt";
@@ -216,7 +240,7 @@ public class UtilController {
 	 * Author : 김정언
 	 * Date : 2020. 3. 5.
 	 * Discription : 관리자 제품관리 페이지로 이동
-	**/
+	 **/
 	@GetMapping(value = "adminProdMfpMgmtPage.do")
 	public String adminProdMfpMgmtPage() {
 		return "admin/productMgmt/mfp/adminProdMfpMgmt";
@@ -226,30 +250,55 @@ public class UtilController {
 	 * Author : 김정언
 	 * Date : 2020. 3. 7.
 	 * Discription : 관리자 제품게시판 페이지로 이동
-	**/
+	 **/
 	@GetMapping(value = "adminProdMfpRentalBoardMgmtPage.do")
 	public String adminProdMfpRentalBoardMgmtPage() {
 		return "admin/productBoardMgmt/mfpRental/adminProdMfpRentalBoardMgmt";
 	}
+	/* 관리자 설치소식 Start*/
 	
 	/**
 	 * Author : 김정언
 	 * Date : 2020. 3. 7.
 	 * Discription : 관리자 설치소식 페이지로 이동
-	**/
+	 **/
 	@GetMapping(value = "adminInstallBoardMgmtPage.do")
 	public String adminInstallBoardMgmtPage() {
 		return "admin/installBoard/adminInstallBoardMgmt";
 	}
 	
 	/**
+	 *	Author : 김동환
+	 *	Date : 2020. 3. 12.
+	 *  Discription : 관리자 설치소식 상세 페이지로 이동
+	**/
+	@GetMapping(value = "adminInstallBoardMgmtDetailPage.do") 
+	public String adminInstallBoardMgmtDetailPage() {
+		return "admin/installBoard/adminInstallBoardMgmtDetail";
+	}
+		
+	
+	
+	/* 관리자 설치소식 End*/
+	
+	/**
 	 * Author : 김정언
 	 * Date : 2020. 3. 7.
 	 * Discription : 관리자 고객센터 페이지 (1:1 문의)로 이동
-	**/
+	 **/
 	@GetMapping(value = "adminCustomerQuestionBoardMgmtPage.do")
 	public String adminCustomerQuestionBoardMgmtPage() {
 		return "admin/customer/questionBoard/adminCustomerQuestionBoardMgmt";
+	}
+	
+	/**
+	 *	Author : 김동환
+	 *	Date : 2020. 3. 11.
+	 *  Discription : 관리자 고객센터 1:1 문의 상세 페이지로 이동 
+	**/
+	@GetMapping(value = "adminCustomerQuestionBoardMgmtDetailPage.do")
+	public String adminCustomerQuestionBoardMgmtDetailPage() {
+		return "admin/customer/questionBoard/adminCustomerQuestionBoardMgmtDetail";
 	}
 	
 	/* TopNav End */
@@ -260,7 +309,7 @@ public class UtilController {
 	 * Author : 김정언
 	 * Date : 2020. 3. 5.
 	 * Discription : 관리자 복합기 제품등록 페이지로 이동
-	**/
+	 **/
 	@GetMapping(value = "adminProdMfpMgmtEnrollPage.do")
 	public String adminProdMfpMgmtEnrollPage() {
 		return "admin/productMgmt/mfp/adminProdMfpMgmtEnroll";
@@ -270,7 +319,7 @@ public class UtilController {
 	 * Author : 김정언
 	 * Date : 2020. 3. 9.
 	 * Discription : 관리자 소모품 페이지로 이동
-	**/
+	 **/
 	@GetMapping(value = "adminProdExpdMgmtPage.do")
 	public String adminProdExpdMgmtPage() {
 		return "admin/productMgmt/expd/adminProdExpdMgmt";
@@ -280,7 +329,7 @@ public class UtilController {
 	 * Author : 김정언
 	 * Date : 2020. 3. 7.
 	 * Discription : 관리자 소모품 제품등록 페이지로 이동
-	**/
+	 **/
 	@GetMapping(value = "adminProdExpdMgmtEnrollPage.do")
 	public String adminProdExpdMgmtEnrollPage() {
 		return "admin/productMgmt/expd/adminProdExpdMgmtEnroll";
@@ -314,7 +363,7 @@ public class UtilController {
 	 *	Author : 김동환
 	 *	Date : 2020. 3. 9.
 	 *  Discription : 관리자 고객센터 자료실 메인 페이지로 이동
-	**/
+	 **/
 	@GetMapping(value = "adminCustomerMaterialBoardMgmtPage.do")
 	public String adminCustomerMaterialBoardMgmtPage() {
 		return "admin/customer/materialBoard/adminCustomerMaterialBoardMgmt";
@@ -334,7 +383,7 @@ public class UtilController {
 	 *	Author : 김동환
 	 *	Date : 2020. 3. 11.
 	 *  Discription : 관리자 자료실 상세 페이지로 이동 
-	**/
+	 **/
 	@GetMapping(value= "adminCustomerMaterialBoardMgmtDetailPage.do")
 	public String adminCustomerMaterialBoardMgmtDetailPage() {
 		return "admin/customer/materialBoard/adminCustomerMaterialBoardMgmtDetail";
@@ -344,7 +393,7 @@ public class UtilController {
 	 *	Author : 김동환
 	 *	Date : 2020. 3. 9.
 	 *  Discription : 관리자 고객센터 faq 메인 페이지로 이동
-	**/
+	 **/
 	@GetMapping(value = "adminCustomerFaqBoardMgmtPage.do")
 	public String adminCustomerFaqBoardMgmtPage() {
 		return "admin/customer/faqBoard/adminCustomerFaqBoardMgmt";
@@ -364,15 +413,29 @@ public class UtilController {
 	 *	Author : 김동환
 	 *	Date : 2020. 3. 9.
 	 *  Discription : 고객센터 faq 상세 페이지로 이동
-	**/
+	 **/
 	@GetMapping(value = "adminCustomerFaqBoardMgmtDetailPage.do")
 	public String adminCustomerFaqBoardMgmtDetailPage() {
 		return "admin/customer/faqBoard/adminCustomerFaqBoardMgmtDetail";
 	}
 	
+		/* 고객센터 End */
 	
-
-	/* 고객센터 End */
+	/*
+	 =========================================================
+	 					<> 공통 영역 <>
+	 =========================================================	
+	 */
+	
+	/**
+	 *	Author : 김동환
+	 *	Date : 2020. 3. 12.
+	 *  Discription : ck Editor 공통 등록 페이지
+	**/
+	@GetMapping(value = "ckEnrollPage.do")
+	public String ckEnrollPage() {
+		return "common/ckEnroll";
+	}
 	
 	/*
 	 =========================================================
@@ -383,7 +446,12 @@ public class UtilController {
 	 * Author : 김정언
 	 * Date : 2020. 3. 10.
 	 * Discription : 제품관리 > 제품등록 (복합기)
+<<<<<<< HEAD
+	 **/
+	@Transactional
+=======
 	**/
+>>>>>>> cbbc2d72ab818bf4e87e0170f78726fcb0bad220
 	@PostMapping(value= "adminProdMfpMgmtEnroll.do")
 	public String insertProductMfp(
 			HttpSession session,
@@ -394,10 +462,6 @@ public class UtilController {
 			@RequestParam(name = "mfpProdInf") String mfpProdInf, @RequestParam(name = "networkDivsn") String networkDivsn,
 			@RequestParam(name = "paperDivsn") String paperDivsn, @RequestParam(name = "colorYn") String colorYn) throws Exception {
 		Map<String, Object> resultMap = new HashMap<String, Object> ();
-		if(session.getAttribute("loginUser") == null) {
-			resultMap.put("result", "loginRequired");
-			return "common/errorPage";
-		} else {
 			//form으로 받아온 파라미터 처리
 			String output = outputSpd + "매";
 			String scan = scanSpd + "매";
@@ -424,7 +488,6 @@ public class UtilController {
 				resultMap.put("result", "fail");
 			}
 			
-		}
 		return "redirect:adminProdMfpMgmtPage.do";
 	}
 	
@@ -432,7 +495,12 @@ public class UtilController {
 	 * Author : 김정언
 	 * Date : 2020. 3. 10.
 	 * Discription : 제품관리 > 제품등록 (소모품)
+<<<<<<< HEAD
+	 **/
+	@Transactional
+=======
 	**/
+>>>>>>> cbbc2d72ab818bf4e87e0170f78726fcb0bad220
 	@PostMapping(value= "adminProdExpdMgmtEnroll.do")
 	public String insertProductExpd(
 			HttpSession session,
@@ -444,10 +512,6 @@ public class UtilController {
 			@RequestParam(name = "sellYn") String sellYn,
 			@RequestParam(name = "expdModelAvail") String expdModelAvail) throws Exception {
 		Map<String, Object> resultMap = new HashMap<String, Object> ();
-		if(session.getAttribute("loginUser") == null) {
-			resultMap.put("result", "loginRequired");
-			return "common/errorPage";
-		} else {
 			//form으로 받아온 파라미터 처리
 			String sell = "";
 			if (sellYn.equals("가능")) sell = "Y";
@@ -469,7 +533,35 @@ public class UtilController {
 				resultMap.put("result", "fail");
 			}
 			
-		}
 		return "redirect:adminProdExpdMgmtPage.do";
 	}
+	
+	/**
+	 *	Author : 김동환
+	 *	Date : 2020. 3. 5.
+	 *  Discription : 고객센터 자료실 게시글 업로드
+	**/
+	//mysql은 @transcational이 잘 안먹는거 같음
+	@Transactional(rollbackFor={Exception.class})
+	@PostMapping(value= "adminCustomerMaterialMgmtEnroll.do")
+	public String insertCustomerMaterialBoard(
+			HttpSession session,
+			HttpServletRequest request,
+			@RequestParam(name = "file", required = false) MultipartFile file, 
+			@RequestParam(name = "title") String title, 
+			@RequestParam(name = "content") String content) throws Exception {
+		Map<String, Object> resultMap = new HashMap<String, Object> ();
+			//디비로 보낼 파라미터, file데이터, request객체 service로 전송
+			Map<String, Object> param = new HashMap<String, Object> ();
+			param.put("title", title);
+			param.put("content", content);
+			int result = cms.insertCustomerMaterialBoard(param, file, request);
+			
+			if( result > 0 ) {
+				return "redirect:adminCustomerMaterialBoardMgmtPage.do"; 
+			} else {
+				return "common/errorPage";
+			}
+		}
+	
 }
