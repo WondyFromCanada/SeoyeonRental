@@ -28,6 +28,8 @@ $(function() {
 });
 	function login() {
 		
+		var prevPage = document.referrer;
+		
 		if($('#userId').val() != null && $('#userPwd').val() != null) {
 			var sendData = {
 					userId: $('#userId').val(),
@@ -41,7 +43,11 @@ $(function() {
 				contentType: 'application/json',
 				success: function(data) {
 					if(data.result == 'success') {
-						window.location.href = 'mainPage.do';
+						if(prevPage.indexOf('mainPage.do') == -1 ) {
+							window.location.href = prevPage;
+						} else {
+							window.location.href = 'mainPage.do';
+						}
 					} else {
 						alert('아이디 혹은 비밀번호 오류입니다');
 					}

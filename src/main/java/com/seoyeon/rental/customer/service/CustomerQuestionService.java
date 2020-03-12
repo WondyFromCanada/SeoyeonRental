@@ -9,6 +9,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -32,9 +33,10 @@ public interface CustomerQuestionService {
 	 *	Author : 김동환
 	 *	Date : 2020. 3. 4.
 	 *  Discription : 
+	 * @param session 
 	 * @return 
 	**/
-	int insertCustomerQuestionBoard(Map<String, Object> param);
+	int insertCustomerQuestionBoard(Map<String, Object> param, HttpSession session);
 
 	/**
 	 *	Author : 김동환

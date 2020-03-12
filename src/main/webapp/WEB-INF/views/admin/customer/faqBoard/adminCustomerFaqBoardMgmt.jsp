@@ -11,7 +11,7 @@
 	<div class="container-fluid" id="content">
 		<table id="boardTable" class="display table"></table>
 		<div class="row">
-			<button class="btn btn-warning" onclick="location.href='adminCustomerFaqBoardEnrollPage.do'">등록페이지</button>
+			<button class="btn btn-warning" id="registerPage">등록페이지</button>
 		</div>
 	</div>
 </body>

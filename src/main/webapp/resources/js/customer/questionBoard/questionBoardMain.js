@@ -11,6 +11,11 @@ $(function() {
 			console.log(data);
 		}
 	});
+	
+	$('#registerPage').on('click', function(e) {
+		var returnPath = window.location.href;
+		location.href='ckEnrollPage.do?type=question&returnPath=' + returnPath;
+	});
 })
 	
 function initTable() {
@@ -76,12 +81,4 @@ function tableData(data) {
 	setEventListener(table);
 }
 
-
-	
-	function detail(el) {
-		var postId = $(el).parent().attr('postId');
-		console.log(postId);
-		
-		window.location.href = 'customerQuestionDetailPage.do?postId=' + postId;
-	}
 	

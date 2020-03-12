@@ -3,13 +3,15 @@
     pageEncoding="UTF-8"%>
 <html>
 <head>
-	<title>Home</title>
+	<title>고객센터 자료실 메인페이지</title>
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
-
-<P>  The time on the server is ${serverTime}. </P>
+<jsp:include page="../../common/topNav.jsp" />
+<jsp:include page="../../common/customer/customerSubNav.jsp" />
+<div id="content">
+	<table id="boardTable" class="display table"></table>
+</div>
+<div id="main"></div>
 </body>
+<script src="resources/js/customer/materialBoard/materialBoardMain.js"></script>
 </html>
