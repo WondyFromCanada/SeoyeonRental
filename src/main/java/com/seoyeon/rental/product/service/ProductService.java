@@ -17,4 +17,8 @@ public interface ProductService {
 
 	List<Map<String, Object>> selectProductExpdList();
 
+	int selectProductMfpListCount();
+
+	int selectProductExpdListCount();
+
 }

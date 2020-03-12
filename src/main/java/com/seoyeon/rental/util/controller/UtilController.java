@@ -335,6 +335,26 @@ public class UtilController {
 		return "admin/productMgmt/expd/adminProdExpdMgmtEnroll";
 	}
 	
+	/**
+	 * Author : 김정언
+	 * Date : 2020. 3. 12.
+	 * Discription : 관리자 복합기 상세조회 페이지로 이동
+	**/
+	@GetMapping(value = "adminProdMfpMgmtDetailPage.do")
+	public String adminProdMfpMgmtDetailPage() {
+		return "admin/productMgmt/mfp/adminProdMfpMgmtDetail";
+	}
+	
+	/**
+	 * Author : 김정언
+	 * Date : 2020. 3. 12.
+	 * Discription : 관리자 소모품 상세조회 페이지로 이동
+	**/
+	@GetMapping(value = "adminProdExpdMgmtDetailPage.do")
+	public String adminProdExpdMgmtDetailPage() {
+		return "admin/productMgmt/expd/adminProdExpdMgmtDetail";
+	}
+	
 	/* 제품관리 End */
 	
 	/* 고객센터 Start */

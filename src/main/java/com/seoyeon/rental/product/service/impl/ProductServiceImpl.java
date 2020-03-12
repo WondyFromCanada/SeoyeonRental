@@ -116,4 +116,14 @@ public class ProductServiceImpl implements ProductService{
 		return pd.selectProductExpdList(sqlSession);
 	}
 
+	@Override
+	public int selectProductMfpListCount() {
+		return pd.selectProductMfpListCount(sqlSession);
+	}
+
+	@Override
+	public int selectProductExpdListCount() {
+		return pd.selectProductExpdListCount(sqlSession);
+	}
+
 }

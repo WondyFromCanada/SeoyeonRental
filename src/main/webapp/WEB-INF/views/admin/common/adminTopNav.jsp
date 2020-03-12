@@ -8,6 +8,7 @@
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	
 <!-- data tables CSS -->
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css"/>
 
@@ -18,6 +19,9 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+<!-- twbsPagination Plugin -->
+<!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.1/jquery.twbsPagination.min.js'></script>  -->
+<script src="resources/js/plugin/jquery.twbsPagination.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-inverse">
