@@ -21,8 +21,8 @@
 		       #{originNm} AS ORIGIN_NM,
 		       #{changeNm} AS CHANGE_NM,
 		       #{ext} AS EXT,
-		       '제품관리',
-		       LAST_INSERT_ID() AS POST_ID
+		       '복합기',
+		       MAX(PROD_ID) AS POST_ID
 		  FROM SY_PROD_MFP
 	</insert>
 	
@@ -42,8 +42,32 @@
 		       #{originNm} AS ORIGIN_NM,
 		       #{changeNm} AS CHANGE_NM,
 		       #{ext} AS EXT,
-		       '제품관리',
-		       LAST_INSERT_ID() AS POST_ID
+		       '소모품',
+		       MAX(PROD_ID) AS POST_ID
 		  FROM SY_PROD_EXPD
 	</insert>
+	
+	<select id="selectProductMfpList" resultType="map">
+		<!-- 관리자 > 제품관리 > 복합기 전체 조회 -->
+		SELECT A.CHANGE_NM,
+			   A.EXT,
+			   P.PROD_ID,
+			   P.PROD_NM
+		  FROM SY_PROD_MFP P
+		  JOIN SY_ATTACHMENT A ON(P.PROD_ID = A.POST_ID)
+		 WHERE A.DIVSN = '복합기'
+	  ORDER BY PROD_ID DESC
+	</select>
+	
+	<select id="selectProductExpdList" resultType="map">
+		<!-- 관리자 > 제품관리 > 소모품 전체 조회 -->
+		SELECT A.CHANGE_NM,
+			   A.EXT,
+			   P.PROD_ID,
+			   P.PROD_NM
+		  FROM SY_PROD_EXPD P
+		  JOIN SY_ATTACHMENT A ON(P.PROD_ID = A.POST_ID)
+		 WHERE A.DIVSN = '소모품'
+	  ORDER BY PROD_ID DESC
+	</select>
 </mapper>

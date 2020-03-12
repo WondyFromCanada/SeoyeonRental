@@ -364,7 +364,6 @@ public class UtilController {
 	 * Date : 2020. 3. 10.
 	 * Discription : 제품관리 > 제품등록 (복합기)
 	**/
-	@Transactional
 	@PostMapping(value= "adminProdMfpMgmtEnroll.do")
 	public String insertProductMfp(
 			HttpSession session,
@@ -414,7 +413,6 @@ public class UtilController {
 	 * Date : 2020. 3. 10.
 	 * Discription : 제품관리 > 제품등록 (소모품)
 	**/
-	@Transactional
 	@PostMapping(value= "adminProdExpdMgmtEnroll.do")
 	public String insertProductExpd(
 			HttpSession session,

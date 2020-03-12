@@ -1,5 +1,7 @@
 package com.seoyeon.rental.product.dao.impl;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -28,6 +30,16 @@ public class ProductDaoImpl implements ProductDao{
 	@Override
 	public int insertProductExpdAttachment(SqlSessionTemplate sqlSession, Map<String, Object> attMap) {
 		return sqlSession.insert("insertProductExpdAttachment", attMap);
+	}
+
+	@Override
+	public List<Map<String, Object>> selectProductMfpList(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectList("selectProductMfpList");
+	}
+
+	@Override
+	public List<Map<String, Object>> selectProductExpdList(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectList("selectProductExpdList");
 	}
 	
 }

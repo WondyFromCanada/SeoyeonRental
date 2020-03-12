@@ -2,6 +2,7 @@ package com.seoyeon.rental.product.service.impl;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.seoyeon.rental.HomeController;
@@ -28,6 +30,7 @@ public class ProductServiceImpl implements ProductService{
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
+	@Transactional
 	@Override
 	public int insertProductMfp(Map<String, Object> param, MultipartFile prodMfpImg, HttpServletRequest request) throws Exception {
 		String root = request.getSession().getServletContext().getRealPath("resources");
@@ -65,6 +68,7 @@ public class ProductServiceImpl implements ProductService{
 		return 0;
 	}
 	
+	@Transactional
 	@Override
 	public int insertProductExpd(Map<String, Object> param, MultipartFile prodExpdImg, HttpServletRequest request) throws Exception {
 		String root = request.getSession().getServletContext().getRealPath("resources");
@@ -100,6 +104,16 @@ public class ProductServiceImpl implements ProductService{
 		}
 		
 		return 0;
+	}
+
+	@Override
+	public List<Map<String, Object>> selectProductMfpList() {
+		return pd.selectProductMfpList(sqlSession);
+	}
+
+	@Override
+	public List<Map<String, Object>> selectProductExpdList() {
+		return pd.selectProductExpdList(sqlSession);
 	}
 
 }
