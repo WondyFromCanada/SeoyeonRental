@@ -70,4 +70,16 @@
 		 WHERE A.DIVSN = '소모품'
 	  ORDER BY PROD_ID DESC
 	</select>
+	
+	<select id="selectProductMfpListCount" resultType="_int">
+		<!-- 관리자 > 제품관리 > 복합기 개수 전체 조회 -->
+		SELECT COUNT(*)
+		  FROM SY_PROD_MFP;
+	</select>
+	
+	<select id="selectProductExpdListCount" resultType="_int">
+		<!-- 관리자 > 제품관리 > 소모품 개수 전체 조회 -->
+		SELECT COUNT(*)
+		  FROM SY_PROD_EXPD;
+	</select>
 </mapper>

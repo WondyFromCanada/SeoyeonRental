@@ -19,4 +19,8 @@ public interface ProductDao {
 
 	List<Map<String, Object>> selectProductExpdList(SqlSessionTemplate sqlSession);
 
+	int selectProductMfpListCount(SqlSessionTemplate sqlSession);
+
+	int selectProductExpdListCount(SqlSessionTemplate sqlSession);
+
 }

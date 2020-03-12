@@ -41,5 +41,15 @@ public class ProductDaoImpl implements ProductDao{
 	public List<Map<String, Object>> selectProductExpdList(SqlSessionTemplate sqlSession) {
 		return sqlSession.selectList("selectProductExpdList");
 	}
+
+	@Override
+	public int selectProductMfpListCount(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectOne("selectProductMfpListCount");
+	}
+
+	@Override
+	public int selectProductExpdListCount(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectOne("selectProductExpdListCount");
+	}
 	
 }

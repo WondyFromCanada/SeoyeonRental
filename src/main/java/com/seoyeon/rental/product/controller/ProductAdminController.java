@@ -32,7 +32,7 @@ public class ProductAdminController {
 	/**
 	 * Author : 김정언
 	 * Date : 2020. 3. 11.
-	 * Discription : 제품관리 (복합기) 전체 조회
+	 * Discription : 제품관리 복합기 전체 조회
 	**/
 	@ResponseBody
 	@GetMapping(value="/product/mfp")
@@ -43,8 +43,20 @@ public class ProductAdminController {
 	
 	/**
 	 * Author : 김정언
+	 * Date : 2020. 3. 12.
+	 * Discription : 제품관리 복합기 개수 전체 조회
+	**/
+	@ResponseBody
+	@GetMapping(value="/product/mfpCnt")
+	public int selectProductMfpListCount() {
+		int listCount = ps.selectProductMfpListCount();
+		return listCount;
+	}
+	
+	/**
+	 * Author : 김정언
 	 * Date : 2020. 3. 11.
-	 * Discription : 제품관리 (소모품) 전체 조회
+	 * Discription : 제품관리 소모품 전체 조회
 	**/
 	@ResponseBody
 	@GetMapping(value="/product/expd")
@@ -53,4 +65,15 @@ public class ProductAdminController {
 		return list;
 	}
 	
+	/**
+	 * Author : 김정언
+	 * Date : 2020. 3. 12.
+	 * Discription : 제품관리 소모품 전체 개수 조회
+	**/
+	@ResponseBody
+	@GetMapping(value="/product/expdCnt")
+	public int selectProductExpdListCount() {
+		int listCount = ps.selectProductExpdListCount();
+		return listCount;
+	}
 }

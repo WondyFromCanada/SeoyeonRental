@@ -1,5 +1,24 @@
 @charset "UTF-8";
 
+#prodMfpUl {
+	list-style-type: none;
+	padding: 0;
+	text-align: center;
+	display: inline-block;
+}
+
+#prodMfpUl li {
+	display: inline-block;
+}
+
+/*.page-content{
+  background: #eee;
+  display: inline-block;
+  padding: 10px;
+  width: 100%;
+  max-width: 660px;
+}*/
+
 .prodMfpImg {
 	width: 100%;
 	height: 400px;
@@ -8,8 +27,4 @@
 .prodMfpP {
 	font-size: 25px;
 	padding-top: 12px;
-}
-
-.prodMfpId {
-	display: none;	
 }

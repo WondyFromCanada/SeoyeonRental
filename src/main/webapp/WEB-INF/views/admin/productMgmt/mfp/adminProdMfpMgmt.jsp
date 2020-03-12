@@ -11,7 +11,8 @@
 	<jsp:include page="../../common/adminTopNav.jsp" />
 	<jsp:include page="../../common/adminProdSubNav.jsp" />
 	<div class="container-fluid" style="margin-top: 20px;">
-		<div class="row text-center slideanim" id="prodMfpDiv"></div>
+		<div class="row pagination-sm" id="prodMfpUl"></div>
+		<div id="prodMfpPageContent" class="page-content"></div>
 		<div>
 			<button type="button" class="btn btn-default"
 				onclick="window.location.href='adminProdMfpMgmtEnrollPage.do'">제품등록</button>
