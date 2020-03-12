@@ -12,7 +12,7 @@
 	<jsp:include page="../../common/adminProdSubNav.jsp" />
 	<div class="container-fluid" style="margin-top: 20px;">
 		<div class="row pagination-sm" id="prodMfpUl">
-			<div id="list-body"></div>
+			<div id="listBody"></div>
 		</div>
 		<div id="prodMfpPageContent" class="page-content"></div>
 		<div>
