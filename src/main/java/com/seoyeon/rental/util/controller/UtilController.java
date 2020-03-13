@@ -122,6 +122,7 @@ public class UtilController {
 		return "product/expd/expdSellMain";
 	}
 	
+		/* 설치소식 Start */
 	/**
 	 * Author : 김정언 
 	 * Date : 2020. 3. 3. 
@@ -131,6 +132,13 @@ public class UtilController {
 	public String installBoardPage() {
 		return "installBoard/installBoardMain";
 	}
+	
+	@GetMapping(value = "installBoardDetailPage.do")
+	public String installBoardDetailPage() {
+		return "installBoard/installBoardDetail";
+	}
+	
+		/* 설치소식 End */
 	
 	/**
 	 * Author : 김동환 
