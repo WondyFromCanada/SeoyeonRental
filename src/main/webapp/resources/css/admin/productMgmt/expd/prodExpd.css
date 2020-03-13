@@ -1,11 +1,6 @@
 @charset "UTF-8";
 
-.prodExpdImg {
-	width: 100%;
-	height: 400px;
-}
-
-.prodExpdP {
+.thumbnail p {
 	font-size: 25px;
 	padding-top: 12px;
 }

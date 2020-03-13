@@ -126,4 +126,42 @@ public class ProductServiceImpl implements ProductService{
 		return pd.selectProductExpdListCount(sqlSession);
 	}
 
+	@Override
+	public Map<String, Object> selectProductMfpDetail(String prodId) {
+		return pd.selectProductMfpDetail(sqlSession, prodId);
+	}
+
+	@Override
+	public Map<String, Object> selectProductExpdDetail(String prodId) {
+		return pd.selectProductExpdDetail(sqlSession, prodId);
+	}
+
+	@Override
+	public int deleteProductMfp(String prodId) {
+		//PROD_MFP 테이블에서 delete
+		int mfpResult = pd.deleteProductMfp(sqlSession, prodId);
+		//Attachment 테이블에서 delete
+		int attResult = pd.deleteProductMfpAttachment(sqlSession, prodId);
+		
+		if(mfpResult + attResult > 1) {
+			return mfpResult + attResult;
+		}
+		
+		return 0;
+	}
+
+	@Override
+	public int deleteProductExpd(String prodId) {
+		//PROD_EXPD 테이블에서 delete
+		int expdResult = pd.deleteProductExpd(sqlSession, prodId);
+		//Attachment 테이블에서 delete
+		int attResult = pd.deleteProductExpdAttachment(sqlSession, prodId);
+
+		if(expdResult + attResult > 1) {
+			return expdResult + attResult;
+		}
+
+		return 0;
+	}
+
 }

@@ -23,4 +23,16 @@ public interface ProductDao {
 
 	int selectProductExpdListCount(SqlSessionTemplate sqlSession);
 
+	Map<String, Object> selectProductMfpDetail(SqlSessionTemplate sqlSession, String prodId);
+
+	Map<String, Object> selectProductExpdDetail(SqlSessionTemplate sqlSession, String prodId);
+
+	int deleteProductMfp(SqlSessionTemplate sqlSession, String prodId);
+
+	int deleteProductExpd(SqlSessionTemplate sqlSession, String prodId);
+
+	int deleteProductMfpAttachment(SqlSessionTemplate sqlSession, String prodId);
+
+	int deleteProductExpdAttachment(SqlSessionTemplate sqlSession, String prodId);
+
 }

@@ -1,6 +1,5 @@
 package com.seoyeon.rental.product.dao.impl;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -50,6 +49,36 @@ public class ProductDaoImpl implements ProductDao{
 	@Override
 	public int selectProductExpdListCount(SqlSessionTemplate sqlSession) {
 		return sqlSession.selectOne("selectProductExpdListCount");
+	}
+
+	@Override
+	public Map<String, Object> selectProductMfpDetail(SqlSessionTemplate sqlSession, String prodId) {
+		return sqlSession.selectOne("selectProductMfpDetail", prodId);
+	}
+
+	@Override
+	public Map<String, Object> selectProductExpdDetail(SqlSessionTemplate sqlSession, String prodId) {
+		return sqlSession.selectOne("selectProductExpdDetail", prodId);
+	}
+
+	@Override
+	public int deleteProductMfp(SqlSessionTemplate sqlSession, String prodId) {
+		return sqlSession.delete("deleteProductMfp", prodId);
+	}
+
+	@Override
+	public int deleteProductExpd(SqlSessionTemplate sqlSession, String prodId) {
+		return sqlSession.delete("deleteProductExpd", prodId);
+	}
+
+	@Override
+	public int deleteProductMfpAttachment(SqlSessionTemplate sqlSession, String prodId) {
+		return sqlSession.delete("deleteProductMfpAttachment", prodId);
+	}
+
+	@Override
+	public int deleteProductExpdAttachment(SqlSessionTemplate sqlSession, String prodId) {
+		return sqlSession.delete("deleteProductExpdAttachment", prodId);
 	}
 	
 }

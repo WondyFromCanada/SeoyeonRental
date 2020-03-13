@@ -91,7 +91,7 @@
 					</div>
 				</div>
 				<div style="float: right;">
-					<button type="button" class="btn btn-default" onclick="location.href='adminProdMfpMgmtPage.do'">취소</button>
+					<button class="btn btn-default" onclick="location.href='adminProdMfpMgmtPage.do'">취소</button>
 					<button type="submit" class="btn btn-primary">등록</button>
 				</div>
 			</div>
