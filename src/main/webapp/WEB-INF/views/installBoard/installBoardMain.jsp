@@ -3,11 +3,14 @@
     pageEncoding="UTF-8"%>
 <html>
 <head>
-	<title>Home</title>
+	<title>설치 소식 메인</title>
 </head>
 <body>
-<h1>
-	설치소식
-</h1>
+	<jsp:include page="../common/topNav.jsp" />
+	<div id="content">
+		<table id="boardTable" class="table table-striped table-bordered"></table>
+	</div>
+	<div id="main"></div>
 </body>
+<script src="resources/js/installBoard/installBoardMain.js"></script>
 </html>
