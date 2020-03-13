@@ -17,7 +17,7 @@ function initData() {
 				//페이징 영역에 번호 몇개까지 보일건지
 				var visibleBlock = 5;
 				
-				$('#prodMfpUl').twbsPagination({
+				$('#prodMfpDiv').twbsPagination({
 					totalPages: totalPages,	// 총 페이지 번호 수
 					visiblePages: visibleBlock,	// 하단에서 한번에 보여지는 페이지 번호 수
 					startPage : 1, // 시작시 표시되는 현재 페이지
@@ -37,7 +37,7 @@ function initData() {
 					onPageClick: function (event, page) {
 						//twbs입힌 prodMfpUi 하위에 컨텐츠 넣을 영역을 하나 더 추가해야 함
 						//새로운 페이지 갈때마다 초기화 하고 다시 컨텐츠 넣음
-						$("#listBody").empty();
+						$("#prodMfplistBody").empty();
 						
 						//보여지길 원하는 갯수
 						var pageSize = 9;
@@ -62,15 +62,13 @@ function initData() {
 							innerHTML +=
 								"<div class='col-sm-4'>" +
 									"<div class='thumbnail'>" +
-										"<img class='prodMfpImg' src='/rental/resources/uploadFiles/product/mfp/" + 
-											data[i].CHANGE_NM + data[i].EXT + "' " +
-											"onclick='prodMfpDetail(\"" + data[i].PROD_ID + "\")'>" +
-										"<p class='prodMfpP' onclick='prodMfpDetail(\"" + data[i].PROD_ID + "\")'>" + data[i].PROD_NM + "</p>" + 
+										"<img src='/rental/resources/uploadFiles/product/mfp/" + data[i].CHANGE_NM + data[i].EXT + "' " + "onclick='prodMfpDetail(\"" + data[i].PROD_ID + "\")'>" +
+										"<p onclick='prodMfpDetail(\"" + data[i].PROD_ID + "\")'>" + data[i].PROD_NM + "</p>" + 
 									"</div>" +
 								"</div>";
 						}
 						
-						$("#listBody").append(innerHTML);
+						$("#prodMfplistBody").append(innerHTML);
 						
 					}
 				});

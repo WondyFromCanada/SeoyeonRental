@@ -21,4 +21,12 @@ public interface ProductService {
 
 	int selectProductExpdListCount();
 
+	Map<String, Object> selectProductMfpDetail(String prodId);
+
+	Map<String, Object> selectProductExpdDetail(String prodId);
+
+	int deleteProductMfp(String prodId);
+
+	int deleteProductExpd(String prodId);
+
 }
