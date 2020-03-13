@@ -6,7 +6,6 @@ function initData() {
 	$.ajax({
 		url: '/rental/product/mfp',
 		type: 'GET',
-		contenType: 'application/json',
 		success: function(data) {
 			//data Null 처리
 			if(data.length > 1) {
