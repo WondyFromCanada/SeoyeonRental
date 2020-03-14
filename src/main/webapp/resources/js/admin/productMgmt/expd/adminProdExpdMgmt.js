@@ -14,8 +14,11 @@ function initData() {
 			//data Null 처리
 			if(data.length > 1) {
 				
+				//보여지길 원하는 갯수
+				var pageSize = 9;
+				
 				//전체 데이터 갯수를 9로 나눈후 반올림하여 총 페이지 수 설정
-				var totalPages = Math.round(data.length / 9);
+				var totalPages = Math.ceil(data.length / pageSize);
 				
 				//페이징 영역에 번호 몇개까지 보일건지
 				var visibleBlock = 5;
@@ -41,9 +44,6 @@ function initData() {
 						//twbs입힌 prodMfpUi 하위에 컨텐츠 넣을 영역을 하나 더 추가해야 함
 						//새로운 페이지 갈때마다 초기화 하고 다시 컨텐츠 넣음
 						$("#prodExpdlistBody").empty();
-						
-						//보여지길 원하는 갯수
-						var pageSize = 9;
 						
 						//데이터 총 갯수
 						var totalCnt = data.length;

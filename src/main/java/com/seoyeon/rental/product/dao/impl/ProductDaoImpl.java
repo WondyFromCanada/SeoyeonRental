@@ -80,5 +80,25 @@ public class ProductDaoImpl implements ProductDao{
 	public int deleteProductExpdAttachment(SqlSessionTemplate sqlSession, String prodId) {
 		return sqlSession.delete("deleteProductExpdAttachment", prodId);
 	}
+
+	@Override
+	public int updateProductMfpAttachment(SqlSessionTemplate sqlSession, Map<String, Object> attMap) {
+		return sqlSession.update("updateProductMfpAttachment", attMap);
+	}
+
+	@Override
+	public int updateProductMfp(SqlSessionTemplate sqlSession, Map<String, Object> param) {
+		return sqlSession.update("updateProductMfp", param);
+	}
+
+	@Override
+	public int updateProductExpdAttachment(SqlSessionTemplate sqlSession, Map<String, Object> attMap) {
+		return sqlSession.update("updateProductExpdAttachment", attMap);
+	}
+
+	@Override
+	public int updateProductExpd(SqlSessionTemplate sqlSession, Map<String, Object> param) {
+		return sqlSession.update("updateProductExpd", param);
+	}
 	
 }

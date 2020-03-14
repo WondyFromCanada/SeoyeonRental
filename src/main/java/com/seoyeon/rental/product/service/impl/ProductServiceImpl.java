@@ -22,7 +22,7 @@ import com.seoyeon.rental.product.service.ProductService;
 
 @Service
 public class ProductServiceImpl implements ProductService{
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(ProductServiceImpl.class);
 	
 	@Autowired
 	private ProductDao pd;
@@ -138,6 +138,18 @@ public class ProductServiceImpl implements ProductService{
 
 	@Override
 	public int deleteProductMfp(String prodId) {
+		
+		Map<String, Object> mfpMap = pd.selectProductMfpDetail(sqlSession, prodId);
+		
+		try {
+			File delFile = new File("resources\\uploadFiles\\product\\mfp\\" + mfpMap.get("CHANGE_NM") + mfpMap.get("EXT"));
+			logger.info("파일 경로 : " + delFile);
+
+			if(delFile.exists()) delFile.delete();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
 		//PROD_MFP 테이블에서 delete
 		int mfpResult = pd.deleteProductMfp(sqlSession, prodId);
 		//Attachment 테이블에서 delete
@@ -152,6 +164,17 @@ public class ProductServiceImpl implements ProductService{
 
 	@Override
 	public int deleteProductExpd(String prodId) {
+		Map<String, Object> expdMap = pd.selectProductExpdDetail(sqlSession, prodId);
+		
+		try {
+			File delFile = new File("resources\\uploadFiles\\product\\expd\\" + expdMap.get("CHANGE_NM") + expdMap.get("EXT"));
+			logger.info("파일 경로 : " + delFile);
+
+			if(delFile.exists()) delFile.delete();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
 		//PROD_EXPD 테이블에서 delete
 		int expdResult = pd.deleteProductExpd(sqlSession, prodId);
 		//Attachment 테이블에서 delete
@@ -164,4 +187,85 @@ public class ProductServiceImpl implements ProductService{
 		return 0;
 	}
 
+	@Transactional
+	@Override
+	public int updateProductMfp(Map<String, Object> param, MultipartFile prodMfpImgDetail, HttpServletRequest request) throws Exception {
+		int attResult = 0;
+		
+		if(!prodMfpImgDetail.isEmpty()) {
+			String root = request.getSession().getServletContext().getRealPath("resources");
+			
+			String filePath = root + "\\uploadFiles\\product\\mfp";
+			String originFileName = prodMfpImgDetail.getOriginalFilename();
+			String ext = originFileName.substring(originFileName.lastIndexOf("."));
+			String changeFileName = CommonUtils.getRandomString();
+			
+			try {
+				//지정한 경로에 파일저장
+				prodMfpImgDetail.transferTo(new File(filePath + "\\" + changeFileName + ext));
+				
+				//Attachment 테이블에 저장할 데이터 map
+				Map<String, Object> attMap = new HashMap<String, Object> ();
+				attMap.put("filePath", filePath);
+				attMap.put("originNm", originFileName);
+				attMap.put("changeNm", changeFileName);
+				attMap.put("ext", ext);
+				attMap.put("mfpProdId", param.get("mfpProdId"));
+				
+				//Attachment 테이블에 update
+				attResult = pd.updateProductMfpAttachment(sqlSession, attMap);
+				
+			} catch (Exception e) {
+				new File(filePath + "\\" + changeFileName + ext).delete();
+				throw new Exception("파일등록 에러");
+			}
+		}
+		
+		//PROD_MFP 테이블에 update
+		int mfpResult = pd.updateProductMfp(sqlSession, param);
+		
+		return mfpResult + attResult;
+	}
+
+	@Transactional
+	@Override
+	public int updateProductExpd(Map<String, Object> param, MultipartFile prodExpdImgDetail, HttpServletRequest request) throws Exception {
+		int attResult = 0;
+		
+		if(!prodExpdImgDetail.isEmpty()) {
+			
+			String root = request.getSession().getServletContext().getRealPath("resources");
+			
+			String filePath = root + "\\uploadFiles\\product\\expd";
+			String originFileName = prodExpdImgDetail.getOriginalFilename();
+			String ext = originFileName.substring(originFileName.lastIndexOf("."));
+			String changeFileName = CommonUtils.getRandomString();
+			
+			try {
+				//지정한 경로에 파일저장
+				prodExpdImgDetail.transferTo(new File(filePath + "\\" + changeFileName + ext));
+				
+				//Attachment 테이블에 저장할 데이터 map
+				Map<String, Object> attMap = new HashMap<String, Object> ();
+				attMap.put("filePath", filePath);
+				attMap.put("originNm", originFileName);
+				attMap.put("changeNm", changeFileName);
+				attMap.put("ext", ext);
+				attMap.put("expdProdId", param.get("expdProdId"));
+				
+				//Attachment 테이블에 update
+				attResult = pd.updateProductExpdAttachment(sqlSession, attMap);
+				
+			} catch (Exception e) {
+				new File(filePath + "\\" + changeFileName + ext).delete();
+				throw new Exception("파일등록 에러");
+			}
+		}
+		
+		//PROD_EXPD 테이블에 update
+		int expdResult = pd.updateProductExpd(sqlSession, param);
+
+		
+		return expdResult + attResult;
+	}
 }

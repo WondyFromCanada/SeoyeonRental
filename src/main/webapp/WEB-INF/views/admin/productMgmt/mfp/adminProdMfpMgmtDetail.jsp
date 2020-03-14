@@ -12,38 +12,30 @@
 		<div>
 			<div class="col-md-4">
 				<div class="thumbnail caption">
-					<img class="prodImg" id="prodMfpImgDiv"
-						src=""
-						style="width: 600px; height: 600px;">
+					<img class="prodImg" id="prodMfpImgDiv" style="height: 600px;">
 				</div>
-				<input type="file" id="prodMfpImgDetail" name="prodMfpImgDetail"
-					accept="image/*" onchange="handleImgFileSelect(this)" required />
+				<button type="button" class="btn btn-default btn-block change-img">사진 변경</button>
+				<input type="file" id="prodMfpImgDetail" name="prodMfpImgDetail" accept="image/*" onchange="handleImgFileSelect(this)"/>
 			</div>
 			<div class="col-md-8">
 				<div class="">
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="mfpBrandInfDetail">브랜드</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="mfpBrandInfDetail"
-								placeholder="" name="mfpBrandInfDetail" style="margin-bottom: 20px;"
-								required>
+							<input type="text" class="form-control" id="mfpBrandInfDetail" name="mfpBrandInfDetail" style="margin-bottom: 20px;" required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="mfpProdNmDetail">모델명</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="mfpProdNmDetail"
-								placeholder="" name="mfpProdNmDetail" style="margin-bottom: 20px;"
-								required>
+							<input type="text" class="form-control" id="mfpProdNmDetail" name="mfpProdNmDetail" style="margin-bottom: 20px;" required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="mfpProdInfDetail">핵심
 							기능</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="mfpProdInfDetail"
-								placeholder="" name="mfpProdInfDetail" style="margin-bottom: 20px;"
-								required>
+							<input type="text" class="form-control" id="mfpProdInfDetail" name="mfpProdInfDetail" style="margin-bottom: 20px;" required>
 						</div>
 					</div>
 					<div class="form-group">
@@ -69,8 +61,7 @@
 					<div class="form-group">
 						<label for="networkDivsnDetail" class="col-sm-2">네트워크 구분</label>
 						<div class="col-sm-10">
-							<select class="form-control" id="networkDivsnDetail"
-								name="networkDivsnDetail" style="margin-bottom: 20px;">
+							<select class="form-control" id="networkDivsnDetail" name="networkDivsnDetail" style="margin-bottom: 20px;">
 								<option value="유무선" selected="selected">유무선</option>
 								<option value="유선">유선</option>
 								<option value="무선">무선</option>
@@ -80,8 +71,7 @@
 					<div class="form-group">
 						<label for="paperDivsnDetail" class="col-sm-2">용지 구분</label>
 						<div class="col-sm-10">
-							<select class="form-control" id="paperDivsnDetail" name="paperDivsnDetail"
-								style="margin-bottom: 20px;">
+							<select class="form-control" id="paperDivsnDetail" name="paperDivsnDetail" style="margin-bottom: 20px;">
 								<option value="A3" selected="selected">A3</option>
 								<option value="A4">A4</option>
 							</select>
@@ -90,19 +80,23 @@
 					<div class="form-group">
 						<label for="colorYnDetail" class="col-sm-2">컬러 구분</label>
 						<div class="col-sm-10">
-							<select class="form-control" id="colorYnDetail" name="colorYnDetail"
-								style="margin-bottom: 50px;">
+							<select class="form-control" id="colorYnDetail" name="colorYnDetail" style="margin-bottom: 50px;">
 								<option value="흑백" selected="selected">흑백</option>
 								<option value="컬러">컬러</option>
 							</select>
 						</div>
 					</div>
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="mfpProdId" name="mfpProdId" style="display: none;">
+						</div>
+					</div>
 				</div>
 				<div style="float: right;">
-					<button id="prodMfpDelete" class="btn btn-danger">삭제</button>
-					<button id="prodMfpModify" class="btn btn-primary">수정</button>
-					<button id="prodMfpUpdate" class="btn btn-primary">저장</button>
-					<button class="btn btn-default" onclick="location.href='adminProdMfpMgmtPage.do'">목록</button>
+					<button type="button" id="prodMfpDelete" class="btn btn-danger">삭제</button>
+					<button type="button" id="prodMfpModify" class="btn btn-primary">수정</button>
+					<button type="submit" id="prodMfpUpdate" class="btn btn-primary">저장</button>
+					<button type="button" class="btn btn-default" onclick="location.href='adminProdMfpMgmtPage.do'">목록</button>
 				</div>
 			</div>
 		</div>

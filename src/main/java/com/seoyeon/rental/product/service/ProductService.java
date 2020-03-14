@@ -29,4 +29,8 @@ public interface ProductService {
 
 	int deleteProductExpd(String prodId);
 
+	int updateProductMfp(Map<String, Object> param, MultipartFile prodMfpImgDetail, HttpServletRequest request) throws Exception;
+
+	int updateProductExpd(Map<String, Object> param, MultipartFile prodExpdImgDetail, HttpServletRequest request) throws Exception;
+
 }
