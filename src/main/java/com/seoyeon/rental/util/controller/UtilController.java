@@ -465,7 +465,6 @@ public class UtilController {
 	 * Date : 2020. 3. 10.
 	 * Discription : 제품관리 > 제품등록 (복합기)
 	 **/
-	@Transactional
 	@PostMapping(value= "adminProdMfpMgmtEnroll.do")
 	public String insertProductMfp(
 			HttpSession session,
@@ -510,7 +509,6 @@ public class UtilController {
 	 * Date : 2020. 3. 10.
 	 * Discription : 제품관리 > 제품등록 (소모품)
 	 **/
-	@Transactional
 	@PostMapping(value= "adminProdExpdMgmtEnroll.do")
 	public String insertProductExpd(
 			HttpSession session,
@@ -547,12 +545,101 @@ public class UtilController {
 	}
 	
 	/**
+	 * Author : 김정언
+	 * Date : 2020. 3. 14.
+	 * Discription : 제품관리 > 제품수정 (복합기)
+	**/
+	@PostMapping(value= "adminProdMfpMgmtUpdate.do")
+	public String updateProductMfp(
+			HttpSession session,
+			HttpServletRequest request,
+			@RequestParam(name = "prodMfpImgDetail", required = false) MultipartFile prodMfpImgDetail, 
+			@RequestParam(name = "mfpBrandInfDetail") String mfpBrandInfDetail, @RequestParam(name = "mfpProdNmDetail") String mfpProdNmDetail,
+			@RequestParam(name = "outputSpdDetail") int outputSpdDetail, @RequestParam(name = "scanSpdDetail") int scanSpdDetail,
+			@RequestParam(name = "mfpProdInfDetail") String mfpProdInfDetail, @RequestParam(name = "networkDivsnDetail") String networkDivsnDetail,
+			@RequestParam(name = "paperDivsnDetail") String paperDivsnDetail, @RequestParam(name = "colorYnDetail") String colorYnDetail,
+			@RequestParam(name = "mfpProdId") String mfpProdId) throws Exception { 
+			
+			Map<String, Object> resultMap = new HashMap<String, Object> ();
+			//form으로 받아온 파라미터 처리
+			String output = outputSpdDetail + "매";
+			String scan = scanSpdDetail + "매";
+			String color = "";
+			if (colorYnDetail.equals("흑백")) color = "N";
+			else color = "Y";
+			
+			//디비로 보낼 파라미터, file데이터, request객체 service로 전송
+			Map<String, Object> param = new HashMap<String, Object> ();
+			param.put("mfpBrandInfDetail", mfpBrandInfDetail);
+			param.put("mfpProdInfDetail", mfpProdInfDetail);
+			param.put("mfpProdNmDetail", mfpProdNmDetail);
+			param.put("output", output);
+			param.put("scan", scan);
+			param.put("networkDivsnDetail", networkDivsnDetail);
+			param.put("paperDivsnDetail", paperDivsnDetail);
+			param.put("color", color);
+			param.put("mfpProdId", mfpProdId);
+			
+			int result = ps.updateProductMfp(param, prodMfpImgDetail, request);
+			
+			if( result > 0 ) {
+				resultMap.put("result", "success");
+			} else {
+				resultMap.put("result", "fail");
+			}
+			
+		return "redirect:adminProdMfpMgmtDetailPage?prodId=" + mfpProdId;
+	}
+	
+	/**
+	 * Author : 김정언
+	 * Date : 2020. 3. 14.
+	 * Discription : 제품관리 > 제품수정 (소모품)
+	**/
+	@PostMapping(value= "adminProdExpdMgmtUpdate.do")
+	public String updateProductExpd(
+			HttpSession session,
+			HttpServletRequest request,
+			@RequestParam(name = "prodExpdImgDetail", required = false) MultipartFile prodExpdImgDetail, 
+			@RequestParam(name = "expdBrandInfDetail") String expdBrandInfDetail,
+			@RequestParam(name = "expdProdNmDetail") String expdProdNmDetail,
+			@RequestParam(name = "expdProdInfDetail") String expdProdInfDetail,
+			@RequestParam(name = "sellYnDetail") String sellYnDetail,
+			@RequestParam(name = "expdModelAvailDetail") String expdModelAvailDetail,
+			@RequestParam(name = "expdProdId") String expdProdId) throws Exception {
+			
+			Map<String, Object> resultMap = new HashMap<String, Object> ();
+			//form으로 받아온 파라미터 처리
+			String sell = "";
+			if (sellYnDetail.equals("가능")) sell = "Y";
+			else sell = "N";
+			
+			//디비로 보낼 파라미터, file데이터, request객체 service로 전송
+			Map<String, Object> param = new HashMap<String, Object> ();
+			param.put("expdBrandInf", expdBrandInfDetail);
+			param.put("expdProdNm", expdProdNmDetail);
+			param.put("expdProdInf", expdProdInfDetail);
+			param.put("expdModelAvail", expdModelAvailDetail);
+			param.put("sell", sell);
+			param.put("expdProdId", expdProdId);
+			
+			int result = ps.updateProductExpd(param, prodExpdImgDetail, request);
+			
+			if( result > 0 ) {
+				resultMap.put("result", "success");
+			} else {
+				resultMap.put("result", "fail");
+			}
+			
+		return "redirect:adminProdExpdMgmtDetailPage.do?prodId=" + expdProdId;
+	}
+	
+	/**
 	 *	Author : 김동환
 	 *	Date : 2020. 3. 5.
 	 *  Discription : 고객센터 자료실 게시글 업로드
 	**/
 	//mysql은 @transcational이 잘 안먹는거 같음
-	@Transactional
 	@PostMapping(value= "adminCustomerMaterialMgmtEnroll.do")
 	public String insertCustomerMaterialBoard(
 			HttpSession session,

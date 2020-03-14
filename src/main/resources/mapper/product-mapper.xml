@@ -147,4 +147,25 @@
 		 WHERE POST_ID = #{prodId}
 		   AND DIVSN = '소모품';
 	</delete>
+	
+	<update id="updateProductMfpAttachment" parameterType="map">
+		<!-- 관리자 > 제품관리 > 복합기 사진 수정 -->
+
+	</update>
+	
+	<update id="updateProductMfp" parameterType="map">
+		<!-- 관리자 > 제품관리 > 복합기 수정 -->
+	</update>
+	
+	<update id="updateProductExpdAttachment" parameterType="map">
+		<!-- 관리자 > 제품관리 > 소모품 사진 수정 -->
+
+	</update>
+	
+	<update id="updateProductExpd" parameterType="map">
+		<!-- 관리자 > 제품관리 > 복합기 수정 -->
+
+	</update>
+	
+	
 </mapper>

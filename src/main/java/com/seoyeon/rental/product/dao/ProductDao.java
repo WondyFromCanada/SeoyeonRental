@@ -35,4 +35,12 @@ public interface ProductDao {
 
 	int deleteProductExpdAttachment(SqlSessionTemplate sqlSession, String prodId);
 
+	int updateProductMfpAttachment(SqlSessionTemplate sqlSession, Map<String, Object> attMap);
+
+	int updateProductMfp(SqlSessionTemplate sqlSession, Map<String, Object> param);
+
+	int updateProductExpdAttachment(SqlSessionTemplate sqlSession, Map<String, Object> attMap);
+
+	int updateProductExpd(SqlSessionTemplate sqlSession, Map<String, Object> param);
+
 }

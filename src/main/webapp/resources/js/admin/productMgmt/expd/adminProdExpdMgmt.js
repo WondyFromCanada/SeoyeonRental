@@ -3,5 +3,5 @@ $(function() {
 });
 
 function adminProdExpdMgmtDetailPage(prodId) {
-		window.location.href = 'adminProdExpdMgmtDetailPage.do?prodId=' + prodId;
+	window.location.href = 'adminProdExpdMgmtDetailPage.do?prodId=' + prodId;
 }

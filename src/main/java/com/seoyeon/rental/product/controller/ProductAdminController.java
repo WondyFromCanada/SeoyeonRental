@@ -14,14 +14,15 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.seoyeon.rental.HomeController;
 import com.seoyeon.rental.product.service.ProductService;
 
-@Controller
+@RestController
 public class ProductAdminController {
 
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(ProductAdminController.class);
 	
 	@Autowired
 	private ProductService ps;
@@ -31,7 +32,6 @@ public class ProductAdminController {
 	 * Date : 2020. 3. 11.
 	 * Discription : 제품관리 복합기 전체 조회
 	**/
-	@ResponseBody
 	@GetMapping(value="/product/mfp")
 	public List<Map<String, Object>> selectProductMfpList() {
 		List<Map<String, Object>> list = ps.selectProductMfpList();
@@ -43,7 +43,6 @@ public class ProductAdminController {
 	 * Date : 2020. 3. 12.
 	 * Discription : 제품관리 복합기 개수 전체 조회
 	**/
-	@ResponseBody
 	@GetMapping(value="/product/mfpCnt")
 	public int selectProductMfpListCount() {
 		int listCount = ps.selectProductMfpListCount();
@@ -55,7 +54,6 @@ public class ProductAdminController {
 	 * Date : 2020. 3. 11.
 	 * Discription : 제품관리 소모품 전체 조회
 	**/
-	@ResponseBody
 	@GetMapping(value="/product/expd")
 	public List<Map<String, Object>> selectProductExpdList() {
 		List<Map<String, Object>> list = ps.selectProductExpdList();
@@ -67,7 +65,6 @@ public class ProductAdminController {
 	 * Date : 2020. 3. 12.
 	 * Discription : 제품관리 소모품 전체 개수 조회
 	**/
-	@ResponseBody
 	@GetMapping(value="/product/expdCnt")
 	public int selectProductExpdListCount() {
 		int listCount = ps.selectProductExpdListCount();
