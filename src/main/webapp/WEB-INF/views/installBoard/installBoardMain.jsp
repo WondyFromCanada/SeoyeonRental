@@ -15,16 +15,13 @@
 <body>
 	<jsp:include page="../common/topNav.jsp" />
 	<div class="container-fluid" style="margin-top: 20px;">
-		<div class="pagination-sm text-center slideanim" id="content">
-			<div class="row" id="contentBody">
+		<div class="pagination-sm text-center slideanim main-content">
+			<div class="row content-body">
 			</div>
 		</div>
-		<div>
-			<button type="button" class="btn btn-default" id="registerPage">등록</button>
-		</div>
 	</div>
-	<div id="imgChk"></div>
+	<div class="img-chk"></div>
 </body>
-<script src="resources/js/installBoard/installBoardCommon.js"></script>
+<script src="resources/js/util/pagination.js"></script>
 <script src="resources/js/installBoard/installBoardMain.js"></script>
 </html>
