@@ -1,12 +1,18 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
 	<title>ck 공통 등록페이지</title>
 </head>
 <body>
-<jsp:include page="topNav.jsp" />
+<c:if test="${divsn eq 'admin'}">
+	<jsp:include page="../admin/common/adminTopNav.jsp" />
+</c:if>
+<c:if test="${divsn eq 'customer'}">
+	<jsp:include page="topNav.jsp" />
+</c:if>
+
 <div class="container-fluid">
 	<div class="form-inline">
 		<label class="control-label" for="title">제목 : </label>

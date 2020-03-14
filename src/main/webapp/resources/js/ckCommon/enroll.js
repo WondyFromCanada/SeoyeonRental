@@ -1,4 +1,6 @@
 $(function() {
+	$('#title').focus();
+	
 	//카테고리
 	var boardType = new URLSearchParams(location.search).get('type');
 	
@@ -22,7 +24,11 @@ $(function() {
 	}
 	
 	//ckEditor를 매핑할 textarea를 지정, img 파일을 저장할 servlet 경로 매핑
-	CKEDITOR.replace('p_content', {filebrowserImageUploadUrl: url + '/imgUpload'});
+	CKEDITOR.replace('p_content', {
+		filebrowserImageUploadUrl: url + '/imgUpload',
+		height: 450
+		}
+	);
 	
 	//ckEditor Config => img저장 탭에서 link 와 acvanced 탭을 없앰
 	CKEDITOR.on('dialogDefinition', function( ev ) {
@@ -42,7 +48,7 @@ $(function() {
 		register(boardType, prevPage, url);
 	});
 	
-	$('#goback').on('click', function(e) {
+	$('#goBack').on('click', function(e) {
 		location.href = prevPage;
 	});
 	
