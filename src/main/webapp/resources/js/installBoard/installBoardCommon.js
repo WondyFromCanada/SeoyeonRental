@@ -1,25 +1,27 @@
-$(function() {
+/*
+ * 설치소식 사용자 / 관리자 공통 기능
+ * */
+$(function () {
 	initData();
-});
+})
 
 function initData() {
 	$.ajax({
-		url: '/rental/product/mfp',
+		url: '/rental/install',
 		type: 'GET',
 		success: function(data) {
 			//data Null 처리
 			if(data.length > 1) {
-				
 				//보여지길 원하는 갯수
-				var pageSize = 9;
+				var pageSize = 6;
 				
-				//전체 데이터 갯수를 9로 나눈후 반올림하여 총 페이지 수 설정
+				//전체 데이터 갯수를 9로 나눈후 올림하여 총 페이지 수 설정
 				var totalPages = Math.ceil(data.length / pageSize);
 				
 				//페이징 영역에 번호 몇개까지 보일건지
 				var visibleBlock = 5;
 				
-				$('#prodMfpDiv').twbsPagination({
+				$('#content').twbsPagination({
 					totalPages: totalPages,	// 총 페이지 번호 수
 					visiblePages: visibleBlock,	// 하단에서 한번에 보여지는 페이지 번호 수
 					startPage : 1, // 시작시 표시되는 현재 페이지
@@ -39,7 +41,8 @@ function initData() {
 					onPageClick: function (event, page) {
 						//twbs입힌 prodMfpUi 하위에 컨텐츠 넣을 영역을 하나 더 추가해야 함
 						//새로운 페이지 갈때마다 초기화 하고 다시 컨텐츠 넣음
-						$("#prodMfplistBody").empty();
+						$("#contentBody").empty();
+						
 						
 						//데이터 총 갯수
 						var totalCnt = data.length;
@@ -58,16 +61,32 @@ function initData() {
 						//공식을 통해 긁어온 시작번호와 끝번호를 가지고 dataList에서 화면에 뿌려줄 애들만 추출
 						var innerHTML = "";
 						for(var i = startRow; i < endRow; i ++) {
+							
+							var filePath = "/rental/resources/images/common/noImg.png";
+							if(data[i].CONTENT.indexOf('src=') != -1) {
+								$('#imgChk').empty();
+								$('#imgChk').html(data[i].CONTENT);
+								
+								filePath = $('#imgChk').find('img').first().attr('src');
+								
+							}
+							
 							innerHTML +=
 								"<div class='col-sm-4'>" +
 									"<div class='thumbnail'>" +
-										"<img src='/rental/resources/uploadFiles/product/mfp/" + data[i].CHANGE_NM + data[i].EXT + "' " + "onclick='prodMfpDetail(\"" + data[i].PROD_ID + "\")'>" +
-										"<p onclick='prodMfpDetail(\"" + data[i].PROD_ID + "\")'>" + data[i].PROD_NM + "</p>" + 
+										"<img src='" + filePath + "'" + 
+											"onclick='installBoardDetail(\"" + data[i].POST_ID + "\")'>" +
+										"<p onclick='prodMfpDetail(\"" + data[i].POST_ID + "\")'>" + data[i].TITLE + "</p>" + 
 									"</div>" +
 								"</div>";
 						}
 						
-						$("#prodMfplistBody").append(innerHTML);
+						$("#contentBody").append(innerHTML);
+						
+						//chk 용 div 숨김
+						$('#imgChk').hide();
+						
+						$('img').css('height', '200px !important');
 						
 					}
 				});
@@ -79,8 +98,4 @@ function initData() {
 			console.log(data);
 		}
 	});
-}
-
-function prodMfpDetail(prodId) {
-	window.location.href = 'adminProdMfpMgmtDetailPage.do?prodId=' + prodId;
 }

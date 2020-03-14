@@ -14,7 +14,7 @@ $(function() {
 	
 	$('#registerPage').on('click', function(e) {
 		var returnPath = window.location.href;
-		location.href='ckEnrollPage.do?type=faq&returnPath=' + returnPath;
+		location.href='ckEnrollPage.do?type=faq&returnPath=' + returnPath + '&divsn=admin';
 	});
 })
 	
@@ -66,9 +66,9 @@ function tableData(data) {
 	$.each(dataList, function(i, v) {
 		innerHTML += 
 			"<tr>" +
-				"<td name='postId'>" + v.POST_ID + "</td>"+ 
-				"<td name='title'>" + v.TITLE + "</td>"+ 
-				"<td name='createDate'>" + v.CREATE_DATE + "</td>"+ 
+				"<td name='postId'>" + v.POST_ID + "</td>" + 
+				"<td name='title'>" + v.TITLE + "</td>" + 
+				"<td name='createDate'>" + v.CREATE_DATE + "</td>" + 
 			'</tr>';
 	});
 	
@@ -76,4 +76,4 @@ function tableData(data) {
 	var table = $('#boardTable').DataTable();
 	setEventListener(table);
 }
-	
+

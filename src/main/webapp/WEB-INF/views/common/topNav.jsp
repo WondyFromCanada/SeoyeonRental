@@ -22,6 +22,8 @@
 <!--data table JS  -->
 <script 
 	type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.js"></script>
+<!-- twbs -->
+<script src="resources/js/plugin/jquery.twbsPagination.js"></script>
 <style>
 	body {
 		margin-top: 101px;

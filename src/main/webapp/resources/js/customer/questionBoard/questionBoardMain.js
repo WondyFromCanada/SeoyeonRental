@@ -14,7 +14,7 @@ $(function() {
 	
 	$('#registerPage').on('click', function(e) {
 		var returnPath = window.location.href;
-		location.href='ckEnrollPage.do?type=question&returnPath=' + returnPath;
+		location.href='ckEnrollPage.do?type=question&returnPath=' + returnPath + '&divsn=customer';
 	});
 })
 	
