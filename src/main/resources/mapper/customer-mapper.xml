@@ -148,6 +148,17 @@
 		  FROM SY_CUSTOMER_FAQ_BOARD
 		 WHERE POST_ID = #{postId}
 	</delete>
-	
+
+
+	<select id="getGridColInf" parameterType="map" resultType="map">
+		<!-- Data Table 컬럼 정보 조회 -->
+		SELECT TBL_GRP_NM,
+		       TBL_COL_NM,
+		       SORT_VAL
+	  	  FROM SY_TABLE_COL_INF
+		 WHERE USE_YN = 'Y'
+		   AND TBL_GRP_NM = #{tblGrpNm}
+		 ORDER BY SORT_VAL ASC
+	</select>	
 	
 </mapper>

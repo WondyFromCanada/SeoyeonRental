@@ -38,4 +38,9 @@ public class CustomerMaterialDaoImpl implements CustomerMaterialDao{
 		return sqlSession.selectOne("selectCustomerMaterialBoard", postId);
 	}
 
+	@Override
+	public List<Map<String, Object>> getGridColInf(SqlSessionTemplate sqlSession, Map<String, Object> param) {
+		return sqlSession.selectList("getGridColInf", param);
+	}
+
 }

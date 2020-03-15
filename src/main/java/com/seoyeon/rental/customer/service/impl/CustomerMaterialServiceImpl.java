@@ -91,5 +91,10 @@ public class CustomerMaterialServiceImpl implements CustomerMaterialService{
 	public Map<String, Object> selectCustomerMaterialBoard(String postId) {
 		return cmd.selectCustomerMaterialBoard(sqlSession, postId);
 	}
+
+	@Override
+	public List<Map<String, Object>> getGridColInf(Map<String, Object> param) {
+		return cmd.getGridColInf(sqlSession, param);
+	}
 	
 }

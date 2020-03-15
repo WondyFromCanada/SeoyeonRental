@@ -22,6 +22,9 @@
 <!-- twbsPagination Plugin -->
 <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.1/jquery.twbsPagination.min.js'></script>  -->
 <script src="resources/js/plugin/jquery.twbsPagination.js"></script>
+
+<!-- dataTable Plugin -->
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-inverse">

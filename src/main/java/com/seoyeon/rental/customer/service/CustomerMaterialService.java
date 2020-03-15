@@ -39,4 +39,11 @@ public interface CustomerMaterialService {
 	**/
 	Map<String, Object> selectCustomerMaterialBoard(String postId);
 
+	/**
+	 *	Author : 김동환
+	 *	Date : 2020. 3. 15.
+	 *  Discription : 
+	**/
+	List<Map<String, Object>> getGridColInf(Map<String, Object> param);
+
 }

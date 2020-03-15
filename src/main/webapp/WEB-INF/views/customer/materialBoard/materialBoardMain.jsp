@@ -9,9 +9,10 @@
 <jsp:include page="../../common/topNav.jsp" />
 <jsp:include page="../../common/customer/customerSubNav.jsp" />
 <div id="content">
-	<table id="boardTable" class="display table"></table>
+	<table class="display table board-table"></table>
 </div>
 <div id="main"></div>
 </body>
+<script src="resources/js/util/dataTable.js"></script>
 <script src="resources/js/customer/materialBoard/materialBoardMain.js"></script>
 </html>

@@ -10,10 +10,11 @@
 <jsp:include page="../../common/customer/customerSubNav.jsp" />
 
 <div id="content">
-	<table id="boardTable" class="display table"></table>
+	<table class="display table board-table"></table>
 </div>
 <div id="main"></div>
-<button class="btn btn-warning" id="registerPage">게시글등록페이지</button>
+<button class="btn btn-warning register-page">게시글등록페이지</button>
 </body>
+<script src="resources/js/util/dataTable.js"></script>
 <script src="resources/js/customer/questionBoard/questionBoardMain.js"></script>
 </html>

@@ -9,12 +9,11 @@
 	<jsp:include page="../../common/adminTopNav.jsp" />
 	<jsp:include page="../../common/adminCustomerSubNav.jsp" />
 	<div class="container-fluid" id="content">
-			<table id="boardTable" class="display table"></table>
-			<div class="row">
-			</div>
+		<table class="display table board-table"></table>
+		<div class="row">
 		</div>
+	</div>
 </body>
-<script 
-	type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.js"></script>
+<script src="resources/js/util/dataTable.js"></script>
 <script src="resources/js/admin/customer/questionBoard/adminCustomerQuestionBoardMgmt.js"></script>
 </html>

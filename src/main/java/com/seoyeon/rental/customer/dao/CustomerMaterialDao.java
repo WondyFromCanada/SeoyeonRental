@@ -42,4 +42,11 @@ public interface CustomerMaterialDao {
 	**/
 	Map<String, Object> selectCustomerMaterialBoard(SqlSessionTemplate sqlSession, String postId);
 
+	/**
+	 *	Author : 김동환
+	 *	Date : 2020. 3. 15.
+	 *  Discription : 
+	**/
+	List<Map<String, Object>> getGridColInf(SqlSessionTemplate sqlSession, Map<String, Object> param);
+
 }
