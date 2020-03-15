@@ -25,7 +25,6 @@ function getGridColInf(tblGrpNm) {
 	});
 	
 	return gridColInf;
-	
 }
 
 function initTable(gridColInf, length) {
@@ -33,14 +32,13 @@ function initTable(gridColInf, length) {
 	table.html('');
 	
 	var thead = "";
-	var tbody = "";	
+	var tbody = "";
+	
 	$.each(gridColInf, function(i, v) {
-		
-		tbody += 
-			"<td name='" + v.TBL_COL_NM + "'>" + columnTitle[v.TBL_COL_NM] + "</td>";
 		thead += 
 			"<th name='" + v.TBL_COL_NM + "'>" + columnTitle[v.TBL_COL_NM] + "</th>";
-		
+		tbody += 
+			"<td name='" + v.TBL_COL_NM + "'>" + columnTitle[v.TBL_COL_NM] + "</td>";
 	});
 	
 	var tbodyHTML = "";
@@ -72,11 +70,10 @@ function tableData(data) {
 	var dataList = data;
 	
 	var trList = $('.board-table tbody tr');
-	$.each(trList, function(i,v){
-	    
-	    var tdList = $(v).children();
-	    $.each(tdList, function(i2, v2){
-	        $(v2).text(data[i][$(v2).attr('name')]);
+	$.each(trList, function(i, tr){
+	    var tdList = $(tr).children();
+	    $.each(tdList, function(i2, td){
+	        $(td).text( data[i][ $(td).attr('name') ] );
 	    });
 	});
 	

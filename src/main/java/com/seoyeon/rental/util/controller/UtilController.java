@@ -258,15 +258,30 @@ public class UtilController {
 		return "admin/productMgmt/mfp/adminProdMfpMgmt";
 	}
 	
+	
+		/* 관리자 제품게시판 Start*/
+	
 	/**
 	 * Author : 김정언
 	 * Date : 2020. 3. 7.
-	 * Discription : 관리자 제품게시판 페이지로 이동
+	 * Discription : 관리자 제품게시판 복합기 렌탈 페이지로 이동
 	 **/
 	@GetMapping(value = "adminProdMfpRentalBoardMgmtPage.do")
 	public String adminProdMfpRentalBoardMgmtPage() {
 		return "admin/productBoardMgmt/mfpRental/adminProdMfpRentalBoardMgmt";
 	}
+	
+	/**
+	 *	Author : 김동환
+	 *	Date : 2020. 3. 15.
+	 *  Discription : 관리자 제품게시판 복합기 렌탈 등록페이지
+	**/
+	@GetMapping(value="adminProdMfpRentalBoardMgmtEnrollPage.do")
+	public String adminProdMfpRentalBoardMgmtEnrollPage() {
+		return "admin/productBoardMgmt/mfpRental/adminProdMfpRentalBoardMgmtEnroll";
+	}
+	
+		/* 관리자 제품게시판 End */
 	/* 관리자 설치소식 Start*/
 	
 	/**

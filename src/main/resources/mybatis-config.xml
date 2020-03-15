@@ -15,6 +15,7 @@
         <mapper resource="mapper/member-mapper.xml" />
         <mapper resource="mapper/customer-mapper.xml" />
         <mapper resource="mapper/product-mapper.xml" />
+        <mapper resource="mapper/productBoard-mapper.xml" />
         <mapper resource="mapper/installBoard-mapper.xml" />
      </mappers>
 

@@ -7,7 +7,7 @@
 </head>
 <body>
 	<div class="btn-group btn-group-justified">
-		<a href="#" class="btn btn-primary">복합기렌탈</a>
+		<a href="adminProdMfpRentalBoardMgmtPage.do" class="btn btn-primary">복합기렌탈</a>
 		<a href="#"	class="btn btn-primary">복합기판매</a>
 		<a href="#" class="btn btn-primary">소모품판매</a>
 	</div>
