@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -99,10 +100,10 @@ public class ProductAdminController {
 	 * Discription : 제품관리 복합기 삭제
 	**/
 	@DeleteMapping(value = "/product/mfp/{prodId}")
-	public Map<String, Object> deleteProductMfp(@PathVariable String prodId) {
+	public Map<String, Object> deleteProductMfp(HttpServletRequest request, @PathVariable String prodId) {
 		Map<String, Object> resultMap = new HashMap<String, Object> ();
 		
-		int result = ps.deleteProductMfp(prodId);
+		int result = ps.deleteProductMfp(request, prodId);
 		
 		if(result > 0) resultMap.put("result", "success");
 		else resultMap.put("result", "fail");
@@ -115,10 +116,10 @@ public class ProductAdminController {
 	 * Discription : 제품관리 소모품 삭제
 	**/
 	@DeleteMapping(value = "/product/expd/{prodId}")
-	public Map<String, Object> deleteProductExpd(@PathVariable String prodId) {
+	public Map<String, Object> deleteProductExpd(HttpServletRequest request, @PathVariable String prodId) {
 		Map<String, Object> resultMap = new HashMap<String, Object> ();
 		
-		int result = ps.deleteProductExpd(prodId);
+		int result = ps.deleteProductExpd(request, prodId);
 		
 		if(result > 0) resultMap.put("result", "success");
 		else resultMap.put("result", "fail");
