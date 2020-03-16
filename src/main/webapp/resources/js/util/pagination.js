@@ -87,7 +87,8 @@ function initData(ckYn, onclick, url) {
 									"<div class='thumbnail'>" +
 										"<img src='" + src + "' onclick='" + onclick + "(" + 
 											((data[i].POST_ID != null)?data[i].POST_ID:data[i].PROD_ID) + ")'>" +
-										"<p onclick='" + onclick +"'>" + title + "</p>" + 
+										"<p onclick='" + onclick + "(" + 
+										((data[i].POST_ID != null)?data[i].POST_ID:data[i].PROD_ID) + ")'>" + title + "</p>" + 
 									"</div>" +
 								"</div>";
 						}
