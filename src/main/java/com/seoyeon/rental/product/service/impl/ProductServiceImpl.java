@@ -193,6 +193,13 @@ public class ProductServiceImpl implements ProductService{
 		int attResult = 0;
 		
 		if(!prodMfpImgDetail.isEmpty()) {
+			String prodId = (String) param.get("mfpProdId");
+			Map<String, Object> mfpMap = pd.selectProductMfpDetail(sqlSession, prodId);
+			
+			File delFile = new File("resources\\uploadFiles\\product\\mfp\\" + mfpMap.get("CHANGE_NM") + mfpMap.get("EXT"));
+			logger.info("파일 경로 : " + delFile);
+			if(delFile.exists()) delFile.delete();
+			
 			String root = request.getSession().getServletContext().getRealPath("resources");
 			
 			String filePath = root + "\\uploadFiles\\product\\mfp";
@@ -210,7 +217,7 @@ public class ProductServiceImpl implements ProductService{
 				attMap.put("originNm", originFileName);
 				attMap.put("changeNm", changeFileName);
 				attMap.put("ext", ext);
-				attMap.put("mfpProdId", param.get("mfpProdId"));
+				attMap.put("mfpProdId", prodId);
 				
 				//Attachment 테이블에 update
 				attResult = pd.updateProductMfpAttachment(sqlSession, attMap);
@@ -233,6 +240,12 @@ public class ProductServiceImpl implements ProductService{
 		int attResult = 0;
 		
 		if(!prodExpdImgDetail.isEmpty()) {
+			String prodId = (String) param.get("expdProdId");
+			Map<String, Object> mfpMap = pd.selectProductMfpDetail(sqlSession, prodId);
+			
+			File delFile = new File("resources\\uploadFiles\\product\\mfp\\" + mfpMap.get("CHANGE_NM") + mfpMap.get("EXT"));
+			logger.info("파일 경로 : " + delFile);
+			if(delFile.exists()) delFile.delete();
 			
 			String root = request.getSession().getServletContext().getRealPath("resources");
 			
@@ -251,7 +264,7 @@ public class ProductServiceImpl implements ProductService{
 				attMap.put("originNm", originFileName);
 				attMap.put("changeNm", changeFileName);
 				attMap.put("ext", ext);
-				attMap.put("expdProdId", param.get("expdProdId"));
+				attMap.put("expdProdId", prodId);
 				
 				//Attachment 테이블에 update
 				attResult = pd.updateProductExpdAttachment(sqlSession, attMap);
@@ -265,7 +278,6 @@ public class ProductServiceImpl implements ProductService{
 		//PROD_EXPD 테이블에 update
 		int expdResult = pd.updateProductExpd(sqlSession, param);
 
-		
 		return expdResult + attResult;
 	}
 }

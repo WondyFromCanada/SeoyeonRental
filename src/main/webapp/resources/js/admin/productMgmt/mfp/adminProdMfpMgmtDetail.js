@@ -26,6 +26,7 @@ $(function() {
 			$('#paperDivsnDetail').val(data.PAPER_DIVSN);
 			$('#colorYnDetail').val(data.COLOR_YN);
 			$('#mfpProdId').val(data.PROD_ID);
+			$('#whole').data(data);
 
 		},
 		error: function(data) {

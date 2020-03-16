@@ -605,7 +605,7 @@ public class UtilController {
 				resultMap.put("result", "fail");
 			}
 			
-		return "redirect:adminProdMfpMgmtDetailPage?prodId=" + mfpProdId;
+		return "redirect:adminProdMfpMgmtPage.do";
 	}
 	
 	/**
@@ -633,10 +633,10 @@ public class UtilController {
 			
 			//디비로 보낼 파라미터, file데이터, request객체 service로 전송
 			Map<String, Object> param = new HashMap<String, Object> ();
-			param.put("expdBrandInf", expdBrandInfDetail);
-			param.put("expdProdNm", expdProdNmDetail);
-			param.put("expdProdInf", expdProdInfDetail);
-			param.put("expdModelAvail", expdModelAvailDetail);
+			param.put("expdBrandInfDetail", expdBrandInfDetail);
+			param.put("expdProdNmDetail", expdProdNmDetail);
+			param.put("expdProdInfDetail", expdProdInfDetail);
+			param.put("expdModelAvailDetail", expdModelAvailDetail);
 			param.put("sell", sell);
 			param.put("expdProdId", expdProdId);
 			
@@ -648,7 +648,7 @@ public class UtilController {
 				resultMap.put("result", "fail");
 			}
 			
-		return "redirect:adminProdExpdMgmtDetailPage.do?prodId=" + expdProdId;
+		return "redirect:adminProdExpdMgmtPage.do";
 	}
 	
 	/**

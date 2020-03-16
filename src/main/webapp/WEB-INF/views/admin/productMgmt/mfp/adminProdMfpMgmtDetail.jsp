@@ -17,7 +17,7 @@
 				<button type="button" class="btn btn-default btn-block change-img">사진 변경</button>
 				<input type="file" id="prodMfpImgDetail" name="prodMfpImgDetail" accept="image/*" onchange="handleImgFileSelect(this)"/>
 			</div>
-			<div class="col-md-8">
+			<div class="col-md-8" id="whole">
 				<div class="">
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="mfpBrandInfDetail">브랜드</label>
