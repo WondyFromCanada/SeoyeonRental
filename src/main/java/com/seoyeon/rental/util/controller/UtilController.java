@@ -274,11 +274,41 @@ public class UtilController {
 	/**
 	 *	Author : 김동환
 	 *	Date : 2020. 3. 15.
-	 *  Discription : 관리자 제품게시판 복합기 렌탈 등록페이지
+	 *  Discription : 관리자 제품게시판 복합기 렌탈 등록페이지로 이동
 	**/
 	@GetMapping(value="adminProdMfpRentalBoardMgmtEnrollPage.do")
 	public String adminProdMfpRentalBoardMgmtEnrollPage() {
 		return "admin/productBoardMgmt/mfpRental/adminProdMfpRentalBoardMgmtEnroll";
+	}
+	
+	/**
+	 *	Author : 김동환
+	 *	Date : 2020. 3. 16.
+	 *  Discription : 관리자 제품게시판 복합기 렌탈 상세페이지로 이동
+	**/
+	@GetMapping(value = "adminProdMfpRentalBoardMgmtDetailPage.do")
+	public String adminProdMfpRentalBoardMgmtDetailPage() {
+		return "admin/productBoardMgmt/mfpRental/adminProdMfpRentalBoardMgmtDetail";
+	}
+	
+	/**
+	 * Author : 김정언
+	 * Date : 2020. 3. 9.
+	 * Discription : 관리자 제품게시판 소모품 판매 페이지로 이동
+	 **/
+	@GetMapping(value = "adminProdExpdMgmtPage.do")
+	public String adminProdExpdMgmtPage() {
+		return "admin/productBoardMgmt/expdSell/adminProdExpdSellBoardMgmt";
+	}
+	
+	/**
+	 *	Author : 김동환
+	 *	Date : 2020. 3. 16.
+	 *  Discription : 관리자 제품게시판 소모품 판매 등록페이지
+	**/
+	@GetMapping(value="adminProdExpdSellBoardMgmtEnrollPage.do")
+	public String adminProdExpdSellBoardMgmtEnrollPage() {
+		return "admin/productBoardMgmt/expdSell/adminProdExpdSellBoardMgmtEnroll";
 	}
 	
 		/* 관리자 제품게시판 End */
@@ -342,15 +372,6 @@ public class UtilController {
 		return "admin/productMgmt/mfp/adminProdMfpMgmtEnroll";
 	}
 	
-	/**
-	 * Author : 김정언
-	 * Date : 2020. 3. 9.
-	 * Discription : 관리자 소모품 페이지로 이동
-	 **/
-	@GetMapping(value = "adminProdExpdMgmtPage.do")
-	public String adminProdExpdMgmtPage() {
-		return "admin/productMgmt/expd/adminProdExpdMgmt";
-	}
 	
 	/**
 	 * Author : 김정언

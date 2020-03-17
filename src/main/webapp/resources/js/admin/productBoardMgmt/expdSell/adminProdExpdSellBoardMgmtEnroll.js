@@ -5,14 +5,14 @@ $(function() {
 	
 	$('.open-modal').on('click', function(e) {
 		$.ajax({
-			url: '/rental/product/mfp',
+			url: '/rental/product/expd',
 			type: 'GET',
 			contentType: 'application/json',
 			success: function(data) {
 				var innerHTML = "";
 				
 				$.each(data, function(i, v) {
-					var src = "resources/uploadFiles/product/mfp/" + 
+					var src = "resources/uploadFiles/product/expd/" + 
 						v.CHANGE_NM + v.EXT;
 					
 					innerHTML += 
@@ -48,13 +48,13 @@ $(function() {
 			var confirm = window.confirm('등록하시겠습니까?');
 			if(confirm) {
 				$.ajax({
-					url: '/rental/productBoard/rental/mfp',
+					url: '/rental/productBoard/rental/expd',
 					data: JSON.stringify(sendData),
 					contentType: 'application/json',
 					type: 'POST',
 					success: function(data) {
 						if(data.result == 'success')
-							location.href = 'adminProdMfpRentalBoardMgmtPage.do';
+							location.href = 'adminProdExpdRentalBoardMgmtPage.do';
 					},
 					error: function(data) {
 						console.log(data);
@@ -70,7 +70,7 @@ $(function() {
 
 function getProdInf(prodId) {
 	$.ajax({
-		url: '/rental/product/mfp/'+prodId,
+		url: '/rental/product/expd/'+prodId,
 		type: 'GET',
 		contentType: 'application/json',
 		success: function(data) {
@@ -80,7 +80,7 @@ function getProdInf(prodId) {
 			$('.content-area').show();
 			$('.prod-inf-area').show();
 			
-			$('#prodMfpImgDiv').attr('src', '/rental/resources/uploadFiles/product/mfp/' + data.CHANGE_NM + data.EXT);
+			$('#prodMfpImgDiv').attr('src', '/rental/resources/uploadFiles/product/expd/' + data.CHANGE_NM + data.EXT);
 			$('#mfpBrandInfDetail').val(data.BRAND_INF);
 			$('#mfpProdNmDetail').val(data.PROD_NM);
 			
@@ -93,7 +93,7 @@ function getProdInf(prodId) {
 			$('#mfpProdId').val(data.PROD_ID);
 			
 			CKEDITOR.replace('p_content', {
-					filebrowserImageUploadUrl: '/rental/productBoard/rental/mfp/imgUpload',
+					filebrowserImageUploadUrl: '/rental/productBoard/rental/expd/imgUpload',
 					height: 450
 				}
 			);

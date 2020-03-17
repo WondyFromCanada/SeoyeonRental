@@ -3,9 +3,9 @@ $(function() {
 		location.href='adminProdMfpRentalBoardMgmtEnrollPage.do';
 	});
 	
-	//initData('Y', 'adminInstallBoardMgmtDetailPage', '/install');
+	initData('N', 'adminProdMfpRentalBoardMgmtDetailPage', '/productBoard/rental/mfp', '/product/mfp');
 });
 
-function adminInstallBoardMgmtDetailPage(postId) {
-	window.location.href = 'adminInstallBoardMgmtDetailPage.do?postId=' + postId;
+function adminProdMfpRentalBoardMgmtDetailPage(postId) {
+	window.location.href = 'adminProdMfpRentalBoardMgmtDetailPage.do?postId=' + postId;
 }

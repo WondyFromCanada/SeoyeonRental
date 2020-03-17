@@ -6,13 +6,13 @@
  * */
 
 
-function initData(ckYn, onclick, url) {
+function initData(ckYn, onclick, url, subUrl) {
 	$.ajax({
 		url: '/rental' + url,
 		type: 'GET',
 		success: function(data) {
 			//data Null 처리
-			if(data.length > 1) {
+			if(data.length > 0) {
 				//보여지길 원하는 갯수
 				var pageSize = 9;
 				
@@ -78,8 +78,10 @@ function initData(ckYn, onclick, url) {
 								
 							/*  나머지 */
 							} else {
-								src = 'resources/uploadFiles' + url + '/' + data[i].CHANGE_NM + data[i].EXT;
-								title = data[i].PROD_NM;
+								//제품 게시판 예외처리
+								//subUrl이 있으면 제품 게시판 아니면 나머지
+								src = 'resources/uploadFiles' + ((subUrl)?subUrl:url) + '/' + data[i].CHANGE_NM + data[i].EXT;
+								title = ((subUrl)?data[i].TITLE:data[i].PROD_NM);
 							} 
 							
 							innerHTML +=

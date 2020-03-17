@@ -3,6 +3,7 @@
  */
 package com.seoyeon.rental.productBoard.service;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -30,5 +31,33 @@ public interface ProductBoardService {
 	 *  Discription : 
 	**/
 	int insertProductBoardRentalMfp(Map<String, Object> param);
+
+	/**
+	 *	Author : 김동환
+	 *	Date : 2020. 3. 16.
+	 *  Discription : 
+	**/
+	List<Map<String, Object>> selectProductBoardRentalMfp();
+
+	/**
+	 *	Author : 김동환
+	 *	Date : 2020. 3. 16.
+	 *  Discription : 
+	**/
+	Map<String, Object> selectProductBoardRentalMfpDetail(String postId);
+
+	/**
+	 *	Author : 김동환
+	 *	Date : 2020. 3. 16.
+	 *  Discription : 
+	**/
+	int updateProductBoardRentalMfp(Map<String, Object> param);
+
+	/**
+	 *	Author : 김동환
+	 *	Date : 2020. 3. 16.
+	 *  Discription : 
+	**/
+	int deleteProductBoardRentalMfp(Map<String, Object> param, HttpServletRequest request);
 
 }
