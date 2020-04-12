@@ -6,7 +6,10 @@
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:root-context.xml</param-value>
+		<param-value>
+			classpath:root-context.xml
+			/WEB-INF/config/spring-security.xml
+		</param-value>
 	</context-param>
 	
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
@@ -37,7 +40,7 @@
 		</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>/WEB-INF/config/*.xml</param-value>
+			<param-value>/WEB-INF/config/util-servlet.xml</param-value>
 		</init-param>
 	</servlet>
 	<servlet-mapping>
@@ -45,6 +48,80 @@
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
 	
+	<!-- member request handle -->
+	<servlet>
+		<servlet-name>member</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet
+		</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/config/member-servlet.xml</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>member</servlet-name>
+		<url-pattern>/member*</url-pattern>
+	</servlet-mapping>
+	
+	<!-- customer request handle -->
+	<servlet>
+		<servlet-name>customer</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet
+		</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/config/customer-servlet.xml</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>customer</servlet-name>
+		<url-pattern>/customer*</url-pattern>
+	</servlet-mapping>
+	
+	<!-- product request handle -->
+	<servlet>
+		<servlet-name>product</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet
+		</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/config/product-servlet.xml</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>product</servlet-name>
+		<url-pattern>/product*</url-pattern>
+	</servlet-mapping>
+	
+	<!-- product Board request handle -->
+	<servlet>
+		<servlet-name>productBoard</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet
+		</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/config/productBoard-servlet.xml</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>productBoard</servlet-name>
+		<url-pattern>/productBoard*</url-pattern>
+	</servlet-mapping>
+	
+	<!-- install request handle -->
+	<servlet>
+		<servlet-name>install</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet
+		</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/config/installBoard-servlet.xml</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>install</servlet-name>
+		<url-pattern>/install*</url-pattern>
+	</servlet-mapping>
 	
 	<!-- encoding filter -->
 	<filter>
@@ -68,11 +145,10 @@
 	<!-- error handle page -->
 	<error-page>
 		<error-code>500</error-code>
-		<location>/WEB-INF/views/common/errorPage.jsp</location>
+		<location>/WEB-INF/views/common/500error.jsp</location>
 	</error-page>
 	<error-page>
 		<exception-type>java.lang.Throwable</exception-type>
 		<location>/WEB-INF/views/common/errorPage.jsp</location>
 	</error-page>
-
 </web-app>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Customer">
+
+	<insert id="insertCustomerQuestionBoard" parameterType="map">
+		<!-- 고객센터 1:1문의 게시글 등록  -->
+		INSERT INTO SY_CUSTOMER_QUESTION_BOARD
+		      (MEMBER_ID, TITLE, CONTENT, PUBLIC_YN)
+		VALUES
+		      (#{memberId}, #{title}, #{content}, #{publicYn})
+	</insert>
+	
+	<select id="selectCustomerQuestionBoardList" resultType="map">
+	<!-- 고객센터 1:1문의 게시글 전체 조회  -->
+		SELECT Q.POST_ID,
+		       Q.TITLE,
+		       M.USER_NM,
+		       DATE_FORMAT(Q.CREATE_DATE, '%Y-%m-%d %T') AS CREATE_DATE,
+		       Q.PUBLIC_YN
+	      FROM SY_CUSTOMER_QUESTION_BOARD Q
+	      LEFT OUTER JOIN SY_MEMBER M ON( Q.MEMBER_ID = M.MEMBER_ID )
+	   	 WHERE Q.STATUS = 'Y'
+	   	   AND M.STATUS = 'Y'
+	</select>
+	
+	<select id="selectCustomerQuestionBoard" parameterType="String" resultType="map">
+	<!-- 고객센터 1:1문의 게시글 상세 조회  -->
+		SELECT Q.POST_ID,
+		       M.USER_NM,
+		       M.MEMBER_ID,
+		       Q.TITLE,
+		       Q.CONTENT,
+		       Q.ANSWER,
+		       DATE_FORMAT(Q.CREATE_DATE, '%Y-%m-%d %T') AS CREATE_DATE,
+		       Q.PUBLIC_YN
+	      FROM SY_CUSTOMER_QUESTION_BOARD Q
+	      LEFT OUTER JOIN SY_MEMBER M ON(M.MEMBER_ID = Q.MEMBER_ID) 
+	   	 WHERE Q.STATUS = 'Y'
+	   	   AND Q.POST_ID = #{postId}
+	</select>
+	
+	<update id="updateCustomerQuestionBoard" parameterType="map">
+		<!-- 고객센터 1:1문의 게시글 수정  -->
+		UPDATE SY_CUSTOMER_QUESTION_BOARD
+		   SET TITLE = #{title},
+		   <if test="answer != null">
+		   		ANSWER = #{answer},
+		   </if>
+		       CONTENT = #{content}
+		 WHERE POST_ID = #{postId}
+	</update>
+	
+	<delete id="deleteCustomerQuestionBoard" parameterType="String">
+		<!-- 고객센터 1:1문의 게시글 삭제  -->
+		DELETE 
+		  FROM SY_CUSTOMER_QUESTION_BOARD
+		 WHERE POST_ID = #{postId}
+	</delete>
+	
+	<select id="selectCustomerMaterialBoardList" resultType="map">
+		<!-- 고객센터 자료실 전체 게시글 조회 -->
+		SELECT POST_ID,
+		       TITLE,
+		       DATE_FORMAT(CREATE_DATE, '%Y-%m-%d %T') AS CREATE_DATE
+		       FROM SY_CUSTOMER_MATERIAL_BOARD
+		 WHERE STATUS = 'Y'
+	</select>
+	
+	<select id="selectCustomerMaterialBoard" parameterType="String" resultType="map">
+		<!-- 고객센터 자료실 게시글 상세 조회 -->
+		SELECT M.POST_ID, 
+               M.TITLE,
+               M.CONTENT,
+               DATE_FORMAT(M.CREATE_DATE, '%Y-%m-%d %T') AS CREATE_DATE,
+               A.FILE_PATH,
+               A.CHANGE_NM,
+               A.EXT
+          FROM SY_CUSTOMER_MATERIAL_BOARD M
+          JOIN SY_ATTACHMENT A ON(M.POST_ID = A.POST_ID)
+         WHERE M.STATUS = 'Y'
+	</select>
+	
+	<insert id="insertCustomerMaterial" parameterType="map">
+		<!-- 고객센터 자료실 게시글 등록  -->
+		INSERT INTO SY_CUSTOMER_MATERIAL_BOARD
+		      (TITLE, CONTENT)
+		VALUES 
+		      (#{title}, #{content})
+	</insert>
+	
+	<insert id="insertAttachment" parameterType="map">
+		<!-- 고객센터 자료실 게시글 파일 정보 등록  -->
+		INSERT INTO SY_ATTACHMENT
+		      (FILE_PATH, ORIGIN_NM, CHANGE_NM, EXT, DIVSN, POST_ID)
+		SELECT #{filePath} AS FILE_PATH,
+		       #{originNm} AS ORIGIN_NM,
+		       #{changeNm} AS CHANGE_NM,
+		       #{ext} AS EXT,
+		       '자료실',
+		       MAX(POST_ID)
+		  FROM SY_CUSTOMER_MATERIAL_BOARD
+	</insert>
+	
+	<insert id="insertCustomerFaqBoard">
+		<!-- 고객센터 faq 게시글 등록 -->
+		INSERT INTO SY_CUSTOMER_FAQ_BOARD	
+		      (TITLE, CONTENT)
+		VALUES 
+		      (#{title}, #{content})
+	</insert>
+	
+	<select id="selectCustomerFaqBoardList" resultType="map">
+		<!-- 고객센터 faq 전체 게시글 조회 -->
+		SELECT POST_ID,
+		       TITLE,
+		       CONTENT,
+		       DATE_FORMAT(CREATE_DATE, '%Y-%m-%d %T') AS CREATE_DATE
+		  FROM SY_CUSTOMER_FAQ_BOARD
+		 WHERE STATUS = 'Y'
+	</select>
+	
+	<select id="selectCustomerFaqBoard" resultType="map" parameterType="String">
+		<!-- 고객센터 faq 상세 게시글 조회 -->
+		SELECT POST_ID,
+		       TITLE,
+		       CONTENT,
+		       ANSWER,
+		       DATE_FORMAT(CREATE_DATE, '%Y-%m-%d %T') AS CREATE_DATE
+		  FROM SY_CUSTOMER_FAQ_BOARD
+		 WHERE POST_ID = #{postId}
+	</select>
+	
+	<update id="updateCustomerFaqBoard" parameterType="map">
+		<!-- 고객센터 faq 게시글 수정 -->
+		UPDATE SY_CUSTOMER_FAQ_BOARD
+		   SET TITLE = #{title},
+		       CONTENT = #{content},
+		       ANSWER = #{answer}
+		 WHERE POST_ID = #{postId}
+	</update>
+	
+	<delete id="deleteCustomerFaqBoard" parameterType="String">
+		<!-- 고객센터 faq 게시글 삭제 -->
+		DELETE 
+		  FROM SY_CUSTOMER_FAQ_BOARD
+		 WHERE POST_ID = #{postId}
+	</delete>
+
+
+	<select id="getGridColInf" parameterType="map" resultType="map">
+		<!-- Data Table 컬럼 정보 조회 -->
+		SELECT TBL_GRP_NM,
+		       TBL_COL_NM,
+		       SORT_VAL
+	  	  FROM SY_TABLE_COL_INF
+		 WHERE USE_YN = 'Y'
+		   AND TBL_GRP_NM = #{tblGrpNm}
+		 ORDER BY SORT_VAL ASC
+	</select>	
+	
+</mapper>

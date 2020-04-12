@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Product">
+	<insert id="insertProductBoardRentalMfp" parameterType="map">
+		<!-- 제품게시판 복합기 렌탈 게시글 등록 -->
+		INSERT INTO SY_PROD_RENTAL_BOARD
+		       (PROD_ID, TITLE, CONTENT, AGREEMENT, PRICE, REGISTER_PRICE)
+		VALUES
+		       (#{prodId}, #{title}, #{content}, #{agreement}, #{price}, #{registerPrice})
+	</insert>
+	
+	<select id="selectProductBoardRentalMfp" resultType="map">
+		<!-- 제품게시판 복합기 렌탈 게시글 전체 조회 -->
+		SELECT B.POST_ID, 
+		       B.PROD_ID, 
+		       B.TITLE, 
+		       B.CONTENT, 
+		       B.PRICE, 
+		       DATE_FORMAT(B.CREATE_DATE, '%Y-%m-%d %T') AS CREATE_DATE,
+		       A.CHANGE_NM, 
+		       A.EXT,
+               P.PROD_NM, 
+               P.PROD_INF, 
+               P.BRAND_INF, 
+               P.SCAN_SPD, 
+               P.OUTPUT_SPD, 
+               P.NETWORK_DIVSN, 
+               P.PAPER_DIVSN, 
+               P.COLOR_YN
+          FROM SY_PROD_RENTAL_BOARD B
+          JOIN SY_ATTACHMENT A ON(B.PROD_ID = A.POST_ID)
+          JOIN SY_PROD_MFP P ON(B.PROD_ID = P.PROD_ID)
+         WHERE B.STATUS = 'Y'
+	</select>	
+	
+	<select id="selectProductBoardRentalMfpDetail" resultType="map" parameterType="String">
+		<!-- 제품게시판 복합기 렌탈 게시글 상세조회 -->
+		SELECT B.POST_ID, 
+		       B.PROD_ID, 
+		       B.TITLE, 
+		       B.CONTENT, 
+		       DATE_FORMAT(B.CREATE_DATE, '%Y-%m-%d %T') AS CREATE_DATE,
+		       B.PRICE, 
+		       B.AGREEMENT, 
+		       B.REGISTER_PRICE,
+		       A.CHANGE_NM, 
+		       A.EXT,
+               P.PROD_NM, 
+               P.PROD_INF, 
+               P.BRAND_INF, 
+               P.SCAN_SPD, 
+               P.OUTPUT_SPD, 
+               P.NETWORK_DIVSN, 
+               P.PAPER_DIVSN, 
+               P.COLOR_YN
+          FROM SY_PROD_RENTAL_BOARD B
+          JOIN SY_ATTACHMENT A ON(B.PROD_ID = A.POST_ID)
+          JOIN SY_PROD_MFP P ON(B.PROD_ID = P.PROD_ID)
+         WHERE B.STATUS = 'Y'
+           AND B.POST_ID = #{postId}
+	</select>
+	
+	<update id="updateProductBoardRentalMfp" parameterType="map">
+		<!-- 제품게시판 복합기 렌탈 게시글 수정 -->
+		UPDATE SY_PROD_RENTAL_BOARD
+		       SET TITLE = #{title},
+		       CONTENT = #{content},
+		       AGREEMENT = #{agreement},
+		       REGISTER_PRICE = #{registerPrice},
+		       PRICE = #{price}
+		 WHERE POST_ID = #{postId}
+	</update>
+	
+	<delete id="deleteProductBoardRentalMfp" parameterType="String">
+		<!-- 제품게시판 복합기 렌탈 게시글 삭제 -->
+		DELETE FROM SY_PROD_RENTAL_BOARD
+		 WHERE POST_ID = #{postId}
+	</delete>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

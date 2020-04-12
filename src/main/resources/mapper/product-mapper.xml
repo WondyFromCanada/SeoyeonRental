@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Product">
+
+	<insert id="insertProductMfp" parameterType="map">
+		<!-- 관리자 > 제품관리 > 제품등록 (복합기) -->
+		INSERT INTO SY_PROD_MFP
+		      (PROD_NM, PROD_INF, BRAND_INF, OUTPUT_SPD, SCAN_SPD, NETWORK_DIVSN, PAPER_DIVSN, COLOR_YN)
+		VALUES
+		      (#{mfpProdNm}, #{mfpProdInf}, #{mfpBrandInf}, #{output}, #{scan}, #{networkDivsn}, #{paperDivsn}, #{color})
+	</insert>
+
+	<insert id="insertProductMfpAttachment" parameterType="map">
+		<!-- 관리자 > 제품관리 > 제품등록 (복합기) > 제품사진 등록  -->
+		INSERT INTO SY_ATTACHMENT
+		      (FILE_PATH, ORIGIN_NM, CHANGE_NM, EXT, DIVSN, POST_ID)
+		SELECT #{filePath} AS FILE_PATH,
+		       #{originNm} AS ORIGIN_NM,
+		       #{changeNm} AS CHANGE_NM,
+		       #{ext} AS EXT,
+		       '복합기',
+		       MAX(PROD_ID) AS POST_ID
+		  FROM SY_PROD_MFP
+	</insert>
+	
+	<insert id="insertProductExpd" parameterType="map">
+		<!-- 관리자 > 제품관리 > 제품등록 (소모품) -->
+		INSERT INTO SY_PROD_EXPD
+		      (PROD_NM, PROD_INF, BRAND_INF, MODEL_AVAIL, SELL_YN)
+		VALUES
+		      (#{expdProdNm}, #{expdProdInf}, #{expdBrandInf}, #{expdModelAvail}, #{sell})
+	</insert>
+	
+	<insert id="insertProductExpdAttachment" parameterType="map">
+		<!-- 관리자 > 제품관리 > 제품등록 (소모품) > 제품사진 등록  -->
+		INSERT INTO SY_ATTACHMENT
+		      (FILE_PATH, ORIGIN_NM, CHANGE_NM, EXT, DIVSN, POST_ID)
+		SELECT #{filePath} AS FILE_PATH,
+		       #{originNm} AS ORIGIN_NM,
+		       #{changeNm} AS CHANGE_NM,
+		       #{ext} AS EXT,
+		       '소모품',
+		       MAX(PROD_ID) AS POST_ID
+		  FROM SY_PROD_EXPD
+	</insert>
+	
+	<select id="selectProductMfpList" resultType="map">
+		<!-- 관리자 > 제품관리 > 복합기 전체 조회 -->
+		SELECT A.CHANGE_NM,
+			   A.EXT,
+			   P.PROD_ID,
+			   P.PROD_NM
+		  FROM SY_PROD_MFP P
+		  JOIN SY_ATTACHMENT A ON(P.PROD_ID = A.POST_ID)
+		 WHERE A.DIVSN = '복합기'
+	  ORDER BY PROD_ID DESC
+	</select>
+	
+	<select id="selectProductExpdList" resultType="map">
+		<!-- 관리자 > 제품관리 > 소모품 전체 조회 -->
+		SELECT A.CHANGE_NM,
+			   A.EXT,
+			   P.PROD_ID,
+			   P.PROD_NM
+		  FROM SY_PROD_EXPD P
+		  JOIN SY_ATTACHMENT A ON(P.PROD_ID = A.POST_ID)
+		 WHERE A.DIVSN = '소모품'
+	  ORDER BY PROD_ID DESC
+	</select>
+	
+	<select id="selectProductMfpListCount" resultType="_int">
+		<!-- 관리자 > 제품관리 > 복합기 개수 전체 조회 -->
+		SELECT COUNT(*)
+		  FROM SY_PROD_MFP
+	</select>
+	
+	<select id="selectProductExpdListCount" resultType="_int">
+		<!-- 관리자 > 제품관리 > 소모품 개수 전체 조회 -->
+		SELECT COUNT(*)
+		  FROM SY_PROD_EXPD
+	</select>
+	
+	<select id="selectProductMfpDetail" parameterType="String" resultType="map">
+		<!-- 관리자 > 제품관리 > 복합기 상세 조회 -->
+		SELECT A.CHANGE_NM,
+			   A.EXT,
+			   P.PROD_ID,
+			   P.PROD_NM,
+			   P.PROD_INF,
+			   P.BRAND_INF,
+			   SUBSTRING_INDEX(P.OUTPUT_SPD, '매', 1) AS OUTPUT_SPD,
+			   SUBSTRING_INDEX(P.SCAN_SPD, '매', 1) AS SCAN_SPD,
+			   P.NETWORK_DIVSN,
+			   P.PAPER_DIVSN,
+			   IF(P.COLOR_YN = 'Y', '컬러', '흑백') AS COLOR_YN
+		  FROM SY_PROD_MFP P
+		  JOIN SY_ATTACHMENT A ON(P.PROD_ID = A.POST_ID)
+		 WHERE A.DIVSN = '복합기'
+		   AND P.PROD_ID = #{prodId}
+	</select>
+	
+	<select id="selectProductExpdDetail" parameterType="String" resultType="map">
+		<!-- 관리자 > 제품관리 > 소모품 상세 조회 -->
+		SELECT A.CHANGE_NM,
+			   A.EXT,
+			   P.PROD_ID,
+			   P.PROD_NM,
+			   P.PROD_INF,
+			   P.BRAND_INF,
+			   P.MODEL_AVAIL,
+			   IF(P.SELL_YN = 'Y', '가능', '불가') AS SELL_YN
+		  FROM SY_PROD_EXPD P
+		  JOIN SY_ATTACHMENT A ON(P.PROD_ID = A.POST_ID)
+		 WHERE A.DIVSN = '소모품'
+		   AND P.PROD_ID = #{prodId}
+	</select>
+	
+	<delete id="deleteProductMfp" parameterType="String">
+		<!-- 관리자 > 제품관리 > 복합기 삭제 -->
+		DELETE 
+		  FROM SY_PROD_MFP
+		 WHERE PROD_ID = #{prodId}
+	</delete>
+	
+	<delete id="deleteProductMfpAttachment" parameterType="String">
+		<!-- 관리자 > 제품관리 > 복합기 사진 삭제  -->
+		DELETE 
+		  FROM SY_ATTACHMENT
+		 WHERE POST_ID = #{prodId}
+		   AND DIVSN = '복합기'
+	</delete>
+	
+	<delete id="deleteProductExpd" parameterType="String">
+		<!-- 관리자 > 제품관리 > 소모품 삭제  -->
+		DELETE 
+		  FROM SY_PROD_EXPD
+		 WHERE PROD_ID = #{prodId}
+	</delete>
+	
+	<delete id="deleteProductExpdAttachment" parameterType="String">
+		<!-- 관리자 > 제품관리 > 소모품 사진 삭제  -->
+		DELETE 
+		  FROM SY_ATTACHMENT
+		 WHERE POST_ID = #{prodId}
+		   AND DIVSN = '소모품'
+	</delete>
+	
+	<update id="updateProductMfpAttachment" parameterType="map">
+		<!-- 관리자 > 제품관리 > 복합기 사진 수정 -->
+		UPDATE SY_ATTACHMENT
+		   SET FILE_PATH = #{filePath},
+			   ORIGIN_NM = #{originNm},
+			   CHANGE_NM = #{changeNm},
+			   EXT = #{ext}
+		 WHERE POST_ID = #{mfpProdId}
+		   AND DIVSN = '복합기'
+	</update>
+	
+	<update id="updateProductMfp" parameterType="map">
+		<!-- 관리자 > 제품관리 > 복합기 수정 -->
+		UPDATE SY_PROD_MFP
+		   SET PROD_NM = #{mfpProdNmDetail},
+			   PROD_INF = #{mfpProdInfDetail},
+			   BRAND_INF = #{mfpBrandInfDetail},
+			   OUTPUT_SPD = #{output},
+			   SCAN_SPD = #{scan},
+			   NETWORK_DIVSN = #{networkDivsnDetail},
+			   PAPER_DIVSN = #{paperDivsnDetail},
+			   COLOR_YN = #{color}
+		 WHERE PROD_ID = #{mfpProdId}
+	</update>
+	
+	<update id="updateProductExpdAttachment" parameterType="map">
+		<!-- 관리자 > 제품관리 > 소모품 사진 수정 -->
+		UPDATE SY_ATTACHMENT
+		   SET FILE_PATH = #{filePath},
+			   ORIGIN_NM = #{originNm},
+			   CHANGE_NM = #{changeNm},
+			   EXT = #{ext}
+		 WHERE POST_ID = #{expdProdId}
+		   AND DIVSN = '소모품'
+	</update>
+	
+	<update id="updateProductExpd" parameterType="map">
+		<!-- 관리자 > 제품관리 > 소모품 수정 -->
+		UPDATE SY_PROD_EXPD
+		   SET PROD_NM = #{expdProdNmDetail},
+			   PROD_INF = #{expdProdInfDetail},
+			   BRAND_INF = #{expdBrandInfDetail},
+			   MODEL_AVAIL = #{expdModelAvailDetail},
+			   SELL_YN = #{sell}
+		 WHERE PROD_ID = #{expdProdId}
+	</update>
+		
+</mapper>
